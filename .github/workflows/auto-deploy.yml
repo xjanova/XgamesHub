@@ -30,38 +30,45 @@ jobs:
 
     steps:
       - name: Check SSH secrets
+        id: secrets
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           if [ -z "$SSH_HOST" ] || [ -z "$SSH_USER" ] || [ -z "$SSH_PRIVATE_KEY" ]; then
-            echo "::error::Required SSH secrets are not configured."
-            echo "Please set: SSH_HOST, SSH_USER, SSH_PRIVATE_KEY"
-            echo "Optional: SSH_PORT (defaults to 22), DEPLOY_PATH (defaults to /home/admin/domains/xgameshub.xman4289.com/public_html)"
-            exit 1
+            # Not an error: until this repo has its own key, the site ships through
+            # xjanova/xmanstudio sites/xgameshub.xman4289.com (see README).
+            echo "::notice::SSH secrets not set — skipping direct deploy (SSH_HOST, SSH_USER, SSH_PRIVATE_KEY)."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "SSH secrets configured"
           fi
-          echo "SSH secrets configured"
 
       - name: Checkout code
+        if: steps.secrets.outputs.configured == 'true'
         uses: actions/checkout@v4
         with:
           # workflow_run runs on the default branch; deploy exactly what CI tested
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup Node.js
+        if: steps.secrets.outputs.configured == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
 
       - name: Build static site
+        if: steps.secrets.outputs.configured == 'true'
         run: |
           npm ci
           npm run build
           test -f out/index.html
 
       - name: Setup SSH key
+        if: steps.secrets.outputs.configured == 'true'
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
@@ -74,6 +81,7 @@ jobs:
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: Upload to public_html (rsync)
+        if: steps.secrets.outputs.configured == 'true'
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
@@ -94,6 +102,7 @@ jobs:
           echo "Upload completed"
 
       - name: Health Check
+        if: steps.secrets.outputs.configured == 'true'
         run: |
           echo "Checking health at: ${SITE_URL}"
           sleep 5
@@ -109,7 +118,9 @@ jobs:
         run: |
           echo "## Deployment Result" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ job.status }}" == "success" ]; then
+          if [ "${{ steps.secrets.outputs.configured }}" != "true" ]; then
+            echo "**Status:** Skipped — no SSH secrets (site ships via xmanstudio \`sites/\`)" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ job.status }}" == "success" ]; then
             echo "**Status:** Success" >> $GITHUB_STEP_SUMMARY
           else
             echo "**Status:** Failed" >> $GITHUB_STEP_SUMMARY

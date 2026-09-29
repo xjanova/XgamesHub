@@ -48,6 +48,18 @@ npm run dev
    จะ build static site (`out/`) แล้ว `rsync` ผ่าน SSH ไปที่
    `/home/admin/domains/xgameshub.xman4289.com/public_html` (สั่งรันเองได้จากแท็บ Actions → Run workflow)
 
+### ตอนนี้ขึ้นเว็บผ่าน xmanstudio
+
+repo นี้ยังไม่มี SSH Secrets ของตัวเอง จึงใช้ช่องทางเดียวกับเว็บ static อื่นของ XMAN:
+ไฟล์ที่ build แล้ว (`out/`) ถูกวางไว้ที่ `xjanova/xmanstudio` → `sites/xgameshub.xman4289.com/`
+แล้ว auto-deploy ของ xmanstudio จะ `rsync` ไปที่ `public_html` ให้เอง
+
+อัปเดตเว็บ: `npm run build` แล้วคัดลอก `out/` ไปทับ `sites/xgameshub.xman4289.com/` ใน xmanstudio → merge เข้า main
+(asset ของ Next มีชื่อแบบ hash อยู่แล้ว จึงไม่ต้องบัมพ์ `?v=`)
+
+### ถ้าจะให้ repo นี้ดีพลอยเองโดยตรง
+
+workflow `Auto Deploy to Production` จะข้ามตัวเอง (ไม่ขึ้นแดง) จนกว่าจะใส่ Secrets
 ตั้งค่าที่ **Settings → Secrets and variables → Actions → Secrets** (ค่าเดียวกับ repo aixman / xmanstudio):
 
 | ชื่อ | ค่า |

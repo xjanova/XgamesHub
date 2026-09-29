@@ -25,18 +25,19 @@ npm run dev
 
 เว็บจริง: https://xgameshub.xman4289.com
 
-ทุกครั้งที่ push เข้า `main` GitHub Actions (`.github/workflows/deploy.yml`) จะ build เป็น static site (`out/`)
-แล้วอัปโหลดผ่าน FTP ไปที่ `/domains/xgameshub.xman4289.com/public_html/` (สั่งรันเองได้จากแท็บ Actions → Run workflow)
+ใช้รูปแบบเดียวกับเว็บอื่นในเซิร์ฟเวอร์ (aixman, xmanstudio):
 
-ตั้งค่าที่ **Settings → Secrets and variables → Actions**:
+1. `CI - Build & Quality Checks` (`.github/workflows/ci.yml`) — lint + build ทุก push/PR
+2. `Auto Deploy to Production` (`.github/workflows/auto-deploy.yml`) — เมื่อ CI บน `main` ผ่าน
+   จะ build static site (`out/`) แล้ว `rsync` ผ่าน SSH ไปที่
+   `/home/admin/domains/xgameshub.xman4289.com/public_html` (สั่งรันเองได้จากแท็บ Actions → Run workflow)
 
-| ประเภท | ชื่อ | ค่า |
-| --- | --- | --- |
-| Secret | `FTP_SERVER` | host ของ FTP เช่น `ftp.xman4289.com` หรือ IP ของโฮสต์ |
-| Secret | `FTP_USERNAME` | ชื่อผู้ใช้ FTP |
-| Secret | `FTP_PASSWORD` | รหัสผ่าน FTP |
-| Variable (ไม่บังคับ) | `FTP_PROTOCOL` | `ftps` (ค่าเริ่มต้น) หรือ `ftp` ถ้าโฮสต์ไม่รองรับ TLS |
-| Variable (ไม่บังคับ) | `FTP_PORT` | ค่าเริ่มต้น `21` |
-| Variable (ไม่บังคับ) | `FTP_SERVER_DIR` | ค่าเริ่มต้น `/domains/xgameshub.xman4289.com/public_html/` |
+ตั้งค่าที่ **Settings → Secrets and variables → Actions → Secrets** (ค่าเดียวกับ repo aixman / xmanstudio):
 
-> ถ้าบัญชี FTP ถูกล็อกไว้ที่โฟลเดอร์ `public_html` อยู่แล้ว ให้ตั้ง `FTP_SERVER_DIR` เป็น `./`
+| ชื่อ | ค่า |
+| --- | --- |
+| `SSH_HOST` | host/IP ของเซิร์ฟเวอร์ |
+| `SSH_USER` | ผู้ใช้ SSH (เช่น `admin`) |
+| `SSH_PRIVATE_KEY` | private key สำหรับ deploy |
+| `SSH_PORT` | (ไม่บังคับ) ค่าเริ่มต้น `22` |
+| `DEPLOY_PATH` | (ไม่บังคับ) ค่าเริ่มต้น `/home/admin/domains/xgameshub.xman4289.com/public_html` |

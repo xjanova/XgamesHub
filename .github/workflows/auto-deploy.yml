@@ -1,0 +1,124 @@
+name: Auto Deploy to Production
+
+on:
+  # Deploy after CI completes successfully on main
+  workflow_run:
+    workflows: ["CI - Build & Quality Checks"]
+    types:
+      - completed
+    branches:
+      - main
+
+  # Manual trigger
+  workflow_dispatch:
+
+# Prevent concurrent deployments
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+env:
+  SITE_URL: https://xgameshub.xman4289.com
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    if: >
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+      github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Check SSH secrets
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          if [ -z "$SSH_HOST" ] || [ -z "$SSH_USER" ] || [ -z "$SSH_PRIVATE_KEY" ]; then
+            echo "::error::Required SSH secrets are not configured."
+            echo "Please set: SSH_HOST, SSH_USER, SSH_PRIVATE_KEY"
+            echo "Optional: SSH_PORT (defaults to 22), DEPLOY_PATH (defaults to /home/admin/domains/xgameshub.xman4289.com/public_html)"
+            exit 1
+          fi
+          echo "SSH secrets configured"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # workflow_run runs on the default branch; deploy exactly what CI tested
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Build static site
+        run: |
+          npm ci
+          npm run build
+          test -f out/index.html
+
+      - name: Setup SSH key
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Upload to public_html (rsync)
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          set -e
+          DEPLOY_PATH="${DEPLOY_PATH:-/home/admin/domains/xgameshub.xman4289.com/public_html}"
+          SSH="ssh -i $HOME/.ssh/deploy_key -p $SSH_PORT"
+          echo "Deploying to ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+          $SSH "${SSH_USER}@${SSH_HOST}" "mkdir -p '${DEPLOY_PATH}'"
+          # --delete removes files from old builds; keep host-managed folders
+          rsync -az --delete \
+            --exclude 'cgi-bin' \
+            --exclude '.well-known' \
+            -e "$SSH" \
+            out/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
+          echo "Upload completed"
+
+      - name: Health Check
+        run: |
+          echo "Checking health at: ${SITE_URL}"
+          sleep 5
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${SITE_URL}/" || echo "000")
+          if [ "$HTTP_CODE" -eq 200 ]; then
+            echo "Site is healthy (HTTP $HTTP_CODE)"
+          else
+            echo "::warning::Health check returned HTTP $HTTP_CODE"
+          fi
+
+      - name: Deployment Summary
+        if: always()
+        run: |
+          echo "## Deployment Result" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "**Status:** Success" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "**Status:** Failed" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "**URL:** ${SITE_URL}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.event.workflow_run.head_sha || github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Time:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Cleanup SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

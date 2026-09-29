@@ -1,29 +1,35 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Kanit, Orbitron } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
   subsets: ["latin"],
+  weight: ["500", "700", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const kanit = Kanit({
+  variable: "--font-kanit",
+  subsets: ["latin", "thai"],
+  weight: ["300", "400", "600"],
 });
 
 export const metadata: Metadata = {
   title: "XgamesHub",
-  description: "XgamesHub — รวมเกมไว้ในที่เดียว",
+  description: "XgamesHub — ก้าวเข้าสู่โลกของเกม ไปกับ Nova",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#05010f",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="th"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${orbitron.variable} ${kanit.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="h-full overflow-hidden">{children}</body>
     </html>
   );
 }

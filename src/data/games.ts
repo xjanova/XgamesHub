@@ -4,6 +4,8 @@ export type Game = {
   description: string;
   genre: string;
   emoji: string;
+  /** Neon accent used for the game's portal in the 3D hub */
+  color: string;
   url?: string;
 };
 
@@ -14,6 +16,7 @@ export const games: Game[] = [
     description: "เกมงูคลาสสิก เก็บอาหารให้ได้มากที่สุด",
     genre: "Arcade",
     emoji: "🐍",
+    color: "#39ff88",
   },
   {
     slug: "2048",
@@ -21,6 +24,7 @@ export const games: Game[] = [
     description: "รวมตัวเลขให้ถึง 2048",
     genre: "Puzzle",
     emoji: "🔢",
+    color: "#ffb938",
   },
   {
     slug: "tetris",
@@ -28,6 +32,7 @@ export const games: Game[] = [
     description: "เรียงบล็อกให้เต็มแถว",
     genre: "Puzzle",
     emoji: "🧱",
+    color: "#3fd2ff",
   },
   {
     slug: "flappy",
@@ -35,5 +40,6 @@ export const games: Game[] = [
     description: "บินหลบท่อให้ได้ไกลที่สุด",
     genre: "Casual",
     emoji: "🐦",
+    color: "#ff4fd8",
   },
 ];

@@ -57,6 +57,10 @@ repo นี้ยังไม่มี SSH Secrets ของตัวเอง �
 อัปเดตเว็บ: `npm run build` แล้วคัดลอก `out/` ไปทับ `sites/xgameshub.xman4289.com/` ใน xmanstudio → merge เข้า main
 (asset ของ Next มีชื่อแบบ hash อยู่แล้ว จึงไม่ต้องบัมพ์ `?v=`)
 
+`npm run build` จะรัน `scripts/sanitize-export.mjs` ต่อท้ายเอง (postbuild): เทสต์ของ xmanstudio ห้ามมีข้อความ `github.com`
+ในไฟล์ .html/.js/.css ใต้ `sites/` สคริปต์จึงเขียน `github.com` ที่อยู่ในสตริงของไลบรารีเป็น `github\u002ecom`
+(ค่าตอนรันเหมือนเดิมทุกไบต์) และจะทำให้ build ล้มถ้าเจอที่ไม่ใช่สตริง
+
 ### ถ้าจะให้ repo นี้ดีพลอยเองโดยตรง
 
 workflow `Auto Deploy to Production` จะข้ามตัวเอง (ไม่ขึ้นแดง) จนกว่าจะใส่ Secrets

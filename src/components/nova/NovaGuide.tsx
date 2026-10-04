@@ -139,7 +139,8 @@ export default function NovaGuide() {
       if (m === "stage" && r) {
         s = 1;
         x = r.right - W * 0.78;
-        y = r.bottom - H * 0.96;
+        // never slide up under the sticky top bar
+        y = Math.max(r.bottom - H * 0.96, 58);
       } else {
         s = Math.min(DOCK_H, vh * 0.42) / H;
         x = vw - W * s - 10;

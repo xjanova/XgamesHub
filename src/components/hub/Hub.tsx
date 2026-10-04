@@ -355,10 +355,14 @@ export default function Hub() {
     drag.current = null;
   };
 
+  const lastHover = useRef("");
   const onHover = (g: Game | null) => {
     window.clearTimeout(hoverTimer.current);
-    if (!g) return;
-    hoverTimer.current = window.setTimeout(() => guide.say({ text: pick(g.nova), pose: "present", priority: 1, hold: 1200 }), 650);
+    if (!g || g.id === lastHover.current) return;
+    hoverTimer.current = window.setTimeout(() => {
+      // only once per card in a row, so sweeping the pointer back and forth is not a chatterbox
+      if (guide.say({ text: pick(g.nova), pose: "present", priority: 1, hold: 1200 })) lastHover.current = g.id;
+    }, 650);
   };
 
   const navActive = (id: string) =>

@@ -4,13 +4,13 @@ Grok fits the input to its output size and crops what does not fit (about 1%
 of the sides for a 2:3 still); this pads it back, so the clip's box has the
 input's aspect and frame 0 lands on the still pixel for pixel. An input made
 with green.py --pad keeps its 8% margin in the WebM: pass --padded, and list
-the clip with `pad: true` in Guide.js CLIPS (the page draws it 8% bigger).
+the clip with `pad: true` in CLIPS, src/components/nova/clips.ts (drawn 16% bigger).
 
 mode  pp        forward then backward: a seamless loop through frame 0
       pp:4      the same over the first 4 s only (smaller file, the lively part)
       once      forward only; once:4.5 = the first 4.5 s
 
-usage: python key.py grok.mp4 nova-welcome.jpg public_html/artwork/universe/guide/clips/idle.webm pp:4.5 [--padded] [--fade 0.04]
+usage: python scripts/nova/key.py .nova-work/raw.mp4 .nova-work/green-welcome.jpg public/nova/clips/idle.webm once [--padded] [--fade 0.04]
 Needs ffmpeg/ffprobe with libvpx-vp9 on PATH, and Pillow.
 """
 import argparse

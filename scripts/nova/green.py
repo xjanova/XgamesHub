@@ -5,7 +5,7 @@ half-transparent fringe mixed with green would key out as a green halo.
 --pad adds an 8% green margin on every side: room for Grok to move her without
 cropping hands or feet (use it for anything livelier than breathing).
 
-usage: python green.py public_html/artwork/universe/guide/welcome.webp out/nova-welcome.jpg [--pad]
+usage: python scripts/nova/green.py public/nova/stills/welcome.webp .nova-work/green-welcome.jpg [--pad]
 """
 import argparse
 from PIL import Image

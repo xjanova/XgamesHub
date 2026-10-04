@@ -1600,7 +1600,7 @@ html[data-motion="on"] .nova-figure {
   font-size: 16px;
   line-height: 1;
   pointer-events: auto;
-  transform: translate3d(calc(var(--nx, -999px) + var(--nw, 226px) * var(--ns, 1) - 40px), calc(var(--ny, 0px) + 8px), 0);
+  transform: translate3d(calc(var(--nx, -999px) + var(--nw, 226px) * var(--ns, 1) * 0.8 - 28px), calc(var(--ny, 0px) + var(--nh, 340px) * var(--ns, 1) * 0.05), 0);
   opacity: 0.7;
 }
 .nova-ctl:hover {
@@ -1726,6 +1726,10 @@ html[data-motion="on"] .nova-figure {
   }
   .spot-copy {
     max-width: 52%;
+  }
+  .choice-status,
+  .choice-number {
+    display: none;
   }
   .spot-stage {
     left: 46%;

@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Nova clip work files (raw Grok mp4s, green inputs, references)
+/.nova-work/
+/.claude/launch.json

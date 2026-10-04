@@ -94,9 +94,11 @@ jobs:
           echo "Deploying to ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
           $SSH "${SSH_USER}@${SSH_HOST}" "mkdir -p '${DEPLOY_PATH}'"
           # --delete removes files from old builds; keep host-managed folders
+          # and the game demos (uploaded separately by scripts/deploy-demos.sh)
           rsync -az --delete \
             --exclude 'cgi-bin' \
             --exclude '.well-known' \
+            --exclude '/play' \
             -e "$SSH" \
             out/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
           echo "Upload completed"

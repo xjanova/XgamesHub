@@ -1,5 +1,5 @@
-import OasisLoader from "@/components/oasis/OasisLoader";
+import Hub from "@/components/hub/Hub";
 
 export default function Home() {
-  return <OasisLoader />;
+  return <Hub />;
 }

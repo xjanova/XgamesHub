@@ -21,7 +21,10 @@ const FILTERS: { id: Filter; label: string; count: number }[] = [
 
 const FILTER_LINES: Partial<Record<Filter, Line>> = {
   play: {
-    text: `เดโมที่เล่นได้ตอนนี้มี ${counts.play} เกม — X-NOVA กับ THE ONE กดเล่นบนเบราว์เซอร์ได้ทันทีเลย!`,
+    text: `เดโมที่เล่นได้ตอนนี้มี ${counts.play} เกม — ${games
+      .filter((g) => g.play)
+      .map((g) => g.name)
+      .join(", ")} กดเล่นบนเบราว์เซอร์ได้ทันทีเลย!`,
     pose: "cheer",
   },
   dev: { text: "นี่คือโลกที่ทีมกำลังสร้างอยู่ บางเกมมีเดโมให้ลองแล้วด้วยนะ", pose: "play" },
@@ -552,7 +555,7 @@ export default function Hub() {
 
             <div className="spot-copy" key={fGame.id}>
               <span className="spot-category">{fGame.genre.toUpperCase()}</span>
-              <h2 id="feature-title" className="spot-title" data-text={fGame.name}>
+              <h2 id="feature-title" className="spot-title" data-long={fGame.name.length > 10 ? "1" : undefined}>
                 {fGame.name}
               </h2>
               <div className="spot-subtitle">{fGame.subtitle}</div>
@@ -612,7 +615,12 @@ export default function Hub() {
             </div>
           </section>
 
-          <div className="spot-selector rise" role="group" aria-label="เลือกเกมเด่น">
+          <div
+            className="spot-selector rise"
+            role="group"
+            aria-label="เลือกเกมเด่น"
+            style={{ ["--n" as string]: featured.length }}
+          >
             {featured.map((f, i) => {
               const g = gameById(f.id)!;
               return (

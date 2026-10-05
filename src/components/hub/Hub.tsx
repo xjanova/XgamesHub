@@ -505,7 +505,7 @@ export default function Hub() {
 
       <aside className="sidebar">
         <a href="#top" className="brand" aria-label="XMAN GAMES HUB หน้าแรก">
-          <img src="/art/logo.webp" alt="XMAN GAMES HUB" width={566} height={360} />
+          <img src="/art/logo-v2.webp" alt="XMAN GAMES HUB" width={760} height={314} />
         </a>
         <div className="side-caption">YOUR GATEWAY TO PLAY</div>
         {nav}
@@ -536,7 +536,7 @@ export default function Hub() {
             <b className="sr-only">เมนู</b>
           </button>
           <a className="mobile-brand" href="#top" aria-label="XMAN GAMES HUB">
-            <img src="/art/logo.webp" alt="XMAN GAMES HUB" width={566} height={360} />
+            <img src="/art/logo-v2.webp" alt="XMAN GAMES HUB" width={760} height={314} />
           </a>
           <div className="breadcrumb">
             XMAN UNIVERSE <span>/</span> <b>{section}</b>

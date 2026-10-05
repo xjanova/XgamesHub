@@ -1259,7 +1259,7 @@ html.no-webgl .spot-fallback-art {
   min-height: 380px;
 }
 html.no-webgl .core-stage {
-  background: url("/art/logo.webp") center / 70% auto no-repeat;
+  background: url("/art/logo-v2.webp") center / 70% auto no-repeat;
 }
 
 .footer {

@@ -88,9 +88,12 @@ export default function Hub() {
     for (const g of games) {
       const log = devlogs[g.id] ?? devNotes[g.id];
       if (!log) continue;
+      // real development news first: the "now in the hub" entry every game got on launch
+      // day says the same thing for all of them, so it only shows when a game has nothing else
+      const news = log.entries.filter((e) => !e.title.includes("XMAN GAMES HUB"));
+      const pick = (news.length ? news : log.entries).sort((x, y) => y.date.localeCompare(x.date));
       // at most two per game, so one busy game does not fill the whole timeline
-      for (const entry of [...log.entries].sort((x, y) => y.date.localeCompare(x.date)).slice(0, 2))
-        rows.push({ game: g, entry, version: log.version });
+      for (const entry of pick.slice(0, 2)) rows.push({ game: g, entry, version: log.version });
     }
     return rows.sort((a, b) => b.entry.date.localeCompare(a.entry.date)).slice(0, 9);
   }, [devlogs]);

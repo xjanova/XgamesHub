@@ -1299,6 +1299,8 @@ dialog.detail::backdrop {
   position: relative;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
+  /* the row is capped at max-height, so a long devlog scrolls inside .detail-body instead of being cut off */
+  grid-template-rows: minmax(0, 1fr);
   border-radius: 24px;
   border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   background: linear-gradient(160deg, rgba(20, 22, 42, 0.98), rgba(9, 10, 20, 0.98));
@@ -1369,6 +1371,7 @@ html[data-motion="on"] .detail-inner {
 .detail-body {
   padding: 40px 36px 34px;
   overflow-y: auto;
+  overscroll-behavior: contain;
 }
 .detail-body .eyebrow {
   font-size: 10.5px;
@@ -1856,7 +1859,9 @@ html[data-motion="on"] .nova-figure {
   }
   .detail-inner {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
     overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .detail-visual {
     min-height: 220px;

@@ -44,6 +44,8 @@ export class HubEngine {
   private dpr = 1;
   private maxDpr = 1.75;
   private slowFrames = 0;
+  // frame-rate watch: real time between frames, judged in 2.5 s windows
+  private perf = { last: 0, t: 0, frames: 0, slow: 0, armedAt: 0, gaveUp: false };
   private texType: THREE.TextureDataType = THREE.UnsignedByteType;
 
   // sky
@@ -589,6 +591,9 @@ export class HubEngine {
   start() {
     if (this.running) return;
     this.running = true;
+    // the first seconds carry image decodes and late layout: don't judge the machine on them
+    this.perf.armedAt = performance.now() + 4000;
+    this.perf.last = 0;
     this.clock.getDelta();
     this.raf = requestAnimationFrame(this.frame);
   }
@@ -624,6 +629,33 @@ export class HubEngine {
       this.maxDpr = Math.max(1, this.dpr - 0.25);
       this.slowFrames = 0;
       this.resize();
+    }
+
+    // The floor: a machine that still stutters gets a still page instead (owner's
+    // rule — a smooth still beats a jerky effect). Real time, not the clamped dt,
+    // or a 10 fps machine would read as 20.
+    const pf = this.perf;
+    const now = performance.now();
+    const gap = pf.last ? now - pf.last : 0;
+    pf.last = now;
+    if (pf.gaveUp || now < pf.armedAt || document.hidden || gap <= 0 || gap > 1000) return;
+    pf.t += gap;
+    pf.frames++;
+    if (pf.t < 2500) return;
+    const fps = (pf.frames * 1000) / pf.t;
+    pf.t = 0;
+    pf.frames = 0;
+    if (fps < 14) pf.slow += 2;
+    else if (fps < 24) pf.slow += 1;
+    else pf.slow = 0;
+    // badly slow: drop straight to the lowest pixel ratio before giving up
+    if (fps < 24 && this.dpr > 1) {
+      this.maxDpr = 1;
+      this.resize();
+    }
+    if (pf.slow >= 2) {
+      pf.gaveUp = true;
+      window.dispatchEvent(new CustomEvent("xgh:lowperf", { detail: Math.round(fps) }));
     }
   }
 

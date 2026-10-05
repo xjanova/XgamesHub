@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gameById, games, type Game } from "@/data/games";
 import { motionPref, useMotion } from "@/lib/prefs";
+import { guide } from "@/lib/guide";
 import { HubEngine, type World } from "./engine";
 
 function seedOf(id: string) {
@@ -54,6 +55,17 @@ export default function Universe({ featuredId }: { featuredId: string }) {
       engine.pointer((e.clientX / window.innerWidth) * 2 - 1, (e.clientY / window.innerHeight) * 2 - 1);
     };
     const onSpin = (e: Event) => engine.spin((e as CustomEvent<number>).detail);
+    // still stuttering at the lowest resolution: go still, and say so
+    const onLowPerf = () => {
+      if (!motionPref.get()) return;
+      motionPref.set(false);
+      guide.say({
+        text: "เครื่องนี้เริ่มกระตุกนิดหน่อย โนวาเลยพักเอฟเฟกต์เป็นภาพนิ่งให้นะ เล่นได้ครบเหมือนเดิม อยากเปิดกลับกดปุ่ม Motion ด้านบนได้เลย",
+        pose: "welcome",
+        priority: 3,
+        hold: 6000,
+      });
+    };
     const onVisible = () => {
       if (document.hidden) engine.stop();
       else {
@@ -71,6 +83,7 @@ export default function Universe({ featuredId }: { featuredId: string }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("pointermove", onPointer, { passive: true });
     window.addEventListener("xgh:spin", onSpin);
+    window.addEventListener("xgh:lowperf", onLowPerf);
     document.addEventListener("visibilitychange", onVisible);
     canvas.addEventListener("webglcontextlost", onLost);
     return () => {
@@ -79,6 +92,7 @@ export default function Universe({ featuredId }: { featuredId: string }) {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pointermove", onPointer);
       window.removeEventListener("xgh:spin", onSpin);
+      window.removeEventListener("xgh:lowperf", onLowPerf);
       document.removeEventListener("visibilitychange", onVisible);
       canvas.removeEventListener("webglcontextlost", onLost);
       engine.dispose();

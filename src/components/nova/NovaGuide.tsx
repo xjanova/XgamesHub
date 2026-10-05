@@ -97,8 +97,9 @@ export default function NovaGuide() {
       setTyped("");
       setChips(line.chips ?? []);
       setBubble(true);
-      if (line.react) playOnce(line.react, type);
-      else type();
+      // her reaction plays while the words type out, so she answers right away
+      if (line.react) playOnce(line.react);
+      type();
     });
     return () => {
       cancelled = true;

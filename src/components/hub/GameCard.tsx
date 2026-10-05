@@ -13,11 +13,14 @@ const BADGE: Record<Game["state"], string> = {
 export default function GameCard({
   game,
   index,
+  version,
   onOpen,
   onHover,
 }: {
   game: Game;
   index: number;
+  /** live version from the game's devlog, when it publishes one */
+  version?: string;
   onOpen: (g: Game) => void;
   onHover: (g: Game | null) => void;
 }) {
@@ -79,6 +82,7 @@ export default function GameCard({
           <div className="card-foot">
             <span className="card-stage">
               <i /> {game.stage}
+              {version && <em className="card-ver">{version}</em>}
             </span>
             {game.play ? (
               <a className="card-cta play" href={game.play} target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>

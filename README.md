@@ -60,16 +60,33 @@ python scripts/nova/key.py .nova-work/raw.mp4 .nova-work/green-welcome.jpg publi
 
 แล้วแก้ `CLIPS` ใน `src/components/nova/clips.ts` (`pad: true` ถ้าใช้ `--pad`) — ไฟล์ชื่อเดิมที่ encode ใหม่ต้องบัมพ์ `CLIP_V`
 
-## เดโมที่เล่นได้ (`/play/`)
+## เกมที่เล่นได้ (`/play/`) และบันทึกการพัฒนา
 
-X-NOVA, X-NOVA: BREAKER และ THE ONE เปิดเล่นที่ `/play/xnova/`, `/play/breaker/`, `/play/theone/`
-**ซอร์สเกมไม่อยู่ใน repo นี้** (repo เป็น public) — ต้นฉบับอยู่ที่โฟลเดอร์ข้าง ๆ (`../XNova`, `../XNova Breaker`, `../TheOne`)
+เกมแต่ละเกมอยู่ใน repo ของตัวเอง (private) และ **deploy ตัวเองเข้าฮับ** ทุกครั้งที่ push เข้า `main`:
 
-```bash
-bash scripts/deploy-demos.sh            # อัปโหลดทุกเกม
-bash scripts/deploy-demos.sh breaker    # เฉพาะเกมเดียว
-```
+| เกม | repo | ขึ้นที่ |
+| --- | --- | --- |
+| X-NOVA | `xjanova/XNova` | `/play/xnova/` |
+| X-NOVA: BREAKER | `xjanova/XNova-Breaker` | `/play/breaker/` |
+| THE ONE | `xjanova/TheOne` | `/play/theone/` |
 
+ในแต่ละ repo เกม:
+
+- `tools/hub-publish.mjs` — แพ็กไฟล์ที่เบราว์เซอร์โหลด (index.html, manifest, css, js, assets) และแปลง `DEVLOG.md` เป็น `devlog.json`
+  — **ถ้ามีคำว่า github ในไฟล์ที่จะขึ้นเว็บจะไม่ยอม publish** (ลูกค้าต้องไม่เห็น)
+- `.github/workflows/deploy-xgameshub.yml` — rsync ขึ้น `play/<id>/` ด้วยคีย์ที่ล็อก `rrsync` ไว้เฉพาะโฟลเดอร์ของเกมนั้น,
+  เช็ก `devlog.json` บนเว็บจริง แล้วออก release `v1.0.<run>`
+- `DEVLOG.md` — บันทึกการพัฒนาที่ผู้เล่นอ่าน (รูปแบบ: `# ชื่อ — บันทึกการพัฒนา`, `> สรุป`, `**สถานะ:** …`,
+  `## YYYY-MM-DD — หัวข้อ` + bullet, `## แผนต่อไป`)
+
+ฮับอ่าน `/play/<id>/devlog.json` ตอนเปิดหน้า (`src/lib/devlog.ts`) — เกมออกเวอร์ชันใหม่แล้วฮับเห็นทันทีโดยไม่ต้อง deploy ฮับ
+เกมที่ยังไม่มี build (คอนเซปต์ / ต้นแบบ Godot) ใช้บันทึกใน `src/data/devnotes.ts`
+
+เพิ่มเกมใหม่ที่เล่นบนเว็บได้: สร้าง repo ของเกม → คัดลอก `tools/hub-publish.mjs` + workflow (แก้ `GAME_ID`) + เขียน `DEVLOG.md`
+→ สร้างโฟลเดอร์ `play/<id>` บนเซิร์ฟเวอร์ + คีย์ deploy ของเกมนั้น (`restrict,command="/usr/bin/rrsync -wo -munge …/public_html/play/<id>"`)
+→ ตั้ง secrets `DEPLOY_HOST/USER/SSH_KEY/KNOWN_HOSTS` → เพิ่มเกมใน `src/data/games.ts` (ใส่ `play: "/play/<id>/"`)
+
+`scripts/deploy-demos.sh` ยังใช้อัปโหลดมือได้ถ้าจำเป็น (ใช้คีย์ admin)
 การ deploy ของฮับไม่แตะ `/play/` (`--exclude=/play`)
 
 ## พัฒนา

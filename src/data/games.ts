@@ -31,6 +31,8 @@ export type Game = {
   planet: PlanetStyle;
   /** What Nova says about this world. */
   nova: string[];
+  /** Where it runs (default "web"): "native" = desktop build only, "roblox" = a Roblox experience. */
+  platform?: "web" | "native" | "roblox";
 };
 
 export type Featured = {
@@ -272,6 +274,64 @@ export const games: Game[] = [
     ],
   },
   {
+    id: "rollabrain",
+    name: "ROLLABRAIN",
+    subtitle: "ROLL. COLLECT. BEAT THE CLOCK.",
+    genre: "Arcade / Physics / 3D",
+    state: "dev",
+    stage: "Unity prototype",
+    tagline: "กลิ้งลูกบอลเก็บคิวบ์เรืองแสงให้ครบในสนามปิด",
+    description:
+      "เกมลูกบอลกลิ้งบน Unity สนาม 30×30 มีกำแพงล้อม บังคับลูกบอลฟิสิกส์เก็บคิวบ์หมุน 8 ชิ้น กล้องตามตัว พร้อมคะแนนและตัวจับเวลา — เกม Unity เกมแรกที่ทีมสร้างผ่านระบบอัตโนมัติทั้งหมด",
+    features: ["Unity 6", "ฟิสิกส์ลูกบอล", "เก็บคิวบ์ 8 ชิ้น", "บิลด์ Windows"],
+    note: "ต้นแบบบน Windows ยังไม่มีเวอร์ชันเว็บ",
+    image: "/art/rollabrain.webp",
+    palette: ["#8b7bff", "#14163a", "#c0ff4b"],
+    planet: 0,
+    platform: "native",
+    nova: [
+      "ROLLABRAIN เกม Unity เกมแรกของทีม! กลิ้งลูกบอลเก็บคิวบ์ให้ครบ 8 ชิ้น ตอนนี้ยังเป็นบิลด์ Windows อยู่นะ",
+    ],
+  },
+  {
+    id: "maze",
+    name: "MAZE CHASE",
+    subtitle: "EAT. DODGE. TURN THE TABLES.",
+    genre: "Arcade / Maze / Retro",
+    state: "dev",
+    stage: "Retro prototype",
+    tagline: "เก็บจุดให้ครบ หลบผี และกินพลังเพื่อสวนกลับ",
+    description:
+      "เกมเขาวงกตแนวอาร์เคดคลาสสิกบนเบราว์เซอร์ UI ภาษาไทย เก็บจุดทั่วแผนที่ หลบผีที่ไล่ล่า และกินเม็ดพลังเพื่อไล่กลับ — ชื่อในฮับเป็นชื่อชั่วคราว",
+    features: ["เขาวงกตคลาสสิก", "ผีไล่ล่า", "เม็ดพลังสวนกลับ", "คุมด้วยลูกศร / WASD"],
+    note: "ต้นแบบเล่นได้ในเครื่องทีม กำลังปรับตัวละคร ชื่อ และเขาวงกตให้เป็นของ XMAN เองก่อนเปิดให้เล่น",
+    image: "/art/maze.webp",
+    palette: ["#ffd84a", "#0a1a5a", "#2b6bff"],
+    planet: 0,
+    nova: [
+      "MAZE CHASE เกมเขาวงกตย้อนยุค! กินเม็ดพลังแล้วผีจะกลัวเรา ตอนนั้นแหละไล่กลับได้เลย",
+    ],
+  },
+  {
+    id: "rublicx",
+    name: "RUBLICX",
+    subtitle: "MASTER THE CUBE",
+    genre: "Puzzle / Cube trainer / 3D",
+    state: "dev",
+    stage: "Web app in development",
+    tagline: "ฝึกแก้ลูกบาศก์ 2×2 และ 3×3 สแกนด้วยกล้อง แล้วให้ระบบหาวิธีแก้",
+    description:
+      "เว็บแอปสอนแก้ลูกบาศก์ เรนเดอร์ 3 มิติหมุนได้ สแกนสีจากกล้อง หาวิธีแก้ 3×3 ได้ไม่เกิน 22 ท่า มีบทเรียน CFOP จับเวลาแข่งกับตัวเอง และระบบเลเวลกับความสำเร็จ ภาษาไทยและอังกฤษ",
+    features: ["ลูกบาศก์ 3D", "สแกนด้วยกล้อง", "แก้ 3×3 ใน ≤22 ท่า", "จับเวลา + ความสำเร็จ"],
+    note: "ใช้งานได้แล้วสำหรับ 2×2 และ 3×3 ส่วน 4×4 / 5×5 และคลังสูตรเต็มกำลังพัฒนา ยังไม่ได้ย้ายมาเปิดในฮับ",
+    image: "/art/rublicx.webp",
+    palette: ["#ffd500", "#0b1030", "#3b6bff"],
+    planet: 1,
+    nova: [
+      "RUBLICX สอนแก้ลูกบาศก์ได้จริงนะ สแกนด้วยกล้อง แล้วมันจะบอกท่าให้ทีละขั้น โนวายังจำสูตรไม่หมดเลย…",
+    ],
+  },
+  {
     id: "runeward",
     name: "RUNEWARD",
     subtitle: "GUARD THE SKY ISLES",
@@ -366,6 +426,44 @@ export const games: Game[] = [
       "JUNTRA ห้องพยากรณ์ใต้แสงจันทร์… โนวาชอบพระจันทร์อยู่แล้วด้วย อิอิ",
     ],
   },
+  {
+    id: "theone-sunkalp",
+    name: "THE ONE · สูญกัป",
+    subtitle: "DARK XIANXIA ARPG",
+    genre: "Action RPG / Xianxia / Isometric",
+    state: "concept",
+    stage: "Concept · UI mockup",
+    tagline: "ARPG แฟนตาซีจีนโทนมืดในยุคสูญกัป มุมมองไอโซเมตริก",
+    description:
+      "แนวคิดภาคแยกของ THE ONE: ARPG แฟนตาซีจีนโทนมืดในยุคสูญกัป มุมมองไอโซเมตริก ผสมดาบ เวท ปืน ธนู และการรักษา พร้อมกลุ่มดาวทักษะ 97 ดวง — ตอนนี้เป็นแบบ UI ที่กดลองได้",
+    features: ["มุมมองไอโซเมตริก", "กลุ่มดาวทักษะ 97 ดวง", "5 สายการต่อสู้", "โทนไซอานเซียมืด"],
+    note: "เป็นคอนเซปต์และแบบ UI แยกจาก THE ONE เวอร์ชันโนวาที่เล่นได้",
+    image: "/art/theone-sunkalp.webp",
+    palette: ["#d4a24a", "#1a1410", "#c23b2b"],
+    planet: 2,
+    nova: [
+      "THE ONE · สูญกัป โลกเดียวกันแต่มืดกว่ามาก กลุ่มดาวทักษะ 97 ดวงนี่โนวาดูแล้วตาลายเลย",
+    ],
+  },
+  {
+    id: "xenon",
+    name: "XENON",
+    subtitle: "LIGHT GUNSHIP",
+    genre: "Space shooter / 3D model study",
+    state: "concept",
+    stage: "3D model study",
+    tagline: "ยานยิงเบาแบบ 3 มิติ หมุนดูได้รอบทิศ",
+    description:
+      "งานออกแบบยานยิงเบา (Light Gunship) เป็นโมเดล 3 มิติ หมุน ซูม และเลื่อนดูได้รอบทิศ ส่งออกเป็นไฟล์โมเดลได้ ยังไม่มีตัวเกม",
+    features: ["โมเดล 3D หมุนดูได้", "ส่งออก GLB / OBJ", "ยานยิงเบา", "ยังไม่มีเกมเพลย์"],
+    note: "เป็นงานออกแบบยานและสเตจ 3 มิติ ยังไม่ได้เริ่มสร้างตัวเกม",
+    image: "/art/xenon.webp",
+    palette: ["#ff8a3d", "#20242e", "#e8e4da"],
+    planet: 2,
+    nova: [
+      "XENON ยานยิงเบาลำนี้ยังไม่มีเกมนะ แต่ดีไซน์เท่มาก ปีกสีส้มนั่นโนวาชอบ!",
+    ],
+  },
 ];
 
 export const featured: Featured[] = [
@@ -411,14 +509,16 @@ export const gameById = (id: string) => games.find((g) => g.id === id);
 
 export const counts = {
   all: games.length,
+  roblox: games.filter((g) => g.platform === "roblox").length,
   play: games.filter((g) => g.state === "play").length,
   dev: games.filter((g) => g.state !== "concept").length,
   concept: games.filter((g) => g.state === "concept").length,
 };
 
-export type Filter = "all" | "play" | "dev" | "concept";
+export type Filter = "all" | "play" | "dev" | "concept" | "roblox";
 
 export function matches(g: Game, filter: Filter, query: string) {
+  if (filter === "roblox" && g.platform !== "roblox") return false;
   if (filter === "play" && g.state !== "play") return false;
   if (filter === "dev" && g.state === "concept") return false;
   if (filter === "concept" && g.state !== "concept") return false;

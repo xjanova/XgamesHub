@@ -12,12 +12,12 @@
 #
 # usage: bash scripts/deploy-demos.sh [xnova|breaker|theone ...]   (default: all)
 # env:   DEPLOY_KEY  (default ~/.ssh/thaiprompt_admin)
-#        DEPLOY_HOST (default admin@123.253.62.251)
+#        DEPLOY_HOST user@host of the origin server (required; not stored in this public repo)
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 KEY="${DEPLOY_KEY:-$HOME/.ssh/thaiprompt_admin}"
-HOST="${DEPLOY_HOST:-admin@123.253.62.251}"
+HOST="${DEPLOY_HOST:?set DEPLOY_HOST=user@origin-host}"
 WEBROOT="/home/admin/domains/xgameshub.xman4289.com/public_html/play"
 
 declare -A SRC=([xnova]="XNova" [breaker]="XNova Breaker" [theone]="TheOne")

@@ -96,6 +96,18 @@ SNAKE.IO ลิงก์ไปเล่นบนเว็บ Thai Prompt (ยั
 → สร้างโฟลเดอร์ `play/<id>` บนเซิร์ฟเวอร์ + คีย์ deploy ของเกมนั้น (`restrict,command="/usr/bin/rrsync -wo -munge …/public_html/play/<id>"`)
 → ตั้ง secrets `DEPLOY_HOST/USER/SSH_KEY/KNOWN_HOSTS` → เพิ่มเกมใน `src/data/games.ts` (ใส่ `play: "/play/<id>/"`)
 
+ชุดเครื่องมือสำหรับ repo เกมใหม่อยู่ที่ `scripts/gamekit/`:
+`hub-publish.mjs` (→ `tools/`), `deploy-xgameshub.yml` (→ `.github/workflows/`, แทน `__GAME_ID__`),
+และ `setup-game-keys.sh id:Repo …` (สร้างโฟลเดอร์ `play/<id>`, ติดตั้งคีย์ rrsync เฉพาะโฟลเดอร์นั้น, ทดสอบว่าเปิด shell ไม่ได้,
+ตั้ง secrets แล้วลบ private key — รันจากเครื่องที่มีคีย์ admin)
+
+### เกม Roblox
+
+หมวด **Roblox** ในฮับ (`platform: "roblox"` ใน `src/data/games.ts`, `play` = ลิงก์หน้าเกมบน Roblox)
+ตอนยังไม่มีเกม หมวดนี้จะแสดงแผง "กำลังสร้าง"
+repo ของเกม Roblox ใช้ชุดเครื่องมือเดียวกันโดยใส่ `hub.json` = `{ "devlogOnly": true }` —
+publish แค่ `devlog.json` ขึ้น `/play/<id>/` ให้ฮับแสดงเวอร์ชันและบันทึกการพัฒนา ส่วนตัวเกมอยู่บน Roblox
+
 `scripts/deploy-demos.sh` ยังใช้อัปโหลดมือได้ถ้าจำเป็น (ใช้คีย์ admin)
 การ deploy ของฮับไม่แตะ `/play/` (`--exclude=/play`)
 
@@ -132,10 +144,10 @@ Secrets ใน **Settings → Secrets and variables → Actions**:
 
 | ชื่อ | ค่า |
 | --- | --- |
-| `DEPLOY_HOST` | `123.253.62.251` |
+| `DEPLOY_HOST` | IP เซิร์ฟเวอร์ต้นทาง (ดูใน BrainX / ถามเจ้าของ — ห้ามใส่ใน repo นี้ เพราะเว็บอยู่หลัง Cloudflare) |
 | `DEPLOY_USER` | `admin` |
 | `DEPLOY_SSH_KEY` | private key ของ `xgameshub-gha-deploy` |
-| `DEPLOY_KNOWN_HOSTS` | ผลของ `ssh-keyscan -t ed25519 123.253.62.251` (SHA256:gjB6mR0eu8RqxRtZKJAQtV4PpQzSOf1cg7VG8Nozm1I) |
+| `DEPLOY_KNOWN_HOSTS` | ผลของ `ssh-keyscan -t ed25519 <host>` — ตรวจลายนิ้วมือ SHA256:gjB6mR0eu8RqxRtZKJAQtV4PpQzSOf1cg7VG8Nozm1I ก่อนใช้ |
 
 เมื่อเปิดใช้แล้ว ต้องลบ `sites/xgameshub.xman4289.com/` ออกจาก `xjanova/xmanstudio`
 ไม่งั้น deploy ของ xmanstudio จะเอาสำเนาเก่าในนั้นมาทับเว็บ

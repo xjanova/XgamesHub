@@ -14,14 +14,17 @@ import GameCard from "./GameCard";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
 const HUB_VERSION = process.env.NEXT_PUBLIC_HUB_VERSION || "dev";
-// games hosted inside the hub publish /play/<id>/devlog.json; external links do not
-const PLAY_IDS = games.filter((g) => g.play?.startsWith("/play/")).map((g) => g.id);
+// games hosted inside the hub, and Roblox games (devlog only), publish /play/<id>/devlog.json
+const PLAY_IDS = games
+  .filter((g) => g.play?.startsWith("/play/") || g.platform === "roblox")
+  .map((g) => g.id);
 
 const FILTERS: { id: Filter; label: string; count: number }[] = [
   { id: "all", label: "ทุกโลก", count: counts.all },
   { id: "play", label: "เล่นเดโมได้", count: counts.play },
   { id: "dev", label: "กำลังพัฒนา", count: counts.dev },
   { id: "concept", label: "Concept lab", count: counts.concept },
+  { id: "roblox", label: "Roblox", count: counts.roblox },
 ];
 
 const FILTER_LINES: Partial<Record<Filter, Line>> = {
@@ -35,6 +38,10 @@ const FILTER_LINES: Partial<Record<Filter, Line>> = {
   },
   dev: { text: "นี่คือโลกที่ทีมกำลังสร้างอยู่ บางเกมมีเดโมให้ลองแล้วด้วยนะ", pose: "play" },
   concept: { text: "Concept lab! โลกที่ยังอยู่บนกระดานออกแบบ แอบดูก่อนใครได้เลย", pose: "present" },
+  roblox: {
+    text: "หมวด Roblox! ทีมกำลังสร้างเกมให้เล่นใน Roblox อยู่ เปิดเมื่อไหร่โนวาจะพาไปเล่นคนแรกเลย~",
+    pose: "cheer",
+  },
 };
 
 type TourStep = { go: string; line: Line };
@@ -454,6 +461,16 @@ export default function Hub() {
         <span className="nav-icon">✳</span>Concept lab<span className="nav-count">{pad2(counts.concept)}</span>
       </a>
       <a
+        href="#games"
+        className={`side-link${navActive("roblox") ? " active" : ""}`}
+        onClick={(e) => {
+          e.preventDefault();
+          applyFilter("roblox", { scroll: true });
+        }}
+      >
+        <span className="nav-icon">⬢</span>Roblox<span className="nav-count">{counts.roblox ? pad2(counts.roblox) : "SOON"}</span>
+      </a>
+      <a
         href="#devlog"
         className={`side-link${section === "Dev log" ? " active" : ""}`}
         onClick={(e) => {
@@ -734,7 +751,30 @@ export default function Hub() {
                 </div>
               ))}
             </div>
-            {list.length === 0 && (
+            {list.length === 0 && filter === "roblox" && !query && (
+              <div className="roblox-soon">
+                <div className="roblox-mark" aria-hidden="true">
+                  <span />
+                </div>
+                <div>
+                  <span className="eyebrow">XMAN × ROBLOX · NEW PLATFORM</span>
+                  <h3>โลกใหม่ของเรากำลังสร้างใน Roblox</h3>
+                  <p>
+                    XMAN Studio กำลังพัฒนาเกมที่เล่นได้ใน Roblox เมื่อเปิดตัว เกมจะขึ้นในหมวดนี้พร้อมปุ่มเล่นใน Roblox
+                    และบันทึกการพัฒนาให้ติดตามทุกเวอร์ชัน
+                  </p>
+                  <ul>
+                    <li>เล่นได้ทั้งคอม มือถือ และแท็บเล็ตผ่านแอป Roblox</li>
+                    <li>เล่นกับเพื่อนแบบออนไลน์ในโลกเดียวกัน</li>
+                    <li>อัปเดตใหม่แจ้งในบันทึกการพัฒนาของฮับ</li>
+                  </ul>
+                  <button type="button" className="button secondary" onClick={() => applyFilter("all", { speak: false })}>
+                    กลับไปดูทุกโลก
+                  </button>
+                </div>
+              </div>
+            )}
+            {list.length === 0 && !(filter === "roblox" && !query) && (
               <div className="empty">
                 <span aria-hidden="true">⌕</span>
                 <h3>ยังไม่พบโลกที่คุณค้นหา</h3>

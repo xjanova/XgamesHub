@@ -2113,3 +2113,105 @@ html[data-motion="on"] .tl-card:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* ================================================================ Roblox */
+.card-platform {
+  position: absolute;
+  top: 46px;
+  left: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: var(--font-d);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  background: rgba(8, 9, 18, 0.82);
+  border: 1px solid var(--line-strong);
+  color: #dfe2f2;
+  transform: translateZ(40px);
+}
+.card-platform.roblox {
+  background: #e2231a;
+  border-color: transparent;
+  color: #fff;
+}
+.roblox-soon {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 34px;
+  align-items: center;
+  padding: 40px 42px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(226, 35, 26, 0.45);
+  background:
+    radial-gradient(60% 120% at 0% 50%, rgba(226, 35, 26, 0.18), transparent 70%),
+    linear-gradient(160deg, rgba(20, 22, 40, 0.94), rgba(10, 11, 22, 0.96));
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.9);
+}
+.roblox-mark {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  perspective: 600px;
+}
+/* our own block mark (not the platform's logo): a lime XMAN block */
+.roblox-mark span {
+  position: absolute;
+  inset: 26px;
+  border-radius: 22px;
+  background: linear-gradient(140deg, #d6ff7a, #7dbb1a 70%);
+  box-shadow:
+    0 30px 60px -20px rgba(192, 255, 75, 0.55),
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -10px 0 rgba(0, 0, 0, 0.18);
+  transform: rotateX(16deg) rotateY(-18deg);
+}
+.roblox-mark span::after {
+  content: "X";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: 64px;
+  color: #0b0d10;
+}
+html[data-motion="on"] .roblox-mark span {
+  animation: robloxSpin 6s ease-in-out infinite;
+}
+@keyframes robloxSpin {
+  50% {
+    transform: rotateX(16deg) rotateY(18deg) translateY(-8px);
+  }
+}
+.roblox-soon h3 {
+  margin: 10px 0 10px;
+  font-family: var(--font-d);
+  font-weight: 700;
+  font-size: clamp(24px, 2.4vw, 34px);
+}
+.roblox-soon p {
+  color: #d5d8e8;
+  max-width: 640px;
+}
+.roblox-soon ul {
+  margin: 16px 0 22px;
+  padding-left: 18px;
+  list-style: disc;
+  color: #c7cbde;
+}
+.roblox-soon .eyebrow {
+  color: #ff8a80;
+}
+@media (max-width: 760px) {
+  .roblox-soon {
+    grid-template-columns: 1fr;
+    padding: 28px 22px;
+  }
+  .roblox-mark {
+    width: 140px;
+    height: 140px;
+  }
+}

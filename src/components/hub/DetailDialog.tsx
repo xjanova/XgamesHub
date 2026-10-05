@@ -117,7 +117,7 @@ function DetailInner({
         <div className="detail-actions">
           {game.play ? (
             <a className="button primary" href={game.play} target="_blank" rel="noopener" onClick={() => onPlay(game)}>
-              <span aria-hidden="true">▷</span> เล่นเดโมเลย
+              <span aria-hidden="true">▷</span> {game.platform === "roblox" ? "เล่นใน Roblox" : "เล่นเดโมเลย"}
             </a>
           ) : (
             <span className="button ghost" aria-disabled="true">

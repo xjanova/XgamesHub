@@ -74,6 +74,9 @@ export default function GameCard({
           {game.state === "play" ? "▷ " : game.state === "concept" ? "✳ " : ""}
           {BADGE[game.state]}
         </span>
+        {game.platform && game.platform !== "web" && (
+          <span className={`card-platform ${game.platform}`}>{game.platform === "roblox" ? "ROBLOX" : "PC"}</span>
+        )}
         <span className="card-num">X / {String(index + 1).padStart(2, "0")}</span>
         <div className="card-body">
           <h3>{game.name}</h3>
@@ -86,7 +89,7 @@ export default function GameCard({
             </span>
             {game.play ? (
               <a className="card-cta play" href={game.play} target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
-                เล่นเลย <span aria-hidden="true">▷</span>
+                {game.platform === "roblox" ? "เล่นใน Roblox" : "เล่นเลย"} <span aria-hidden="true">▷</span>
               </a>
             ) : (
               <span className="card-cta">

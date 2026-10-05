@@ -14,7 +14,8 @@ import GameCard from "./GameCard";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
 const HUB_VERSION = process.env.NEXT_PUBLIC_HUB_VERSION || "dev";
-const PLAY_IDS = games.filter((g) => g.play).map((g) => g.id);
+// games hosted inside the hub publish /play/<id>/devlog.json; external links do not
+const PLAY_IDS = games.filter((g) => g.play?.startsWith("/play/")).map((g) => g.id);
 
 const FILTERS: { id: Filter; label: string; count: number }[] = [
   { id: "all", label: "ทุกโลก", count: counts.all },
@@ -27,8 +28,9 @@ const FILTER_LINES: Partial<Record<Filter, Line>> = {
   play: {
     text: `เดโมที่เล่นได้ตอนนี้มี ${counts.play} เกม — ${games
       .filter((g) => g.play)
+      .slice(0, 3)
       .map((g) => g.name)
-      .join(", ")} กดเล่นบนเบราว์เซอร์ได้ทันทีเลย!`,
+      .join(", ")} และอีกเพียบ กดเล่นบนเบราว์เซอร์ได้ทันทีเลย!`,
     pose: "cheer",
   },
   dev: { text: "นี่คือโลกที่ทีมกำลังสร้างอยู่ บางเกมมีเดโมให้ลองแล้วด้วยนะ", pose: "play" },
@@ -250,7 +252,7 @@ export default function Hub() {
               ],
             }
           : {
-              text: "สวัสดีค่า~ โนวาเองค่ะ ไกด์ประจำ XMAN GAMES HUB! ที่นี่มี 10 โลกเกมจาก XMAN Studio ให้สำรวจ อยากให้โนวาพาทัวร์มั้ย?",
+              text: `สวัสดีค่า~ โนวาเองค่ะ ไกด์ประจำ XMAN GAMES HUB! ที่นี่มี ${counts.all} โลกเกมจาก XMAN Studio ให้สำรวจ อยากให้โนวาพาทัวร์มั้ย?`,
               pose: "welcome",
               after: "wave",
               priority: 3,

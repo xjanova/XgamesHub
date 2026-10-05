@@ -1,7 +1,7 @@
 /**
  * The XMAN Studio catalogue shown in the hub.
  *
- * Status is kept honest: only X-NOVA and THE ONE have a web demo that opens.
+ * Status is kept honest: only games with a `play` URL have a web demo that opens.
  * Demo builds are not in this repo (the repo is public) — they are uploaded to
  * the server under /play/<id>/ by scripts/deploy-demos.sh.
  */
@@ -132,18 +132,20 @@ export const games: Game[] = [
     name: "X-NOVA: BREAKER",
     subtitle: "STEAL THEIR GUNS",
     genre: "Space shooter / 2.5D",
-    state: "dev",
-    stage: "Prototype in progress",
-    tagline: "ยิงชิ้นส่วนศัตรูมาติดยาน แล้วสวนกลับ",
+    state: "play",
+    stage: "Browser demo",
+    tagline: "ยิงชิ้นส่วนศัตรูมาติดยาน แล้วดีดสวนกลับ",
     description:
-      "ยิงชิ้นส่วนศัตรูให้หลุด ดึงมาติดยานสามจุด แล้วดีดกลับไปโจมตีบอส เปลี่ยนยานของคุณด้วยอาวุธที่ชิงมาได้ระหว่างการต่อสู้",
-    features: ["ชิงอาวุธ", "3 จุดติดตั้ง", "บอสโมดูลาร์", "เดโม 6–8 นาทีในแผน"],
-    note: "ภาคต่อยอดจาก X-NOVA กำลังสร้างต้นแบบระบบชิงอาวุธ ภาพเป็นภาพคอนเซปต์",
+      "ปืนที่กำลังยิงคุณ อีกสิบวินาทีอาจกลายเป็นปืนของคุณ — ยิงจุดยึดอุปกรณ์ของศัตรูให้หลุด ดูดมาติดยาน 3 ช่อง ใช้งาน แล้วดีดใส่ศัตรูเป็นกระสุนหนัก เกจ BREAKER เต็มเมื่อไหร่ ให้โนวา AI ประจำยานปล่อยท่าไม้ตาย NOVA BREAKER",
+    features: ["ชิงอาวุธศัตรู", "3 ช่องติดตั้ง", "ทางแยก 2 เส้นทาง", "บอส ARGUS 3 เฟส"],
+    note: "เดโมเว็บเล่นได้ 6–8 นาที มีเช็คพอยต์ คัตซีน และเสียงพากย์ เล่นบนคอมด้วยคีย์บอร์ดหรือจอย (Chrome / Edge)",
     image: "/art/breaker.webp",
+    play: "/play/breaker/",
     palette: ["#ff7a3d", "#1b2433", "#49d6ff"],
     planet: 2,
     nova: [
-      "BREAKER คือ X-NOVA ที่ขโมยปืนศัตรูมาใช้ได้! ยิงโล่ให้หลุด ดูดมาติดยาน แล้วดีดใส่บอสเลย",
+      "BREAKER คือ X-NOVA ที่ขโมยปืนศัตรูมาใช้ได้! ยิงโล่ให้หลุด กดค้างดูดมาติดยาน แล้วดีดใส่แกนบอสเลย",
+      "เคล็ดลับ: ยิ่งอุปกรณ์ร้อน ดีดยิ่งแรงนะ ทุบแกนบอส ARGUS ได้เกือบสามเท่า!",
     ],
   },
   {
@@ -252,6 +254,15 @@ export const featured: Featured[] = [
     sector: "SECTOR / 07",
     sectorName: "NEBULA FRONT",
     tags: ["Browser game", "Single player", "Web demo"],
+  },
+  {
+    id: "breaker",
+    thumb: "/art/thumb-breaker.webp",
+    hook: "ชิงปืนศัตรูมาเป็นของเรา",
+    pitch: ["ยิงอุปกรณ์ศัตรูให้หลุด ดูดมาติดยาน แล้วดีดกลับใส่บอส", "ปืนที่กำลังยิงคุณ อีกสิบวินาทีอาจเป็นของคุณ"],
+    sector: "SECTOR / 09",
+    sectorName: "ORBITAL GRAVEYARD",
+    tags: ["Space shooter", "2.5D", "Web demo"],
   },
   {
     id: "theone",

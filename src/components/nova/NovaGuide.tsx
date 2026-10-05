@@ -121,7 +121,10 @@ export default function NovaGuide() {
       const spot = document.getElementById("spotlight");
       const r = spot?.getBoundingClientRect();
       const small = vw < 720;
-      const stageOK = !small && vw >= 1280 && !!r && r.bottom > vh * 0.42 && r.top < vh * 0.55;
+      const H = Math.max(DOCK_H, Math.min((r?.height ?? 560) * 1.12, vh * 0.8));
+      const W = H * (2 / 3);
+      // she stands on the panel only while her head clears the top bar; scroll further and she docks
+      const stageOK = !small && vw >= 1280 && !!r && r.top < vh * 0.55 && r.bottom - H * 0.96 >= 40;
       const m: Mode = small ? "mini" : stageOK ? "stage" : "dock";
       if (m !== modeRef.current) {
         el.classList.add("flying");
@@ -131,16 +134,13 @@ export default function NovaGuide() {
         setMode(m);
       }
       // the box is laid out at stage size and scaled DOWN for the dock (stays sharp)
-      const H = Math.max(DOCK_H, Math.min((r?.height ?? 560) * 1.12, vh * 0.8));
-      const W = H * (2 / 3);
       let x: number;
       let y: number;
       let s: number;
       if (m === "stage" && r) {
         s = 1;
         x = r.right - W * 0.78;
-        // never slide up under the sticky top bar
-        y = Math.max(r.bottom - H * 0.96, 58);
+        y = r.bottom - H * 0.96;
       } else {
         s = Math.min(DOCK_H, vh * 0.42) / H;
         x = vw - W * s - 10;

@@ -62,15 +62,15 @@ python scripts/nova/key.py .nova-work/raw.mp4 .nova-work/green-welcome.jpg publi
 
 ## เดโมที่เล่นได้ (`/play/`)
 
-X-NOVA และ THE ONE เปิดเล่นที่ `/play/xnova/` และ `/play/theone/`
-**ซอร์สเกมไม่อยู่ใน repo นี้** (repo เป็น public) — ต้นฉบับอยู่ที่โฟลเดอร์ข้าง ๆ (`../XNova`, `../TheOne`)
+X-NOVA, X-NOVA: BREAKER และ THE ONE เปิดเล่นที่ `/play/xnova/`, `/play/breaker/`, `/play/theone/`
+**ซอร์สเกมไม่อยู่ใน repo นี้** (repo เป็น public) — ต้นฉบับอยู่ที่โฟลเดอร์ข้าง ๆ (`../XNova`, `../XNova Breaker`, `../TheOne`)
 
 ```bash
-bash scripts/deploy-demos.sh            # อัปโหลดทั้งสองเกม
-bash scripts/deploy-demos.sh xnova      # เฉพาะเกมเดียว
+bash scripts/deploy-demos.sh            # อัปโหลดทุกเกม
+bash scripts/deploy-demos.sh breaker    # เฉพาะเกมเดียว
 ```
 
-การ deploy ของฮับ (ด้านล่าง) ไม่ใช้ `--delete` จึงไม่ลบ `/play/`
+การ deploy ของฮับไม่แตะ `/play/` (`--exclude=/play`)
 
 ## พัฒนา
 
@@ -81,11 +81,42 @@ npm run lint
 npm run build    # static export -> out/
 ```
 
-## Deploy (production)
+## Release & Deploy อัตโนมัติ
 
-เว็บจริงเสิร์ฟผ่าน repo `xjanova/xmanstudio`: ไฟล์ที่ build แล้ว (`out/`) วางไว้ที่
-`sites/xgameshub.xman4289.com/` แล้ว Auto Deploy ของ xmanstudio จะ `rsync` ไปที่
-`/home/admin/domains/xgameshub.xman4289.com/public_html` ให้เอง
+merge เข้า `main` → CI (`ci.yml`) ผ่าน → workflow **Release & Deploy** (`auto-deploy.yml`):
+
+1. build static site (`out/`)
+2. `rsync` ขึ้น `/home/admin/domains/xgameshub.xman4289.com/public_html` (ไม่แตะ `/play`, `/cgi-bin`, `/.well-known`)
+3. เช็กว่าหน้าเว็บจริงเสิร์ฟ build นี้แล้ว
+4. ออก **GitHub Release** `v2.0.<run>` พร้อม release notes (จาก PR) และไฟล์ `xgameshub-site-<tag>.zip`
+
+ย้อนเวอร์ชัน: Actions → Release & Deploy → Run workflow → เลือก tag เวอร์ชันที่ต้องการ
+
+### ตั้งค่าครั้งเดียว (deploy key)
+
+ถ้ายังไม่มี secrets workflow จะออก release อย่างเดียว ไม่ deploy (ขึ้น notice ไม่ขึ้นแดง)
+คีย์ deploy ล็อกบนเซิร์ฟเวอร์ด้วย `rrsync` ให้เขียนได้เฉพาะ web root ของเว็บนี้ (แบบเดียวกับ bass-build):
+
+```
+restrict,command="/usr/bin/rrsync -wo -munge /home/admin/domains/xgameshub.xman4289.com/public_html" ssh-ed25519 … xgameshub-gha-deploy
+```
+
+Secrets ใน **Settings → Secrets and variables → Actions**:
+
+| ชื่อ | ค่า |
+| --- | --- |
+| `DEPLOY_HOST` | `123.253.62.251` |
+| `DEPLOY_USER` | `admin` |
+| `DEPLOY_SSH_KEY` | private key ของ `xgameshub-gha-deploy` |
+| `DEPLOY_KNOWN_HOSTS` | ผลของ `ssh-keyscan -t ed25519 123.253.62.251` (SHA256:gjB6mR0eu8RqxRtZKJAQtV4PpQzSOf1cg7VG8Nozm1I) |
+
+เมื่อเปิดใช้แล้ว ต้องลบ `sites/xgameshub.xman4289.com/` ออกจาก `xjanova/xmanstudio`
+ไม่งั้น deploy ของ xmanstudio จะเอาสำเนาเก่าในนั้นมาทับเว็บ
+
+### ระหว่างที่ยังไม่มี deploy key (ทางเดิม)
+
+เว็บจริงเสิร์ฟผ่าน `xjanova/xmanstudio`: ไฟล์ที่ build แล้ว (`out/`) วางไว้ที่ `sites/xgameshub.xman4289.com/`
+แล้ว Auto Deploy ของ xmanstudio จะ `rsync` ไปที่ `public_html` ให้เอง (merge PR ใน xmanstudio)
 
 ```bash
 npm ci && npm run build
@@ -93,15 +124,11 @@ npm ci && npm run build
 rm -rf sites/xgameshub.xman4289.com && cp -a ../GamesHub/out sites/xgameshub.xman4289.com
 ```
 
-- `npm run build` รัน `scripts/sanitize-export.mjs` ต่อท้ายเอง: เทสต์ของ xmanstudio ห้ามมีข้อความ `github.com`
-  ในไฟล์ .html/.js/.css ใต้ `sites/` สคริปต์จึงเขียน `github.com` ที่อยู่ในสตริงของไลบรารีเป็น `github.com`
-  (ค่าตอนรันเหมือนเดิมทุกไบต์) และจะทำให้ build ล้มถ้าเจอที่ไม่ใช่สตริง
+### หมายเหตุการ build
+
+- `npm run build` รัน `scripts/sanitize-export.mjs` ต่อท้ายเอง: เขียน `github.com` ที่อยู่ในสตริงของไลบรารีเป็น `github\u002ecom`
+  (ค่าตอนรันเหมือนเดิมทุกไบต์ — เทสต์ของ xmanstudio ห้ามมีข้อความนี้ใต้ `sites/` และลูกค้าไม่ควรเห็นลิงก์ GitHub)
 - asset ของ Next มีชื่อแบบ hash; ภาพ/คลิปโนวาใช้ `?v=` (`CLIP_V`); ภาพเกมใน `art/` cache 1 วัน
 - `.htaccess` มาจาก `public/.htaccess`
-
-### ถ้าจะให้ repo นี้ดีพลอยเองโดยตรง
-
-workflow `Auto Deploy to Production` จะข้ามตัวเอง (ไม่ขึ้นแดง) จนกว่าจะใส่ Secrets
-`SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY` (+ `SSH_PORT`, `DEPLOY_PATH` ถ้าต้องการ)
-ถ้าเปิดใช้ ให้ลบ `sites/xgameshub.xman4289.com/` ออกจาก xmanstudio ด้วย ไม่งั้นสองทางจะทับกัน
-(workflow ตั้ง `--exclude '/play'` ไว้แล้ว เดโมจึงไม่ถูกลบ)
+- lock file: CI ใช้ npm 10 (Node 22) — ถ้าแก้ dependency บน Windows ด้วย npm 11 แล้ว `npm ci` ใน CI ล้ม ให้สร้าง lock ใหม่ด้วย
+  `npx -y npm@10 install --package-lock-only`

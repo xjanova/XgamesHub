@@ -1,136 +1,144 @@
-name: Auto Deploy to Production
+name: Release & Deploy
+
+# Every merge to main that passes CI becomes a release:
+#   build -> deploy to xgameshub.xman4289.com -> check the live page -> GitHub Release
+# The release carries the built site as a zip, so any version can be put back by
+# re-running this workflow on its tag (Actions -> Run workflow -> pick the tag).
 
 on:
-  # Deploy after CI completes successfully on main
   workflow_run:
     workflows: ["CI - Build & Quality Checks"]
-    types:
-      - completed
-    branches:
-      - main
-
-  # Manual trigger
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
-# Prevent concurrent deployments
 concurrency:
   group: production-deploy
   cancel-in-progress: false
+
+permissions:
+  contents: write
 
 env:
   SITE_URL: https://xgameshub.xman4289.com
 
 jobs:
-  deploy:
-    name: Deploy to Production
+  release:
+    name: Release & Deploy
     runs-on: ubuntu-latest
     if: >
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push') ||
       github.event_name == 'workflow_dispatch'
 
     steps:
-      - name: Check SSH secrets
-        id: secrets
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        run: |
-          if [ -z "$SSH_HOST" ] || [ -z "$SSH_USER" ] || [ -z "$SSH_PRIVATE_KEY" ]; then
-            # Not an error: until this repo has its own key, the site ships through
-            # xjanova/xmanstudio sites/xgameshub.xman4289.com (see README).
-            echo "::notice::SSH secrets not set — skipping direct deploy (SSH_HOST, SSH_USER, SSH_PRIVATE_KEY)."
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "configured=true" >> "$GITHUB_OUTPUT"
-            echo "SSH secrets configured"
-          fi
-
       - name: Checkout code
-        if: steps.secrets.outputs.configured == 'true'
         uses: actions/checkout@v4
         with:
-          # workflow_run runs on the default branch; deploy exactly what CI tested
+          # workflow_run runs on the default branch; ship exactly what CI tested
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup Node.js
-        if: steps.secrets.outputs.configured == 'true'
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-          cache: 'npm'
+          node-version: "22"
+          cache: "npm"
 
       - name: Build static site
-        if: steps.secrets.outputs.configured == 'true'
         run: |
           npm ci
           npm run build
           test -f out/index.html
 
-      - name: Setup SSH key
-        if: steps.secrets.outputs.configured == 'true'
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Version
+        id: version
         run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          echo "tag=v2.0.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
 
-      - name: Upload to public_html (rsync)
-        if: steps.secrets.outputs.configured == 'true'
+      # Deploy key is locked on the server to
+      #   restrict,command="/usr/bin/rrsync -wo -munge /home/admin/domains/xgameshub.xman4289.com/public_html"
+      # so it can only write into this site's web root (same setup as bass-build).
+      - name: Deploy (rsync)
+        id: deploy
         env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PORT: ${{ secrets.SSH_PORT || 22 }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
         run: |
-          set -e
-          DEPLOY_PATH="${DEPLOY_PATH:-/home/admin/domains/xgameshub.xman4289.com/public_html}"
-          SSH="ssh -i $HOME/.ssh/deploy_key -p $SSH_PORT"
-          echo "Deploying to ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
-          $SSH "${SSH_USER}@${SSH_HOST}" "mkdir -p '${DEPLOY_PATH}'"
-          # --delete removes files from old builds; keep host-managed folders
-          # and the game demos (uploaded separately by scripts/deploy-demos.sh)
-          rsync -az --delete \
-            --exclude 'cgi-bin' \
-            --exclude '.well-known' \
-            --exclude '/play' \
-            -e "$SSH" \
-            out/ "${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}/"
-          echo "Upload completed"
-
-      - name: Health Check
-        if: steps.secrets.outputs.configured == 'true'
-        run: |
-          echo "Checking health at: ${SITE_URL}"
-          sleep 5
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "${SITE_URL}/" || echo "000")
-          if [ "$HTTP_CODE" -eq 200 ]; then
-            echo "Site is healthy (HTTP $HTTP_CODE)"
-          else
-            echo "::warning::Health check returned HTTP $HTTP_CODE"
+          if [ -z "$DEPLOY_HOST" ] || [ -z "$DEPLOY_USER" ] || [ -z "$DEPLOY_SSH_KEY" ] || [ -z "$DEPLOY_KNOWN_HOSTS" ]; then
+            echo "::notice::Deploy secrets not set (DEPLOY_HOST, DEPLOY_USER, DEPLOY_SSH_KEY, DEPLOY_KNOWN_HOSTS) — release only, no deploy. See README."
+            echo "deployed=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # --delete-after + --delay-updates: the new index.html never points at
+          # assets that are not uploaded yet. /play holds the demos (uploaded by
+          # scripts/deploy-demos.sh) and must survive the delete.
+          rsync -rltz --chmod=D755,F644 --delete-after --delay-updates \
+            --exclude=/cgi-bin --exclude=/.well-known --exclude=/play \
+            -e "ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            out/ "$DEPLOY_USER@$DEPLOY_HOST:"
+          rm -f ~/.ssh/deploy_key
+          echo "deployed=true" >> "$GITHUB_OUTPUT"
 
-      - name: Deployment Summary
+      - name: Check the live site
+        if: steps.deploy.outputs.deployed == 'true'
+        run: |
+          # every script chunk of this build must be referenced by the live page
+          chunks=$(grep -o '_next/static/chunks/[^"]*\.js' out/index.html | sort -u)
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -s -o page.html -w '%{http_code}' "$SITE_URL/?release=${{ steps.version.outputs.tag }}" || true)
+            if [ "$code" = 200 ]; then
+              missing=0
+              for c in $chunks; do grep -qF "$c" page.html || missing=1; done
+              if [ "$missing" = 0 ]; then echo "live: ${{ steps.version.outputs.tag }}"; exit 0; fi
+            fi
+            sleep 5
+          done
+          if [ "$code" = 403 ] || [ "$code" = 503 ]; then
+            echo "::warning::Cloudflare answered $code to the runner, so the live page could not be checked"
+            exit 0
+          fi
+          echo "::error::the live site does not serve this build (HTTP $code)"
+          exit 1
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          SHA: ${{ steps.version.outputs.sha }}
+          DEPLOYED: ${{ steps.deploy.outputs.deployed }}
+        run: |
+          (cd out && zip -qr "../xgameshub-site-$TAG.zip" .)
+          if [ "$DEPLOYED" = "true" ]; then
+            NOTE="Deployed to $SITE_URL"
+          else
+            NOTE="Built only — not deployed (deploy secrets missing)."
+          fi
+          gh release create "$TAG" "xgameshub-site-$TAG.zip" \
+            --target "$SHA" \
+            --title "XMAN GAMES HUB $TAG" \
+            --notes "$NOTE" \
+            --generate-notes
+
+      - name: Summary
         if: always()
         run: |
-          echo "## Deployment Result" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.secrets.outputs.configured }}" != "true" ]; then
-            echo "**Status:** Skipped — no SSH secrets (site ships via xmanstudio \`sites/\`)" >> $GITHUB_STEP_SUMMARY
-          elif [ "${{ job.status }}" == "success" ]; then
-            echo "**Status:** Success" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "**Status:** Failed" >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "**URL:** ${SITE_URL}" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** ${{ github.event.workflow_run.head_sha || github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Triggered by:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Time:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## Release & Deploy"
+            echo ""
+            echo "**Version:** ${{ steps.version.outputs.tag }}"
+            echo "**Commit:** ${{ steps.version.outputs.sha }}"
+            echo "**Deployed:** ${{ steps.deploy.outputs.deployed || 'false' }}"
+            echo "**URL:** $SITE_URL"
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Cleanup SSH key
         if: always()

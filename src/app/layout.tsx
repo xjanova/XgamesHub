@@ -17,7 +17,7 @@ const body = IBM_Plex_Sans_Thai({
 });
 
 const description =
-  "เข้าสู่จักรวาลเกมของ XMAN Studio สำรวจ 10 โลก เล่นเดโม X-NOVA และ THE ONE บนเบราว์เซอร์ โดยมีโนวาเป็นไกด์";
+  "เข้าสู่จักรวาลเกมของ XMAN Studio สำรวจ 10 โลก เล่นเดโม X-NOVA, X-NOVA: BREAKER และ THE ONE บนเบราว์เซอร์ โดยมีโนวาเป็นไกด์";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://xgameshub.xman4289.com"),

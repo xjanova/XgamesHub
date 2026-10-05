@@ -7,10 +7,14 @@ import { FACE } from "@/components/nova/clips";
 import { counts, featured, gameById, games, matches, type Filter, type Game } from "@/data/games";
 import { guide, pick, type Line } from "@/lib/guide";
 import { motionPref, useMotion } from "@/lib/prefs";
-import DetailDialog from "./DetailDialog";
+import { devNotes } from "@/data/devnotes";
+import { thaiDate, useDevlogs, type DevEntry } from "@/lib/devlog";
+import DetailDialog, { type DetailTab } from "./DetailDialog";
 import GameCard from "./GameCard";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
+const HUB_VERSION = process.env.NEXT_PUBLIC_HUB_VERSION || "dev";
+const PLAY_IDS = games.filter((g) => g.play).map((g) => g.id);
 
 const FILTERS: { id: Filter; label: string; count: number }[] = [
   { id: "all", label: "ทุกโลก", count: counts.all },
@@ -61,6 +65,8 @@ export default function Hub() {
   const [filter, setFilter] = useState<Filter>("all");
   const [query, setQuery] = useState("");
   const [detail, setDetail] = useState<Game | null>(null);
+  const [detailTab, setDetailTab] = useState<DetailTab>("about");
+  const devlogs = useDevlogs(PLAY_IDS);
   const [menu, setMenu] = useState(false);
   const [section, setSection] = useState("Discover");
   const [cycle, setCycle] = useState(0);
@@ -73,6 +79,19 @@ export default function Hub() {
   const fGame = gameById(featured[feat].id)!;
   const fMeta = featured[feat];
   const list = useMemo(() => games.filter((g) => matches(g, filter, query)), [filter, query]);
+
+  // newest development entries across every game: live devlogs first, static notes as fallback
+  const timeline = useMemo(() => {
+    const rows: { game: Game; entry: DevEntry; version?: string }[] = [];
+    for (const g of games) {
+      const log = devlogs[g.id] ?? devNotes[g.id];
+      if (!log) continue;
+      // at most two per game, so one busy game does not fill the whole timeline
+      for (const entry of [...log.entries].sort((x, y) => y.date.localeCompare(x.date)).slice(0, 2))
+        rows.push({ game: g, entry, version: log.version });
+    }
+    return rows.sort((a, b) => b.entry.date.localeCompare(a.entry.date)).slice(0, 9);
+  }, [devlogs]);
 
   useEffect(() => {
     motionPref.init();
@@ -112,7 +131,8 @@ export default function Hub() {
     [scrollTo],
   );
 
-  const openGame = useCallback((g: Game, speak = true) => {
+  const openGame = useCallback((g: Game, speak = true, tab: DetailTab = "about") => {
+    setDetailTab(tab);
     setDetail(g);
     if (speak) guide.say({ text: pick(g.nova), pose: "present", priority: 3 });
   }, []);
@@ -249,9 +269,14 @@ export default function Hub() {
   /* ---------------- sections: breadcrumb, first-visit lines, reveal ---------------- */
 
   useEffect(() => {
-    const names: Record<string, string> = { spotlight: "Discover", games: "Collection", studio: "Studio" };
+    const names: Record<string, string> = { spotlight: "Discover", games: "Collection", devlog: "Dev log", studio: "Studio" };
     const firstLines: Record<string, Line> = {
-      games: { text: "นี่คือคลังทั้ง 10 โลก ชี้ที่การ์ดใบไหน โนวาจะเล่าให้ฟังเอง~", pose: "present", priority: 1 },
+      games: { text: `นี่คือคลังทั้ง ${counts.all} โลก ชี้ที่การ์ดใบไหน โนวาจะเล่าให้ฟังเอง~`, pose: "present", priority: 1 },
+      devlog: {
+        text: "ทุกเกมมีบันทึกการพัฒนาให้อ่านนะ ทีมทำอะไรไปบ้าง อัปเดตเวอร์ชันไหน ดูได้ตรงนี้เลย!",
+        pose: "present",
+        priority: 1,
+      },
       studio: {
         text: "XMAN Studio สตูดิโอเล็ก ๆ ที่สร้างโลกใหม่อยู่ตลอด แวะมาบ่อย ๆ นะ!",
         pose: "welcome",
@@ -302,10 +327,17 @@ export default function Hub() {
     };
   }, []);
 
-  // cards that appear after filtering are visible right away
+  // cards that appear after filtering, and timeline rows that arrive with a live devlog, are visible right away
   useEffect(() => {
     document.querySelectorAll("#cards .rise:not(.in)").forEach((el) => el.classList.add("in"));
   }, [list]);
+  useEffect(() => {
+    const t = window.setTimeout(
+      () => document.querySelectorAll("#devlog .timeline .rise:not(.in)").forEach((el) => el.classList.add("in")),
+      400,
+    );
+    return () => window.clearTimeout(t);
+  }, [timeline]);
 
   /* ---------------- spotlight auto-advance ---------------- */
 
@@ -415,6 +447,17 @@ export default function Hub() {
         }}
       >
         <span className="nav-icon">✳</span>Concept lab<span className="nav-count">{pad2(counts.concept)}</span>
+      </a>
+      <a
+        href="#devlog"
+        className={`side-link${section === "Dev log" ? " active" : ""}`}
+        onClick={(e) => {
+          e.preventDefault();
+          setMenu(false);
+          scrollTo("devlog");
+        }}
+      >
+        <span className="nav-icon">✎</span>Dev log
       </a>
       <a
         href="#studio"
@@ -676,7 +719,13 @@ export default function Hub() {
             <div id="cards" className="cards">
               {list.map((g) => (
                 <div key={g.id} className="rise card-wrap">
-                  <GameCard game={g} index={games.indexOf(g)} onOpen={openGame} onHover={onHover} />
+                  <GameCard
+                    game={g}
+                    index={games.indexOf(g)}
+                    version={devlogs[g.id]?.version}
+                    onOpen={openGame}
+                    onHover={onHover}
+                  />
                 </div>
               ))}
             </div>
@@ -697,6 +746,40 @@ export default function Hub() {
                 </button>
               </div>
             )}
+          </section>
+
+          <section id="devlog" className="devlog-section" aria-labelledby="devlog-heading">
+            <div className="library-heading rise">
+              <div>
+                <span className="eyebrow">LATEST FROM THE LAB</span>
+                <h2 id="devlog-heading">บันทึกการพัฒนา</h2>
+              </div>
+              <span className="collection-caption">UPDATED BY EVERY RELEASE</span>
+            </div>
+            <ol className="timeline">
+              {timeline.map(({ game: g, entry, version }) => (
+                <li key={g.id + entry.date + entry.title} className="rise" style={{ ["--accent" as string]: g.palette[2] }}>
+                  <button type="button" className="tl-card" onClick={() => openGame(g, false, "dev")}>
+                    <span className="tl-top">
+                      <time dateTime={entry.date}>{thaiDate(entry.date)}</time>
+                      {version && <span className="tl-ver">{version}</span>}
+                    </span>
+                    <span className="tl-game">
+                      <i /> {g.name}
+                    </span>
+                    <b>{entry.title}</b>
+                    <ul>
+                      {entry.items.slice(0, 2).map((it) => (
+                        <li key={it}>{it}</li>
+                      ))}
+                    </ul>
+                    <span className="tl-more">
+                      อ่านบันทึกทั้งหมด <span aria-hidden="true">→</span>
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ol>
           </section>
 
           <section className="studio rise" id="studio" aria-labelledby="studio-title">
@@ -732,7 +815,7 @@ export default function Hub() {
           </section>
 
           <footer className="footer">
-            <span>© 2026 XMAN STUDIO</span>
+            <span>© 2026 XMAN STUDIO · HUB {HUB_VERSION}</span>
             <span>IMAGINATION IS OUR ENGINE.</span>
             <a
               href="#top"
@@ -747,7 +830,13 @@ export default function Hub() {
         </main>
       </div>
 
-      <DetailDialog game={detail} onClose={() => setDetail(null)} onPlay={playGame} />
+      <DetailDialog
+        game={detail}
+        tab={detailTab}
+        devlog={detail ? devlogs[detail.id] : undefined}
+        onClose={() => setDetail(null)}
+        onPlay={playGame}
+      />
       <NovaGuide />
     </>
   );

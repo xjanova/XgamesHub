@@ -1882,3 +1882,234 @@ html[data-motion="off"] *::after {
 html[data-motion="off"] .card {
   transform: none;
 }
+
+/* ================================================================ dev log */
+.devlog-section {
+  padding-top: 80px;
+}
+.devlog-section .library-heading {
+  margin-bottom: 26px;
+}
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  perspective: 1400px;
+}
+.tl-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+  padding: 18px 20px 16px 22px;
+  text-align: left;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(20, 22, 40, 0.92), rgba(10, 11, 22, 0.94));
+  box-shadow: 0 24px 40px -28px rgba(0, 0, 0, 0.9);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s,
+    box-shadow 0.3s;
+  overflow: hidden;
+}
+.tl-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+}
+html[data-motion="on"] .tl-card:hover {
+  transform: translateY(-4px) rotateX(4deg);
+}
+.tl-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow:
+    0 30px 50px -28px rgba(0, 0, 0, 0.95),
+    0 0 40px -16px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+.tl-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-d);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.tl-ver,
+.card-ver,
+.tab-ver,
+.devlog-ver {
+  font-family: var(--font-d);
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: 6px;
+  color: var(--lime);
+  border: 1px solid rgba(192, 255, 75, 0.35);
+  background: rgba(192, 255, 75, 0.06);
+}
+.tl-game {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-d);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: color-mix(in srgb, var(--accent) 70%, #fff);
+}
+.tl-game i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.tl-card b {
+  font-family: var(--font-d);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.tl-card ul {
+  font-size: 13px;
+  color: #c7cbde;
+  padding-left: 16px;
+  list-style: disc;
+}
+.tl-card ul li::marker {
+  color: var(--dim);
+}
+.tl-more {
+  margin-top: auto;
+  padding-top: 6px;
+  font-family: var(--font-d);
+  font-size: 12.5px;
+  color: var(--lime);
+}
+.card-ver {
+  margin-left: 6px;
+}
+
+/* detail dialog tabs + devlog */
+.detail-tabs {
+  display: flex;
+  gap: 6px;
+  margin: 2px 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+.detail-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--muted);
+  font-family: var(--font-d);
+  font-size: 14px;
+  margin-bottom: -1px;
+}
+.detail-tabs button[aria-selected="true"] {
+  color: #fff;
+  border-bottom-color: var(--lime);
+}
+.detail-tabs button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.devlog-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.devlog-status {
+  margin: 8px 0 4px;
+  font-weight: 500;
+  color: #e9ebf5;
+}
+.devlog-summary {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.devlog-list {
+  margin: 14px 0 6px;
+  border-left: 1px solid var(--line-strong);
+  padding-left: 16px;
+  display: grid;
+  gap: 14px;
+}
+.devlog-list > li {
+  position: relative;
+}
+.devlog-list > li::before {
+  content: "";
+  position: absolute;
+  left: -21px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--panel-solid);
+  border: 2px solid var(--accent, var(--lime));
+}
+.devlog-list time {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+}
+.devlog-list b {
+  display: block;
+  font-family: var(--font-d);
+  font-weight: 600;
+  margin: 2px 0 4px;
+}
+.devlog-list ul {
+  padding-left: 16px;
+  list-style: disc;
+  font-size: 13.5px;
+  color: #cfd2e3;
+}
+.devlog-next {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px dashed var(--line-strong);
+  font-size: 13.5px;
+}
+.devlog-next span {
+  font-family: var(--font-d);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--lime);
+}
+.devlog-next ul {
+  padding-left: 16px;
+  list-style: disc;
+  color: #cfd2e3;
+}
+@media (max-width: 1100px) {
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+}

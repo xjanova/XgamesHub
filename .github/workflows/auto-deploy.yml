@@ -45,18 +45,21 @@ jobs:
           node-version: "22"
           cache: "npm"
 
-      - name: Build static site
-        run: |
-          npm ci
-          npm run build
-          test -f out/index.html
-
       - name: Version
         id: version
         run: |
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
           echo "tag=v2.0.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
+      - name: Build static site
+        env:
+          # shown in the hub's footer
+          NEXT_PUBLIC_HUB_VERSION: ${{ steps.version.outputs.tag }}
+        run: |
+          npm ci
+          npm run build
+          test -f out/index.html
 
       # Deploy key is locked on the server to
       #   restrict,command="/usr/bin/rrsync -wo -munge /home/admin/domains/xgameshub.xman4289.com/public_html"

@@ -12,8 +12,8 @@ ErrorDocument 404 /404.html
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
 
   # HTML and Next's RSC payloads (.txt) are the map to everything else —
-  # never serve them stale. Covers the demos' index.html under /play/ too.
-  <FilesMatch "\.(html|txt)$">
+  # never serve them stale. Covers the demos' index.html and devlog.json under /play/ too.
+  <FilesMatch "\.(html|txt|json)$">
     Header set Cache-Control "no-cache, must-revalidate, max-age=0"
   </FilesMatch>
   # Build assets under /_next/static/ carry a content hash in their name,

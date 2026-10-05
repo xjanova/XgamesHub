@@ -69,10 +69,20 @@ python scripts/nova/key.py .nova-work/raw.mp4 .nova-work/green-welcome.jpg publi
 | X-NOVA | `xjanova/XNova` | `/play/xnova/` |
 | X-NOVA: BREAKER | `xjanova/XNova-Breaker` | `/play/breaker/` |
 | THE ONE | `xjanova/TheOne` | `/play/theone/` |
+| NOVA·UMBRA (เวอร์ชันเว็บ) | `xjanova/NovaUmbra` | `/play/umbra/` |
+| แม่หมอจันทรา · บทที่ ๑ | `xjanova/juntragame` (deploy game.จันทรา.online ด้วย) | `/play/chanthra/` |
+| TetrisVS (browser edition, `npm run hub:build`) | `xjanova/TetrisVS` | `/play/tetrisvs/` |
+| 8 Ball Pool | `xjanova/EightBallPool` | `/play/8ball/` |
+| Snooker 2D | `xjanova/Snooker2D` | `/play/snooker/` |
+| Tetris Classic | `xjanova/TetrisClassic` | `/play/tetris/` |
+| Space Shooter | `xjanova/SpaceShooter2D` | `/play/space-shooter/` |
+
+SNAKE.IO ลิงก์ไปเล่นบนเว็บ Thai Prompt (ยังผูกกับเซิร์ฟเวอร์เกมของที่นั่น) — ไม่มี `/play/` ของตัวเอง
 
 ในแต่ละ repo เกม:
 
-- `tools/hub-publish.mjs` — แพ็กไฟล์ที่เบราว์เซอร์โหลด (index.html, manifest, css, js, assets) และแปลง `DEVLOG.md` เป็น `devlog.json`
+- `tools/hub-publish.mjs` — แพ็กไฟล์ที่เบราว์เซอร์โหลด (ค่าเริ่มต้น index.html, manifest, css, js, assets หรือกำหนดใน `hub.json`
+  `{ "root": "...", "ship": [...] }`) และแปลง `DEVLOG.md` เป็น `devlog.json` · ถ้า `package.json` มีสคริปต์ `hub:build` workflow จะ build ก่อน
   — **ถ้ามีคำว่า github ในไฟล์ที่จะขึ้นเว็บจะไม่ยอม publish** (ลูกค้าต้องไม่เห็น)
 - `.github/workflows/deploy-xgameshub.yml` — rsync ขึ้น `play/<id>/` ด้วยคีย์ที่ล็อก `rrsync` ไว้เฉพาะโฟลเดอร์ของเกมนั้น,
   เช็ก `devlog.json` บนเว็บจริง แล้วออก release `v1.0.<run>`

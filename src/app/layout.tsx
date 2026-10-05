@@ -1,35 +1,49 @@
 import type { Metadata, Viewport } from "next";
-import { Kanit, Orbitron } from "next/font/google";
+import { Chakra_Petch, IBM_Plex_Sans_Thai } from "next/font/google";
 import "./globals.css";
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
-  weight: ["500", "700", "900"],
+const display = Chakra_Petch({
+  variable: "--font-display",
+  subsets: ["latin", "thai"],
+  weight: ["500", "600", "700"],
+  display: "swap",
 });
 
-const kanit = Kanit({
-  variable: "--font-kanit",
+const body = IBM_Plex_Sans_Thai({
+  variable: "--font-body",
   subsets: ["latin", "thai"],
-  weight: ["300", "400", "600"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
 });
+
+const description =
+  "เข้าสู่จักรวาลเกมของ XMAN Studio สำรวจ 10 โลก เล่นเดโม X-NOVA และ THE ONE บนเบราว์เซอร์ โดยมีโนวาเป็นไกด์";
 
 export const metadata: Metadata = {
-  title: "XgamesHub",
-  description: "XgamesHub — ก้าวเข้าสู่โลกของเกม ไปกับ Nova",
+  metadataBase: new URL("https://xgameshub.xman4289.com"),
+  title: "XMAN GAMES HUB — Worlds await.",
+  description,
+  openGraph: {
+    title: "XMAN GAMES HUB — Worlds await.",
+    description,
+    url: "/",
+    siteName: "XMAN GAMES HUB",
+    locale: "th_TH",
+    type: "website",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "XMAN GAMES HUB" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/og.jpg"] },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05010f",
+  themeColor: "#07080f",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="th"
-      className={`${orbitron.variable} ${kanit.variable} h-full antialiased`}
-    >
-      <body className="h-full overflow-hidden">{children}</body>
+    <html lang="th" className={`${display.variable} ${body.variable}`} data-motion="on">
+      <body>{children}</body>
     </html>
   );
 }

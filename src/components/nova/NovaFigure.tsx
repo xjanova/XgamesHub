@@ -13,9 +13,10 @@ export type NovaFigureHandle = {
 const MOVES = Object.keys(CLIPS) as Move[];
 
 /**
- * Stills underneath, clip layers on top. A new clip fades in OVER the old one,
- * which stays opaque until the fade is done — two half-faded layers would let
- * the page show through her body.
+ * One picture or clip on top at a time (as on xman4289.com): the new layer fades
+ * in OVER the old one, which stays opaque until the fade is done and is then
+ * hidden. Nothing is left on underneath — a still showing through a moving clip
+ * reads as a second Nova (a hand where the clip's hand has already moved away).
  */
 const NovaFigure = forwardRef<NovaFigureHandle, { onMissing?: () => void }>(function NovaFigure(
   { onMissing },
@@ -23,22 +24,43 @@ const NovaFigure = forwardRef<NovaFigureHandle, { onMissing?: () => void }>(func
 ) {
   const stills = useRef<Partial<Record<Pose, HTMLImageElement>>>({});
   const videos = useRef<Partial<Record<Move, HTMLVideoElement>>>({});
-  const active = useRef<HTMLVideoElement | null>(null);
+  const layer = useRef<HTMLImageElement | HTMLVideoElement | null>(null);
+  const offTimers = useRef(new Map<HTMLElement, number>());
   const wanted = useRef<Move>("idle");
   const broken = useRef(new Set<Move>());
   const brokenStill = useRef(new Set<Pose>());
   const z = useRef(2);
   const videoOK = useRef(false);
 
+  const showLayer = (el: HTMLImageElement | HTMLVideoElement | undefined) => {
+    if (!el || layer.current === el) return;
+    const prev = layer.current;
+    layer.current = el;
+    window.clearTimeout(offTimers.current.get(el));
+    el.style.zIndex = String(++z.current);
+    el.classList.add("on");
+    if (prev) {
+      offTimers.current.set(
+        prev,
+        window.setTimeout(() => {
+          if (layer.current === prev) return;
+          prev.classList.remove("on");
+          if (prev instanceof HTMLVideoElement) prev.pause();
+        }, 260),
+      );
+    }
+  };
+
+  const stillFor = (move: Move) => stills.current[brokenStill.current.has(CLIPS[move].still) ? "welcome" : CLIPS[move].still];
+
   useEffect(() => {
     videoOK.current = canPlayAlphaVideo();
+    if (!layer.current) layer.current = stills.current.welcome ?? null;
     const onPrefs = () => {
       videoOK.current = canPlayAlphaVideo();
-      if (!videoOK.current && active.current) {
-        active.current.classList.remove("on");
-        active.current.pause();
-        active.current = null;
-      }
+      // clips no longer allowed (Motion off, narrow screen): back to the picture
+      const top = layer.current;
+      if (!videoOK.current && top instanceof HTMLVideoElement) showLayer(stillFor((top.dataset.move as Move) ?? "idle"));
     };
     window.addEventListener("resize", onPrefs);
     document.documentElement.addEventListener("xgh:motion", onPrefs);
@@ -71,50 +93,32 @@ const NovaFigure = forwardRef<NovaFigureHandle, { onMissing?: () => void }>(func
     show(move, onEnd) {
       const clip = CLIPS[move];
       wanted.current = move;
-      // a pose whose picture failed to load falls back to the welcome pose
-      const still = brokenStill.current.has(clip.still) ? "welcome" : clip.still;
-      for (const p of POSES) stills.current[p]?.classList.toggle("on", p === still);
-
+      const still = stillFor(move);
       const v = videos.current[move];
+
       if (!videoOK.current || !v || broken.current.has(move)) {
-        // no clip: hide any clip of another pose, and let a one-off end on a timer
-        if (active.current && CLIPS[(active.current.dataset.move as Move) ?? "idle"].still !== clip.still) {
-          active.current.classList.remove("on");
-          active.current.pause();
-          active.current = null;
-        }
+        showLayer(still);
         if (onEnd) window.setTimeout(onEnd, 1600);
         return;
       }
 
       const start = () => {
         if (wanted.current !== move) return;
-        const prev = active.current;
         v.loop = clip.loop;
         v.onended = clip.loop ? null : () => onEnd?.();
         try {
           v.currentTime = 0;
         } catch {}
-        v.style.zIndex = String(++z.current);
-        v.classList.add("on");
         const p = v.play();
         p?.catch((e: DOMException) => {
           // AbortError = paused right after play(); not a broken clip
           if (e?.name !== "AbortError") {
             broken.current.add(move);
-            v.classList.remove("on");
+            if (wanted.current === move) showLayer(still);
             if (onEnd) onEnd();
           }
         });
-        active.current = v;
-        if (prev && prev !== v) {
-          window.setTimeout(() => {
-            if (active.current !== prev) {
-              prev.classList.remove("on");
-              prev.pause();
-            }
-          }, 260);
-        }
+        showLayer(v);
       };
 
       if (!v.src) {
@@ -123,18 +127,19 @@ const NovaFigure = forwardRef<NovaFigureHandle, { onMissing?: () => void }>(func
       }
       if (v.readyState >= 3) start();
       else {
-        // until it is ready: keep the previous clip if it is the same pose, else the still
-        if (active.current && CLIPS[(active.current.dataset.move as Move) ?? "idle"].still !== clip.still) {
-          active.current.classList.remove("on");
-          active.current.pause();
-          active.current = null;
-        }
+        // until it is ready: keep the clip on top if it starts from the same picture, else the picture
+        const top = layer.current;
+        const samePose = top instanceof HTMLVideoElement && CLIPS[(top.dataset.move as Move) ?? "idle"].still === clip.still;
+        if (!samePose) showLayer(still);
         v.addEventListener("canplay", start, { once: true });
         v.addEventListener(
           "error",
           () => {
             broken.current.add(move);
-            if (wanted.current === move && onEnd) onEnd();
+            if (wanted.current === move) {
+              showLayer(still);
+              if (onEnd) onEnd();
+            }
           },
           { once: true },
         );
@@ -158,12 +163,8 @@ const NovaFigure = forwardRef<NovaFigureHandle, { onMissing?: () => void }>(func
           loading={p === "welcome" ? "eager" : "lazy"}
           onError={() => {
             if (p === "welcome") onMissing?.();
+            // from now on the welcome picture stands in for this pose
             brokenStill.current.add(p);
-            const el = stills.current[p];
-            if (el?.classList.contains("on")) {
-              el.classList.remove("on");
-              stills.current.welcome?.classList.add("on");
-            }
           }}
         />
       ))}

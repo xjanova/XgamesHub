@@ -1,0 +1,525 @@
+{
+  "version": 5,
+  "artifactType": "design-data-example",
+  "implemented": false,
+  "baseFiles": {
+    "heroKits": "guardians-v4-manifest.json",
+    "combat": "GUARDIANS-V4-DESIGN.th.md",
+    "alienEconomy": "COREWAR-V2-DESIGN.th.md"
+  },
+  "account": {
+    "levelCap": 60,
+    "masteryCap": 20,
+    "sharedAcrossSides": true,
+    "accountXPSource": "rewarded_pve",
+    "accountXPForNextLevel": {
+      "base": 1000,
+      "perPriorLevel": 100
+    },
+    "postCap": "cosmetic_prestige",
+    "seasonDoesNotReset": [
+      "accountLevel",
+      "careerEntitlements",
+      "heroMastery",
+      "raceMastery",
+      "serviceRanks",
+      "pets"
+    ]
+  },
+  "skillPolicy": {
+    "activeOwnerRequired": true,
+    "sharedPassives": true,
+    "advancedWithinOwnerKit": true,
+    "activeSlots": 4,
+    "specializationSlots": 1,
+    "matchLevelResets": true
+  },
+  "careers": [
+    {
+      "ownerHeroID": "lyra",
+      "baseCareer": "Mobile Medic",
+      "advanced": [
+        {
+          "id": "pulse_saint",
+          "name": "Pulse Saint"
+        },
+        {
+          "id": "phase_gunner",
+          "name": "Phase Gunner"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    },
+    {
+      "ownerHeroID": "velvet",
+      "baseCareer": "Bloodguard",
+      "advanced": [
+        {
+          "id": "requiem_vanguard",
+          "name": "Requiem Vanguard"
+        },
+        {
+          "id": "crimson_reaper",
+          "name": "Crimson Reaper"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    },
+    {
+      "ownerHeroID": "astra",
+      "baseCareer": "Elementalist",
+      "advanced": [
+        {
+          "id": "storm_weaver",
+          "name": "Storm Weaver"
+        },
+        {
+          "id": "frostfire_oracle",
+          "name": "Frostfire Oracle"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    },
+    {
+      "ownerHeroID": "echo",
+      "baseCareer": "Firearms Specialist",
+      "advanced": [
+        {
+          "id": "deadeye",
+          "name": "Deadeye"
+        },
+        {
+          "id": "arsenal_runner",
+          "name": "Arsenal Runner"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    },
+    {
+      "ownerHeroID": "rhea",
+      "baseCareer": "Shield Bastion",
+      "advanced": [
+        {
+          "id": "iron_citadel",
+          "name": "Iron Citadel"
+        },
+        {
+          "id": "impact_warden",
+          "name": "Impact Warden"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    },
+    {
+      "ownerHeroID": "seraph",
+      "baseCareer": "Lightblade Guardian",
+      "advanced": [
+        {
+          "id": "prism_paladin",
+          "name": "Prism Paladin"
+        },
+        {
+          "id": "photon_duelist",
+          "name": "Photon Duelist"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    },
+    {
+      "ownerHeroID": "nova",
+      "baseCareer": "Field Engineer",
+      "advanced": [
+        {
+          "id": "siege_architect",
+          "name": "Siege Architect"
+        },
+        {
+          "id": "trap_artificer",
+          "name": "Trap Artificer"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    },
+    {
+      "ownerHeroID": "iris",
+      "baseCareer": "Resonance Healer",
+      "advanced": [
+        {
+          "id": "resonance_oracle",
+          "name": "Resonance Oracle"
+        },
+        {
+          "id": "rescue_seraph",
+          "name": "Rescue Seraph"
+        }
+      ],
+      "requirements": {
+        "accountLevel": 20,
+        "ownerMastery": 5,
+        "serviceRank": 3,
+        "trialRequired": true
+      },
+      "specializationSlots": 1,
+      "changeAtBase": true
+    }
+  ],
+  "commandDoctrines": [
+    {
+      "ownerRaceID": "myrax",
+      "ids": [
+        "brood_sovereign",
+        "acid_architect",
+        "blood_matriarch"
+      ]
+    },
+    {
+      "ownerRaceID": "aetherion",
+      "ids": [
+        "prism_marshal",
+        "void_strategist",
+        "resonance_artillerist"
+      ]
+    }
+  ],
+  "serviceRanks": [
+    {
+      "rank": 1,
+      "guardianName": "Recruit",
+      "alienName": "Hatchling",
+      "accountLevel": 1,
+      "trialRequired": true,
+      "scope": "selected_side"
+    },
+    {
+      "rank": 2,
+      "guardianName": "Operative",
+      "alienName": "Brood Officer",
+      "accountLevel": 10,
+      "trialRequired": true,
+      "scope": "selected_side"
+    },
+    {
+      "rank": 3,
+      "guardianName": "Specialist",
+      "alienName": "Hive Strategist",
+      "accountLevel": 20,
+      "trialRequired": true,
+      "scope": "selected_side"
+    },
+    {
+      "rank": 4,
+      "guardianName": "Veteran",
+      "alienName": "Brood Regent",
+      "accountLevel": 30,
+      "trialRequired": true,
+      "scope": "selected_side"
+    },
+    {
+      "rank": 5,
+      "guardianName": "Elite",
+      "alienName": "Nexus Lord",
+      "accountLevel": 45,
+      "trialRequired": true,
+      "scope": "selected_side"
+    },
+    {
+      "rank": 6,
+      "guardianName": "Legend",
+      "alienName": "Overmind",
+      "accountLevel": 60,
+      "trialRequired": true,
+      "scope": "selected_side"
+    }
+  ],
+  "pvp": {
+    "rulesets": [
+      {
+        "id": "starter",
+        "serviceRanks": [
+          1,
+          2
+        ],
+        "advancedEnabled": false
+      },
+      {
+        "id": "advanced",
+        "serviceRanks": [
+          3,
+          4,
+          5
+        ],
+        "advancedEnabled": true
+      },
+      {
+        "id": "master",
+        "serviceRanks": [
+          6
+        ],
+        "advancedEnabled": true,
+        "ownerMastery": 20
+      }
+    ],
+    "crystalBudget": 10,
+    "pveGearStatsCarried": false,
+    "pets": "cosmetic",
+    "paidPvEConsumables": false,
+    "rankedInitialHumansOnly": true,
+    "rankedReconnectGraceSeconds": 90,
+    "rankedTimeout": "record_forfeit_then_offer_unrated_new_instance",
+    "ratingPerSide": true,
+    "ratingPersistsOnLowerRuleset": true,
+    "accountTierDoesNotReplaceSkillRating": true
+  },
+  "portal": {
+    "dailyFreeEntries": 3,
+    "maxBatteryEntriesPerDay": 2,
+    "chargePerBattery": 1,
+    "sharedAcrossSides": true,
+    "resetTimezone": "Asia/Bangkok",
+    "resetLocalTime": "05:00",
+    "freeChargeCarry": false,
+    "freePractice": true,
+    "practiceXP": 0,
+    "tutorialCharge": 0,
+    "repeatTrialXP": 0,
+    "entryReservationAt": "ready",
+    "entryCommitAt": "first_combat",
+    "resumeMinutes": 10,
+    "serverFailureRefund": "idempotent",
+    "rewardPerInstanceOnce": true
+  },
+  "rewardedPvE": {
+    "missionMinutesTarget": [
+      10,
+      18
+    ],
+    "clearAccountXP": 1000,
+    "firstClearBonusXP": 500,
+    "killXPDoesNotDirectlyBecomeAccountXP": true
+  },
+  "queue": {
+    "guardiansPerMatch": 4,
+    "commandersPerMatch": 1,
+    "capacityFormula": "min(floor(readyGuardians/4),readyCommanders)",
+    "preferences": [
+      "guardian",
+      "commander",
+      "flex"
+    ],
+    "allowAIQuickOptIn": true,
+    "AIQuickRating": false,
+    "AIQuickAccountXP": 0,
+    "shortSideBonus": "capped_season_xp",
+    "hardConstraints": [
+      "ruleset",
+      "eligibility",
+      "party_integrity",
+      "novice_protection",
+      "region_latency"
+    ],
+    "softObjectives": [
+      "predicted_win_balance",
+      "waiting_time",
+      "composition",
+      "repeat_opponents"
+    ],
+    "uncertaintyCalibration": true,
+    "winProbabilityTarget": [
+      0.45,
+      0.55
+    ],
+    "humanBotDisclosureRequired": true
+  },
+  "bots": {
+    "roles": [
+      "guardian",
+      "commander"
+    ],
+    "architecture": [
+      "utility_planner",
+      "behavior_tree",
+      "role_state_machine"
+    ],
+    "vision": "filtered_observation_plus_last_seen",
+    "hiddenEnemyAccess": false,
+    "freeResources": false,
+    "instantCommands": false,
+    "difficulty": [
+      {
+        "id": "recruit",
+        "responseSeconds": 1.2,
+        "planningSeconds": 2
+      },
+      {
+        "id": "veteran",
+        "responseSeconds": 0.6,
+        "planningSeconds": 1
+      },
+      {
+        "id": "elite",
+        "responseSeconds": 0.3,
+        "planningSeconds": 0.5
+      }
+    ],
+    "skillRequiresPlaytesting": true
+  },
+  "season": {
+    "weeks": 8,
+    "levelCap": 50,
+    "xpPerLevel": 1000,
+    "dailySeasonXPCap": 2000,
+    "weeklyMissionXPSeparate": true,
+    "freeCombatSkillTrials": true,
+    "premium": "cosmetics_and_vfx",
+    "afterSeasonCombatTrials": "permanent_archive"
+  },
+  "store": {
+    "realPaymentImplemented": false,
+    "virtualPricesIllustrative": true,
+    "batteryOffers": [
+      {
+        "count": 1,
+        "premiumCrystals": 80
+      },
+      {
+        "count": 3,
+        "premiumCrystals": 240
+      }
+    ],
+    "paidCareerCertificate": false,
+    "paidRank": false,
+    "pveAcceleration": true,
+    "receiptIdempotency": true
+  },
+  "pets": [
+    {
+      "id": "fox_drone",
+      "pve": "collect_already_found_loot",
+      "pvp": "cosmetic"
+    },
+    {
+      "id": "broodling",
+      "pve": "cooldown_limited_decoy",
+      "pvp": "cosmetic"
+    },
+    {
+      "id": "prism_wisp",
+      "pve": "cooldown_limited_shield",
+      "pvp": "cosmetic"
+    }
+  ],
+  "queueFixtures": [
+    {
+      "readyGuardians": 80,
+      "readyCommanders": 8,
+      "humanMatches": 8,
+      "leftGuardians": 48,
+      "leftCommanders": 0
+    },
+    {
+      "readyGuardians": 16,
+      "readyCommanders": 20,
+      "humanMatches": 4,
+      "leftGuardians": 0,
+      "leftCommanders": 16
+    },
+    {
+      "readyGuardians": 80,
+      "readyCommanders": 0,
+      "humanMatches": 0,
+      "leftGuardians": 80,
+      "leftCommanders": 0
+    },
+    {
+      "readyGuardians": 0,
+      "readyCommanders": 20,
+      "humanMatches": 0,
+      "leftGuardians": 0,
+      "leftCommanders": 20
+    }
+  ],
+  "imageSpecs": [
+    {
+      "file": "pve-campaign-account-hub-v5-final.png",
+      "label": "PvE / บัญชี",
+      "group": "เนื้อเรื่อง",
+      "title": "สองเส้นเรื่อง · บัญชีเดียว",
+      "description": "เลือกเนื้อเรื่องผู้ปกป้องหรือเอเลี่ยน รับ Account EXP ร่วมกัน และเก็บความเชี่ยวชาญแยกตามตัวละครหรือเผ่า"
+    },
+    {
+      "file": "career-ranks-advanced-classes-v5-final.png",
+      "label": "ยศ / อาชีพขั้นสูง",
+      "group": "อาชีพและยศ",
+      "title": "อาชีพขั้นสูงภายในชุดความสามารถเดิม",
+      "description": "บัญชี LV 60 เป็นเพดานพลังต้นแบบ ยศต้องผ่านภารกิจ PvE และบททดสอบ แต่การจับคู่ยังวัดฝีมือจริง"
+    },
+    {
+      "file": "matchmaking-ai-balancer-ui-v5-final.png",
+      "label": "จับคู่ / AI ทดแทน",
+      "group": "จับคู่",
+      "title": "จัดคิว 4 ผู้ปกป้อง ต่อ 1 คอมมานเดอร์",
+      "description": "ดูคิวตามสัดส่วนจริง ใช้คะแนนฝีมือแยกฝั่ง และเติม AI แบบแจ้งชัดใน Quick Match; Ranked จับผู้เล่นจริง"
+    },
+    {
+      "file": "daily-season-battery-shop-ui-v5.png",
+      "label": "Daily / Season / ร้านค้า",
+      "group": "รายวันและร้านค้า",
+      "title": "ภารกิจรายวัน · รางวัลซีซั่น · แบตเตอรี่ประตู",
+      "description": "ประตูรางวัลฟรี 3 ครั้งต่อวัน ใช้แบตเตอรี่เพิ่มได้ ร้านค้าช่วย PvE; พลังใน PvP ถูกปรับตามงบเดียวกัน"
+    }
+  ],
+  "sourceURLs": [
+    "https://www.microsoft.com/en-us/research/project/trueskill-ranking-system/",
+    "https://www.microsoft.com/en-us/research/project/truematch/",
+    "https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_dedicated_servers.html"
+  ]
+}

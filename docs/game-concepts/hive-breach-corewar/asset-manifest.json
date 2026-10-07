@@ -1,0 +1,523 @@
+{
+  "project": "HIVE // BREACH: COREWAR",
+  "updated": "2026-10-07",
+  "assetCount": 86,
+  "assets": [
+    {
+      "path": "/concepts/hive-breach-corewar/art/aetherion-research-ui-v1.png",
+      "file": "aetherion-research-ui-v1.png",
+      "group": "art",
+      "bytes": 2525448
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/aetherion-rts-gameplay-v1.png",
+      "file": "aetherion-rts-gameplay-v1.png",
+      "group": "art",
+      "bytes": 3319820
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/aetherion-strategic-fog-gameplay-v4.png",
+      "file": "aetherion-strategic-fog-gameplay-v4.png",
+      "group": "art",
+      "bytes": 2422823
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/astra-character-skill-tree-ui-v4.png",
+      "file": "astra-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2793705
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/attack-constellation-ui-v3.png",
+      "file": "attack-constellation-ui-v3.png",
+      "group": "art",
+      "bytes": 2661708
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/attack-frost-relay-gameplay-v3.png",
+      "file": "attack-frost-relay-gameplay-v3.png",
+      "group": "art",
+      "bytes": 3489014
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/attack-frost-relay-gameplay-v4.png",
+      "file": "attack-frost-relay-gameplay-v4.png",
+      "group": "art",
+      "bytes": 3327834
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/auto-skills-upgrade-plans-ui-v4.png",
+      "file": "auto-skills-upgrade-plans-ui-v4.png",
+      "group": "art",
+      "bytes": 2530717
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/career-ranks-advanced-classes-v5-final.png",
+      "file": "career-ranks-advanced-classes-v5-final.png",
+      "group": "art",
+      "bytes": 2894127
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/career-ranks-advanced-classes-v5.png",
+      "file": "career-ranks-advanced-classes-v5.png",
+      "group": "art",
+      "bytes": 3082634
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/constellation-atlas-ui-v3.png",
+      "file": "constellation-atlas-ui-v3.png",
+      "group": "art",
+      "bytes": 2891015
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/corewar-logo-transparent-v4.png",
+      "file": "corewar-logo-transparent-v4.png",
+      "group": "art",
+      "bytes": 1316183
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/corewar-main-menu-v3.png",
+      "file": "corewar-main-menu-v3.png",
+      "group": "art",
+      "bytes": 3424467
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/corewar-main-menu-v4.png",
+      "file": "corewar-main-menu-v4.png",
+      "group": "art",
+      "bytes": 3424467
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/corewar-party-gameplay-v1.png",
+      "file": "corewar-party-gameplay-v1.png",
+      "group": "art",
+      "bytes": 3298103
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/daily-season-battery-shop-ui-v5.png",
+      "file": "daily-season-battery-shop-ui-v5.png",
+      "group": "art",
+      "bytes": 2654953
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/echo-character-skill-tree-ui-v4.png",
+      "file": "echo-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2564713
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/guardian-creation-ui-v3.png",
+      "file": "guardian-creation-ui-v3.png",
+      "group": "art",
+      "bytes": 2586750
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/guardian-creation-ui-v4.png",
+      "file": "guardian-creation-ui-v4.png",
+      "group": "art",
+      "bytes": 2700639
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/guardian-early-exploration-gameplay-v4.png",
+      "file": "guardian-early-exploration-gameplay-v4.png",
+      "group": "art",
+      "bytes": 2642804
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/guardian-roster-v3.png",
+      "file": "guardian-roster-v3.png",
+      "group": "art",
+      "bytes": 2828299
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/guardian-roster-v4.png",
+      "file": "guardian-roster-v4.png",
+      "group": "art",
+      "bytes": 2828299
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/healer-orbital-rain-gameplay-v4.png",
+      "file": "healer-orbital-rain-gameplay-v4.png",
+      "group": "art",
+      "bytes": 3304292
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/hive-breach-gameplay-ui.png",
+      "file": "hive-breach-gameplay-ui.png",
+      "group": "art",
+      "bytes": 2704361
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/iris-character-skill-tree-ui-v4.png",
+      "file": "iris-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2750521
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/lyra-character-skill-tree-ui-v4.png",
+      "file": "lyra-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2524567
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/lyra-design-v1.png",
+      "file": "lyra-design-v1.png",
+      "group": "art",
+      "bytes": 1562971
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/lyra-gameplay-v1.png",
+      "file": "lyra-gameplay-v1.png",
+      "group": "art",
+      "bytes": 2780501
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/lyra-tripo-front-v1.png",
+      "file": "lyra-tripo-front-v1.png",
+      "group": "art",
+      "bytes": 1501688
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/lyra-turnaround-v1.png",
+      "file": "lyra-turnaround-v1.png",
+      "group": "art",
+      "bytes": 1830999
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/lyra-weapon-forge-v2.png",
+      "file": "lyra-weapon-forge-v2.png",
+      "group": "art",
+      "bytes": 2443726
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/matchmaking-ai-balancer-ui-v5-final.png",
+      "file": "matchmaking-ai-balancer-ui-v5-final.png",
+      "group": "art",
+      "bytes": 2627721
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/matchmaking-ai-balancer-ui-v5.png",
+      "file": "matchmaking-ai-balancer-ui-v5.png",
+      "group": "art",
+      "bytes": 2765867
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/myrax-research-ui-v1.png",
+      "file": "myrax-research-ui-v1.png",
+      "group": "art",
+      "bytes": 2572327
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/myrax-rts-gameplay-v1.png",
+      "file": "myrax-rts-gameplay-v1.png",
+      "group": "art",
+      "bytes": 3323593
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/myrax-strategic-fog-gameplay-v4.png",
+      "file": "myrax-strategic-fog-gameplay-v4.png",
+      "group": "art",
+      "bytes": 2387272
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/nova-character-skill-tree-ui-v4.png",
+      "file": "nova-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2712583
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/passive-constellation-atlas-ui-v4.png",
+      "file": "passive-constellation-atlas-ui-v4.png",
+      "group": "art",
+      "bytes": 2671304
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/pve-campaign-account-hub-v5-final.png",
+      "file": "pve-campaign-account-hub-v5-final.png",
+      "group": "art",
+      "bytes": 2939024
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/pve-campaign-account-hub-v5.png",
+      "file": "pve-campaign-account-hub-v5.png",
+      "group": "art",
+      "bytes": 3101913
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/rhea-character-skill-tree-ui-v4.png",
+      "file": "rhea-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2816204
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/seraph-character-skill-tree-ui-v4.png",
+      "file": "seraph-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2896318
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/support-ash-garden-gameplay-v4.png",
+      "file": "support-ash-garden-gameplay-v4.png",
+      "group": "art",
+      "bytes": 3287486
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/tank-ash-garden-gameplay-v4.png",
+      "file": "tank-ash-garden-gameplay-v4.png",
+      "group": "art",
+      "bytes": 3353437
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/tank-constellation-ui-v3.png",
+      "file": "tank-constellation-ui-v3.png",
+      "group": "art",
+      "bytes": 2681887
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/velvet-character-skill-tree-ui-v4.png",
+      "file": "velvet-character-skill-tree-ui-v4.png",
+      "group": "art",
+      "bytes": 2833262
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/velvet-crystal-forge-ui-v1.png",
+      "file": "velvet-crystal-forge-ui-v1.png",
+      "group": "art",
+      "bytes": 2381052
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/velvet-gameplay-v1.png",
+      "file": "velvet-gameplay-v1.png",
+      "group": "art",
+      "bytes": 3035499
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/velvet-hammer-tripo-v1.png",
+      "file": "velvet-hammer-tripo-v1.png",
+      "group": "art",
+      "bytes": 1851531
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/velvet-skill-ascension-ui-v1.png",
+      "file": "velvet-skill-ascension-ui-v1.png",
+      "group": "art",
+      "bytes": 2271955
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/velvet-tripo-front-v1.png",
+      "file": "velvet-tripo-front-v1.png",
+      "group": "art",
+      "bytes": 2046714
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/art/velvet-turnaround-v1.png",
+      "file": "velvet-turnaround-v1.png",
+      "group": "art",
+      "bytes": 2183081
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-01-planet-under-siege.png",
+      "file": "shot-01-planet-under-siege.png",
+      "group": "cinematic",
+      "bytes": 2923863
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-02-lyra-awakens.png",
+      "file": "shot-02-lyra-awakens.png",
+      "group": "cinematic",
+      "bytes": 2240762
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-03-party-into-the-unknown.png",
+      "file": "shot-03-party-into-the-unknown.png",
+      "group": "cinematic",
+      "bytes": 3054684
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-04-khael-myrax-command.png",
+      "file": "shot-04-khael-myrax-command.png",
+      "group": "cinematic",
+      "bytes": 3408533
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-05-nyxara-aetherion-command.png",
+      "file": "shot-05-nyxara-aetherion-command.png",
+      "group": "cinematic",
+      "bytes": 3292459
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-06-lyra-crystal-forge.png",
+      "file": "shot-06-lyra-crystal-forge.png",
+      "group": "cinematic",
+      "bytes": 2385644
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-07-lyra-speed-and-heal.png",
+      "file": "shot-07-lyra-speed-and-heal.png",
+      "group": "cinematic",
+      "bytes": 2846246
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-08-velvet-requiem-slam.png",
+      "file": "shot-08-velvet-requiem-slam.png",
+      "group": "cinematic",
+      "bytes": 3034703
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-09-last-stand-at-the-core.png",
+      "file": "shot-09-last-stand-at-the-core.png",
+      "group": "cinematic",
+      "bytes": 3410077
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/cinematic/shot-10-guardians-of-the-core-final.png",
+      "file": "shot-10-guardians-of-the-core-final.png",
+      "group": "cinematic",
+      "bytes": 2726455
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/commander/commander-01-khael-swarm-order.png",
+      "file": "commander-01-khael-swarm-order.png",
+      "group": "commander",
+      "bytes": 3207311
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/commander/commander-02-saeryn-brood-heart.png",
+      "file": "commander-02-saeryn-brood-heart.png",
+      "group": "commander",
+      "bytes": 3163199
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/commander/commander-03-vael-crystal-formation.png",
+      "file": "commander-03-vael-crystal-formation.png",
+      "group": "commander",
+      "bytes": 3017898
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/commander/commander-04-nyxara-nexus-order.png",
+      "file": "commander-04-nyxara-nexus-order.png",
+      "group": "commander",
+      "bytes": 3225740
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/aetherion-strategic-fog-gameplay-v4.png",
+      "file": "aetherion-strategic-fog-gameplay-v4.png",
+      "group": "gameplay",
+      "bytes": 2422823
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/attack-frost-relay-gameplay-v4.png",
+      "file": "attack-frost-relay-gameplay-v4.png",
+      "group": "gameplay",
+      "bytes": 3327834
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/guardian-early-exploration-gameplay-v4.png",
+      "file": "guardian-early-exploration-gameplay-v4.png",
+      "group": "gameplay",
+      "bytes": 2642804
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/healer-orbital-rain-gameplay-v4.png",
+      "file": "healer-orbital-rain-gameplay-v4.png",
+      "group": "gameplay",
+      "bytes": 3304292
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/myrax-strategic-fog-gameplay-v4.png",
+      "file": "myrax-strategic-fog-gameplay-v4.png",
+      "group": "gameplay",
+      "bytes": 2387272
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/support-ash-garden-gameplay-v4.png",
+      "file": "support-ash-garden-gameplay-v4.png",
+      "group": "gameplay",
+      "bytes": 3287486
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/tank-ash-garden-gameplay-v4.png",
+      "file": "tank-ash-garden-gameplay-v4.png",
+      "group": "gameplay",
+      "bytes": 3353437
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/gameplay/velvet-gameplay-v1.png",
+      "file": "velvet-gameplay-v1.png",
+      "group": "gameplay",
+      "bytes": 3035499
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-01-lyra-class-reveal.png",
+      "file": "intro-01-lyra-class-reveal.png",
+      "group": "intro",
+      "bytes": 2489741
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-02-velvet-class-reveal.png",
+      "file": "intro-02-velvet-class-reveal.png",
+      "group": "intro",
+      "bytes": 2966322
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-03-astra-class-reveal.png",
+      "file": "intro-03-astra-class-reveal.png",
+      "group": "intro",
+      "bytes": 2797214
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-04-echo-class-reveal.png",
+      "file": "intro-04-echo-class-reveal.png",
+      "group": "intro",
+      "bytes": 2673460
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-05-rhea-class-reveal.png",
+      "file": "intro-05-rhea-class-reveal.png",
+      "group": "intro",
+      "bytes": 2937180
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-06-seraph-class-reveal.png",
+      "file": "intro-06-seraph-class-reveal.png",
+      "group": "intro",
+      "bytes": 2957593
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-07-nova-class-reveal.png",
+      "file": "intro-07-nova-class-reveal.png",
+      "group": "intro",
+      "bytes": 2625519
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-08-iris-class-reveal.png",
+      "file": "intro-08-iris-class-reveal.png",
+      "group": "intro",
+      "bytes": 2737699
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-09-khael-class-reveal.png",
+      "file": "intro-09-khael-class-reveal.png",
+      "group": "intro",
+      "bytes": 2817479
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-10-saeryn-class-reveal.png",
+      "file": "intro-10-saeryn-class-reveal.png",
+      "group": "intro",
+      "bytes": 2720415
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-11-vael-class-reveal.png",
+      "file": "intro-11-vael-class-reveal.png",
+      "group": "intro",
+      "bytes": 2595447
+    },
+    {
+      "path": "/concepts/hive-breach-corewar/mv/intro/intro-12-nyxara-class-reveal.png",
+      "file": "intro-12-nyxara-class-reveal.png",
+      "group": "intro",
+      "bytes": 3066055
+    }
+  ]
+}

@@ -26,13 +26,14 @@ ErrorDocument 404 /404.html
   <If "%{REQUEST_URI} =~ m#^/nova/#">
     Header set Cache-Control "public, max-age=2592000"
   </If>
-  # Game art has no version stamp: keep it short so a replaced picture shows within a day.
-  <If "%{REQUEST_URI} =~ m#^/art/#">
+  # Game art and video have no version stamp: keep it short so a replaced file shows within a day.
+  <If "%{REQUEST_URI} =~ m#^/(art|video)/#">
     Header set Cache-Control "public, max-age=86400"
   </If>
 </IfModule>
 
 <IfModule mod_mime.c>
   AddType video/webm .webm
+  AddType video/mp4 .mp4
   AddType image/webp .webp
 </IfModule>

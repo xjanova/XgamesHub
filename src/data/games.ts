@@ -27,6 +27,8 @@ export type Game = {
   image: string;
   /** Playable web demo (opens in a new tab). */
   play?: string;
+  /** Donation page for a project the studio is raising funds for (src/data/fund.ts). */
+  fund?: string;
   palette: [string, string, string];
   planet: PlanetStyle;
   /** What Nova says about this world. */
@@ -573,20 +575,24 @@ export const games: Game[] = [
   },
   {
     id: "hive-breach",
-    name: "HIVE//BREACH",
-    subtitle: "SEAL THE BREACH",
-    genre: "Swarm shooter / Action / 2.5D",
+    name: "HIVE // BREACH: COREWAR",
+    subtitle: "GUARD THE STAR CORE",
+    genre: "Action × RTS / Asymmetric PvP / 2.5D",
     state: "concept",
-    stage: "Concept · UI mockup",
-    tagline: "บุกสถานีอวกาศ ยิงฝูงเอเลี่ยน ปิดรังให้ทัน",
+    stage: "Main project · Concept",
+    tagline: "ผู้พิทักษ์ 4 คนปกป้องแกนดาว ปะทะคอมมานเดอร์เอเลี่ยนที่บุกแบบ RTS",
     description:
-      "รับบทหน่วยกู้สถานีอวกาศที่ถูกเอเลี่ยนยึด เล็งยิงด้วยเมาส์ เลือกการ์ดอัปเกรดระหว่างทาง แล้วตัดสินใจว่าจะปิดรังทันทีหรือเปิดไว้เก็บพลังเพิ่ม ก่อนสู้บอสและหนีออกจากสถานี ภารกิจละ 10–15 นาที",
-    features: ["2 คลาสในแผนเดโม", "การ์ดอัปเกรด 1 ใน 3", "ปิดรังหรือฟาร์มต่อ", "บอส Brood Core"],
-    note: "ชื่อชั่วคราวและแผนพัฒนา ยังไม่ได้เริ่มสร้างเกม ภาพเป็นคอนเซปต์ UI ไม่ใช่ภาพจากเกมจริง",
-    image: "/art/hive-breach.webp",
-    palette: ["#fa6d2e", "#15171b", "#2be8f8"],
+      "HIVE//BREACH ยกระดับเป็น COREWAR โปรเจกต์หลักของ XMAN Studio: สงครามสองฝั่งในสนามเดียว ฝ่ายผู้พิทักษ์มนุษย์และแอนดรอยด์รวมปาร์ตี้ 4 คน สำรวจแมพสุ่มใต้หมอกสงคราม เก็บ EXP และป้องกัน Star Core ส่วนคอมมานเดอร์เอเลี่ยนเลือกเผ่า MYRAX หรือ AETHERION แล้วบัญชาการแบบ RTS สร้างฐาน ผลิตกองทัพ วิจัย และบุกแกนพลังงาน แมตช์ละประมาณ 15 นาที พร้อม PvE เนื้อเรื่องทั้งสองฝั่ง",
+    features: ["4 ผู้พิทักษ์ vs 1 คอมมานเดอร์", "ฮีโร่ 8 คน · เอเลี่ยน 2 เผ่า", "แมพสุ่ม + Fog of War", "PvE เนื้อเรื่องสองฝั่ง"],
+    note: "โปรเจกต์หลักที่เปิดรับการสนับสนุน มีสเปกระบบ ภาพคอนเซปต์ และ MV เพลงธีมแล้ว แต่ยังไม่มีตัวเกมที่เล่นได้ ภาพทั้งหมดเป็นคอนเซปต์ ไม่ใช่ภาพจากเกมจริง",
+    image: "/art/hive-corewar.webp",
+    fund: "/fund/hive-breach/",
+    palette: ["#ff4fa8", "#140f2a", "#4fe3ff"],
     planet: 2,
-    nova: ["HIVE//BREACH ปิดรังเลยหรือเปิดไว้ฟาร์มพลังต่ออีกนิด? โนวาขออีกนิดเดียว... ไม่ไหวแล้ว ปิด!"],
+    nova: [
+      "HIVE // BREACH: COREWAR คือโปรเจกต์หลักของเราเลย! ฝั่งหนึ่งเป็นปาร์ตี้ผู้พิทักษ์ อีกฝั่งเป็นคอมมานเดอร์เอเลี่ยนแบบ RTS แวะไปดูหน้าโปรเจกต์แล้วช่วยกันสนับสนุนนะ~",
+      "ใน COREWAR โนวาชอบลีราที่สุด ปืนพก วิ่งไว แถมฮีลตัวเองได้! แต่ถ้าเล่นฝั่งเอเลี่ยน โนวาขอเลือก NYXARA ราชินีผลึก~",
+    ],
   },
   {
     id: "skyshard",

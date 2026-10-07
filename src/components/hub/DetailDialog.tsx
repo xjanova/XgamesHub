@@ -107,6 +107,15 @@ function DetailInner({
             <p className="detail-note">
               <span aria-hidden="true">ⓘ</span> {game.note}
             </p>
+            {game.fund && (
+              <a className="detail-fund" href={game.fund}>
+                <span>
+                  <b>★ โปรเจกต์หลัก · ร่วมสนับสนุน</b>
+                  <small>เปิดหน้าเกมเต็ม: คอนเซปต์ ตัวละคร แผนพัฒนา และระดับการสนับสนุน</small>
+                </span>
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
           </div>
         ) : (
           <div role="tabpanel">

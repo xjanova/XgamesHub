@@ -4,13 +4,15 @@ import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as
 import Universe from "@/components/universe/Universe";
 import NovaGuide from "@/components/nova/NovaGuide";
 import { FACE } from "@/components/nova/clips";
-import { counts, featured, gameById, games, matches, type Filter, type Game } from "@/data/games";
-import { guide, pick, type Line } from "@/lib/guide";
+import { counts, featured, gameById, games, matches, type Featured, type Filter, type Game } from "@/data/games";
+import { fundHref, mainProject } from "@/data/fund";
+import { guide, pick, type Chip, type Line } from "@/lib/guide";
 import { motionPref, useMotion } from "@/lib/prefs";
 import { devNotes } from "@/data/devnotes";
 import { thaiDate, useDevlogs, type DevEntry } from "@/lib/devlog";
 import DetailDialog, { type DetailTab } from "./DetailDialog";
 import GameCard from "./GameCard";
+import MainProjectBanner, { SpotFund } from "./MainProject";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
 const HUB_VERSION = process.env.NEXT_PUBLIC_HUB_VERSION || "dev";
@@ -44,11 +46,19 @@ const FILTER_LINES: Partial<Record<Filter, Line>> = {
   },
 };
 
-type TourStep = { go: string; line: Line };
+type TourStep = { go: string; line: Line; chips?: Chip[] };
 const TOUR: TourStep[] = [
   {
     go: "spotlight",
     line: { text: "เริ่มที่ Spotlight! เกมเด่นของฮับอยู่ตรงนี้ ลากที่ดาวเคราะห์เพื่อหมุนดูได้เลย", pose: "present" },
+  },
+  {
+    go: `feature:${mainProject.gameId}`,
+    line: {
+      text: "ใบแรกคือโปรเจกต์หลักของเรา HIVE // BREACH: COREWAR! ผู้พิทักษ์ปะทะคอมมานเดอร์เอเลี่ยนในสนามเดียว ตอนนี้เปิดรับการสนับสนุนอยู่ แวะไปดูหน้าโปรเจกต์ได้นะ",
+      pose: "cheer",
+    },
+    chips: [{ label: "ดูหน้าโปรเจกต์ ✦", action: "fund" }],
   },
   {
     go: "feature:theone",
@@ -68,6 +78,9 @@ const TOUR: TourStep[] = [
   },
 ];
 
+// the fund's main project always opens the spotlight, ahead of the regular featured games
+const SPOTLIGHT: Featured[] = [mainProject.spotlight, ...featured.filter((f) => f.id !== mainProject.spotlight.id)];
+
 export default function Hub() {
   const motion = useMotion();
   const [feat, setFeat] = useState(0);
@@ -85,8 +98,8 @@ export default function Hub() {
   const tourStep = useRef(-1);
   const said = useRef(new Set<string>());
 
-  const fGame = gameById(featured[feat].id)!;
-  const fMeta = featured[feat];
+  const fGame = gameById(SPOTLIGHT[feat].id)!;
+  const fMeta = SPOTLIGHT[feat];
   const list = useMemo(() => games.filter((g) => matches(g, filter, query)), [filter, query]);
 
   // newest development entries across every game: live devlogs first, static notes as fallback
@@ -122,12 +135,12 @@ export default function Hub() {
   }, []);
 
   const chooseFeature = useCallback((i: number, byUser: boolean) => {
-    const n = (i + featured.length) % featured.length;
+    const n = (i + SPOTLIGHT.length) % SPOTLIGHT.length;
     setFeat(n);
     setCycle((c) => c + 1);
     if (byUser) {
       touched.current = performance.now();
-      const g = gameById(featured[n].id)!;
+      const g = gameById(SPOTLIGHT[n].id)!;
       guide.say({ text: g.nova[0], pose: "present", priority: 3 });
     }
   }, []);
@@ -164,7 +177,7 @@ export default function Hub() {
       if (kind === "spotlight") scrollTo("spotlight", "center");
       if (kind === "feature") {
         scrollTo("spotlight", "center");
-        const idx = featured.findIndex((f) => f.id === arg);
+        const idx = SPOTLIGHT.findIndex((f) => f.id === arg);
         if (idx >= 0) chooseFeature(idx, false);
         touched.current = performance.now();
       }
@@ -185,6 +198,7 @@ export default function Hub() {
             ]
           : [
               { label: `ถัดไป › (${i + 1}/${TOUR.length})`, action: "tourNext", primary: true },
+              ...(step.chips ?? []),
               { label: "จบทัวร์", action: "tourEnd" },
             ],
       });
@@ -236,6 +250,9 @@ export default function Hub() {
       },
       dismiss: () =>
         guide.say({ text: "ได้เลย~ ถ้าต้องการโนวา จิ้มที่ตัวโนวาได้ทุกเมื่อ", pose: "welcome", priority: 3 }),
+      fund: () => {
+        window.location.href = fundHref(mainProject);
+      },
     });
   }, [applyFilter, chooseFeature, openGame, playGame, scrollTo]);
 
@@ -259,6 +276,7 @@ export default function Hub() {
               chips: [
                 { label: "สุ่มเกมให้หน่อย", action: "random", primary: true },
                 { label: "พาทัวร์", action: "tour" },
+                { label: "โปรเจกต์หลัก ✦", action: "fund" },
               ],
             }
           : {
@@ -270,12 +288,41 @@ export default function Hub() {
               chips: [
                 { label: "พาทัวร์หน่อย", action: "tour", primary: true },
                 { label: "สุ่มเกมให้หน่อย", action: "random" },
+                { label: "โปรเจกต์หลัก ✦", action: "fund" },
                 { label: "เดี๋ยวดูเอง", action: "dismiss" },
               ],
             },
       );
     }, 1400);
-    return () => window.clearTimeout(t);
+    // a little later Nova invites people to the main project — once per visit, never over the tour
+    let invited = false;
+    try {
+      invited = sessionStorage.getItem("xgh.fund.invited") === "1";
+    } catch {}
+    const invite = invited
+      ? 0
+      : window.setTimeout(() => {
+          if (tourStep.current >= 0) return;
+          const shown = guide.say({
+            text: "อ้อ! อย่าลืมแวะดูโปรเจกต์หลักของเรา HIVE // BREACH: COREWAR นะ ทีมกำลังเปิดรับการสนับสนุนให้ไปถึงเดโมแรก~",
+            pose: "present",
+            priority: 2,
+            hold: 12000,
+            chips: [
+              { label: "ไปดูหน้าโปรเจกต์ ✦", action: "fund", primary: true },
+              { label: "ไว้ก่อน", action: "dismiss" },
+            ],
+          });
+          if (shown) {
+            try {
+              sessionStorage.setItem("xgh.fund.invited", "1");
+            } catch {}
+          }
+        }, 26000);
+    return () => {
+      window.clearTimeout(t);
+      window.clearTimeout(invite);
+    };
   }, []);
 
   /* ---------------- sections: breadcrumb, first-visit lines, reveal ---------------- */
@@ -594,6 +641,8 @@ export default function Hub() {
             <span className="intro-note">เลือกโลกที่ใช่ แล้วออกผจญภัย</span>
           </div>
 
+          <MainProjectBanner />
+
           <section
             id="spotlight"
             className="spotlight rise"
@@ -603,12 +652,18 @@ export default function Hub() {
             <div className="spot-shade" />
             <div className="spot-scan" aria-hidden="true" />
             <div className="spot-head">
-              <span className="spot-kicker">
-                <span className="spark">✦</span> IN THE SPOTLIGHT
-              </span>
+              {fGame.fund ? (
+                <a className="spot-kicker main" href={fGame.fund}>
+                  <span className="spark">★</span> โปรเจกต์หลัก · ร่วมสนับสนุน
+                </a>
+              ) : (
+                <span className="spot-kicker">
+                  <span className="spark">✦</span> IN THE SPOTLIGHT
+                </span>
+              )}
               <div className="spot-pagination">
                 <span className="spot-num">{pad2(feat + 1)}</span>
-                <span className="spot-total">/ {pad2(featured.length)}</span>
+                <span className="spot-total">/ {pad2(SPOTLIGHT.length)}</span>
                 <button type="button" onClick={() => chooseFeature(feat - 1, true)} aria-label="เกมเด่นก่อนหน้า">
                   ‹
                 </button>
@@ -634,6 +689,7 @@ export default function Hub() {
                   <span key={t}>{t}</span>
                 ))}
               </div>
+              {fGame.fund && <SpotFund href={fGame.fund} />}
               <div className="spot-actions">
                 {fGame.play ? (
                   <a className="button primary" href={fGame.play} target="_blank" rel="noopener" onClick={() => playGame(fGame)}>
@@ -684,15 +740,15 @@ export default function Hub() {
             className="spot-selector rise"
             role="group"
             aria-label="เลือกเกมเด่น"
-            style={{ ["--n" as string]: featured.length }}
+            style={{ ["--n" as string]: SPOTLIGHT.length }}
           >
-            {featured.map((f, i) => {
+            {SPOTLIGHT.map((f, i) => {
               const g = gameById(f.id)!;
               return (
                 <button
                   key={f.id}
                   type="button"
-                  className={`spot-choice${i === feat ? " selected" : ""}`}
+                  className={`spot-choice${i === feat ? " selected" : ""}${g.fund ? " main" : ""}`}
                   aria-pressed={i === feat}
                   onClick={() => chooseFeature(i, true)}
                   style={{ ["--accent" as string]: g.palette[2] }}

@@ -2220,3 +2220,267 @@ html[data-motion="on"] .roblox-mark span {
     height: 140px;
   }
 }
+
+/* ================================================================ main project (fund) */
+/* strip above the spotlight that leads to /fund/<id>/ */
+.main-banner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) minmax(200px, 300px) auto;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 18px;
+  padding: 10px 18px 10px 10px;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--accent2) 45%, transparent);
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 55%),
+    linear-gradient(280deg, color-mix(in srgb, var(--accent) 14%, transparent), transparent 50%),
+    rgba(12, 10, 26, 0.86);
+  box-shadow: 0 18px 40px -26px color-mix(in srgb, var(--accent2) 80%, transparent);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition:
+    transform 0.25s,
+    border-color 0.25s;
+}
+.main-banner:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent2) 75%, transparent);
+}
+.main-banner-art {
+  grid-row: span 2;
+  width: 132px;
+  height: 82px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.main-banner-tag {
+  align-self: end;
+  justify-self: start;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 211, 107, 0.5);
+  background: linear-gradient(90deg, rgba(255, 211, 107, 0.2), color-mix(in srgb, var(--accent2) 20%, transparent));
+  font-family: var(--font-d);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #ffd36b;
+}
+.main-banner-copy {
+  grid-column: 2;
+  min-width: 0;
+}
+.main-banner-copy b {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+.main-banner-copy small {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.main-banner-fund {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+.main-banner-nums,
+.spot-fund-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-d);
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+.main-banner-nums i {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.main-banner-nums em,
+.spot-fund-row em {
+  margin-left: auto;
+  font-style: normal;
+  color: #ffd36b;
+}
+.main-banner-bar,
+.spot-fund-bar {
+  position: relative;
+  display: block;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.main-banner-bar i,
+.spot-fund-bar i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  min-width: 5px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent2) 70%, #ffd36b);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent2) 70%, transparent);
+}
+.main-banner-cta {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #ff6bb8, var(--accent2) 50%, #8b4dff);
+  font-family: var(--font-d);
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* spotlight while the main project is showing */
+a.spot-kicker.main {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 211, 107, 0.55);
+  background: linear-gradient(90deg, rgba(255, 211, 107, 0.2), color-mix(in srgb, var(--accent2) 22%, transparent));
+  letter-spacing: 0.08em;
+  color: #ffe2a0;
+  box-shadow: 0 0 24px -8px rgba(255, 211, 107, 0.6);
+}
+.spot-kicker.main .spark {
+  color: #ffd36b;
+}
+.spot-fund {
+  max-width: 420px;
+  margin: -8px 0 22px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent2) 40%, transparent);
+  background: rgba(12, 10, 26, 0.72);
+  backdrop-filter: blur(8px);
+}
+.spot-fund-row {
+  font-size: 14px;
+  font-weight: 500;
+  color: #d5d8e8;
+}
+.spot-fund-row b {
+  color: #fff;
+}
+.spot-fund-cta {
+  display: inline-flex;
+  gap: 6px;
+  margin-top: 10px;
+  font-family: var(--font-d);
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffd36b;
+}
+.spot-fund-cta:hover {
+  color: #fff;
+}
+.spot-choice.main {
+  border-color: rgba(255, 211, 107, 0.4);
+  box-shadow: inset 0 2px 0 rgba(255, 211, 107, 0.7);
+}
+.spot-choice.main img {
+  box-shadow: 0 0 0 2px rgba(255, 211, 107, 0.7);
+}
+
+/* card + detail for a project with a fund page */
+.card-main {
+  position: absolute;
+  top: 46px;
+  left: 14px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: var(--font-d);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #ffe39a, #ffd36b);
+  color: #2a1a00;
+  transform: translateZ(40px);
+}
+.detail-fund {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent2) 50%, transparent);
+  background: linear-gradient(110deg, color-mix(in srgb, var(--accent2) 20%, transparent), rgba(255, 255, 255, 0.02));
+  transition: border-color 0.2s;
+}
+.detail-fund:hover {
+  border-color: color-mix(in srgb, var(--accent2) 85%, transparent);
+}
+.detail-fund b {
+  display: block;
+  font-family: var(--font-d);
+  color: #ffd36b;
+}
+.detail-fund small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.detail-fund > span:last-child {
+  font-size: 20px;
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  .main-banner {
+    grid-template-columns: 104px minmax(0, 1fr) auto;
+  }
+  .main-banner-art {
+    width: 104px;
+    height: 66px;
+  }
+  .main-banner-fund {
+    display: none;
+  }
+  .main-banner-cta {
+    grid-column: 3;
+  }
+}
+@media (max-width: 760px) {
+  .main-banner {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 6px 14px;
+    padding: 10px;
+  }
+  .main-banner-art {
+    width: 76px;
+    height: 76px;
+  }
+  .main-banner-copy small {
+    white-space: normal;
+  }
+  .main-banner-cta {
+    display: none;
+  }
+  .spot-fund {
+    margin-top: -4px;
+  }
+  a.spot-kicker.main {
+    padding: 4px 10px 4px 8px;
+    letter-spacing: 0.02em;
+  }
+}

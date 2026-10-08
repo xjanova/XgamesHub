@@ -110,7 +110,7 @@ function DetailInner({
             {game.fund && (
               <a className="detail-fund" href={game.fund}>
                 <span>
-                  <b>★ โปรเจกต์หลัก · ร่วมสนับสนุน</b>
+                  <b>{game.id === "hive-breach" ? "★ โปรเจกต์หลัก · ร่วมสนับสนุน" : "ร่วมสร้างภารกิจต่อไป · ร่วมสนับสนุน"}</b>
                   <small>เปิดหน้าเกมเต็ม: คอนเซปต์ ตัวละคร แผนพัฒนา และระดับการสนับสนุน</small>
                 </span>
                 <span aria-hidden="true">→</span>

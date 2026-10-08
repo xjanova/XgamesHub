@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import DonatePanel from "@/components/fund/DonatePanel";
 import HeroVideo from "@/components/fund/HeroVideo";
 import Lightbox from "@/components/fund/Lightbox";
+import BreakerFundPage from "@/components/fund/BreakerFundPage";
 import s from "@/components/fund/fund.module.css";
 import type { FundImage } from "@/data/fund-hive-breach";
 import { baht, fundById, fundHref, fundPercent, fundProjects, type FundProject } from "@/data/fund";
@@ -115,6 +116,7 @@ export default async function FundPage(props: PageProps<"/fund/[id]">) {
     throw new Error(`fund "${p.id}": promptpay.id must be a mobile number, a national/tax ID or an e-wallet ID`);
   }
   const page = p.page;
+  if ("layout" in page) return <BreakerFundPage project={p} />;
 
   return (
     <div className={s.fund}>

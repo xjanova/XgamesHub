@@ -5,7 +5,7 @@ import Universe from "@/components/universe/Universe";
 import NovaGuide from "@/components/nova/NovaGuide";
 import { FACE } from "@/components/nova/clips";
 import { counts, featured, gameById, games, matches, type Featured, type Filter, type Game } from "@/data/games";
-import { fundHref, mainProject } from "@/data/fund";
+import { fundHref, fundProjects, mainProject } from "@/data/fund";
 import { guide, pick, type Chip, type Line } from "@/lib/guide";
 import { motionPref, useMotion } from "@/lib/prefs";
 import { devNotes } from "@/data/devnotes";
@@ -79,7 +79,7 @@ const TOUR: TourStep[] = [
 ];
 
 // the fund's main project always opens the spotlight, ahead of the regular featured games
-const SPOTLIGHT: Featured[] = [mainProject.spotlight, ...featured.filter((f) => f.id !== mainProject.spotlight.id)];
+const SPOTLIGHT: Featured[] = [mainProject.spotlight, ...featured.filter((f) => f.id !== mainProject.spotlight.id).map((f) => fundProjects.find((p) => p.gameId === f.id)?.spotlight ?? f)];
 
 export default function Hub() {
   const motion = useMotion();
@@ -99,6 +99,7 @@ export default function Hub() {
   const said = useRef(new Set<string>());
 
   const fGame = gameById(SPOTLIGHT[feat].id)!;
+  const fFund = fundProjects.find((p) => p.gameId === fGame.id);
   const fMeta = SPOTLIGHT[feat];
   const list = useMemo(() => games.filter((g) => matches(g, filter, query)), [filter, query]);
 
@@ -654,7 +655,7 @@ export default function Hub() {
             <div className="spot-head">
               {fGame.fund ? (
                 <a className="spot-kicker main" href={fGame.fund}>
-                  <span className="spark">★</span> โปรเจกต์หลัก · ร่วมสนับสนุน
+                  <span className="spark">★</span> {fGame.id === mainProject.gameId ? "โปรเจกต์หลัก · ร่วมสนับสนุน" : "เดโมพร้อมเล่น · ร่วมสนับสนุน"}
                 </a>
               ) : (
                 <span className="spot-kicker">
@@ -689,7 +690,7 @@ export default function Hub() {
                   <span key={t}>{t}</span>
                 ))}
               </div>
-              {fGame.fund && <SpotFund href={fGame.fund} />}
+              {fFund && <SpotFund project={fFund} />}
               <div className="spot-actions">
                 {fGame.play ? (
                   <a className="button primary" href={fGame.play} target="_blank" rel="noopener" onClick={() => playGame(fGame)}>

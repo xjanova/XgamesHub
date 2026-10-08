@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { baht, fundHref, fundPercent, mainProject } from "@/data/fund";
+import { baht, fundHref, fundPercent, mainProject, type FundProject } from "@/data/fund";
 import { gameById } from "@/data/games";
 import { useMotion } from "@/lib/prefs";
 
@@ -58,21 +58,21 @@ export default function MainProjectBanner() {
   );
 }
 
-/** Funding line inside the spotlight copy when the main project is showing. */
-export function SpotFund({ href }: { href: string }) {
-  const percent = fundPercent(mainProject);
+/** Funding line for the project currently selected in the spotlight. */
+export function SpotFund({ project }: { project: FundProject }) {
+  const percent = fundPercent(project);
   return (
     <div className="spot-fund">
       <div className="spot-fund-row">
         <span>
-          ระดมทุน <b>฿{baht(mainProject.raised)}</b> / ฿{baht(mainProject.goal)}
+          ระดมทุน <b>฿{baht(project.raised)}</b> / ฿{baht(project.goal)}
         </span>
         <em>{pct(percent)}%</em>
       </div>
       <span className="spot-fund-bar" aria-hidden="true">
         <i style={{ width: `${percent}%` }} />
       </span>
-      <a className="spot-fund-cta" href={href}>
+      <a className="spot-fund-cta" href={fundHref(project)}>
         เปิดหน้าเกมเต็ม · ร่วมสนับสนุน <span aria-hidden="true">→</span>
       </a>
     </div>

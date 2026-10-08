@@ -9,13 +9,13 @@ import s from "./fund.module.css";
  */
 export default function Lightbox() {
   const ref = useRef<HTMLDialogElement>(null);
-  const [img, setImg] = useState<{ src: string; alt: string } | null>(null);
+  const [img, setImg] = useState<{ src: string; alt: string; kind: string } | null>(null);
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const btn = (e.target as Element | null)?.closest<HTMLElement>("[data-zoom]");
       if (!btn) return;
-      setImg({ src: btn.dataset.zoom ?? "", alt: btn.dataset.alt ?? "" });
+      setImg({ src: btn.dataset.zoom ?? "", alt: btn.dataset.alt ?? "", kind: btn.dataset.kind || "ภาพคอนเซปต์" });
       ref.current?.showModal();
     };
     document.addEventListener("click", onClick);
@@ -34,7 +34,7 @@ export default function Lightbox() {
         <figure>
           <img src={img.src} alt={img.alt} />
           <figcaption>
-            {img.alt} <span>· ภาพคอนเซปต์ · แตะเพื่อปิด</span>
+            {img.alt} <span>· {img.kind} · แตะเพื่อปิด</span>
           </figcaption>
         </figure>
       )}

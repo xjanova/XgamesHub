@@ -36,13 +36,22 @@ export default function UpgradeLab() {
       <div className={s.buildGrid}>
         <div className={s.frame}>
           <span>FRAME / {selected.name}</span>
-          <img
-            src="/art/breaker/ship.webp"
-            width={560}
-            height={260}
-            alt="ยาน BREAKER เดิม ใช้ประกอบหน้าจอต้นแบบ"
-          />
-          <small>ภาพยาน BREAKER จากเดโม ใช้ประกอบการร่างหน้าจอ</small>
+          <button
+            type="button"
+            className={s.shipArt}
+            data-zoom={selected.image}
+            data-alt={selected.imageAlt}
+            data-kind="ภาพคอนเซปต์ยาน"
+            aria-label={`ขยายภาพยาน ${selected.name}`}
+          >
+            <img
+              src={selected.image}
+              width={1536}
+              height={1024}
+              alt={selected.imageAlt}
+            />
+          </button>
+          <small>ภาพคอนเซปต์ {selected.name} · กดขยาย · ยังไม่มีในเดโม</small>
           <h3>{selected.role}</h3>
           <p>{selected.skill}</p>
           <p className={s.cost}>{selected.cost}</p>

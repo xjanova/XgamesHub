@@ -2,6 +2,7 @@
 
 import type { PointerEvent } from "react";
 import type { Game } from "@/data/games";
+import GameLogo from "./GameLogo";
 
 const BADGE: Record<Game["state"], string> = {
   play: "WEB DEMO",
@@ -80,7 +81,7 @@ export default function GameCard({
         <span className="card-num">X / {String(index + 1).padStart(2, "0")}</span>
         {game.fund && <span className="card-main">{game.id === "hive-breach" ? "★ โปรเจกต์หลัก" : "ร่วมสนับสนุน"}</span>}
         <div className="card-body">
-          <h3>{game.name}</h3>
+          <h3><GameLogo game={game} className="card-game-logo" lazy /></h3>
           <div className="card-genre">{game.genre.toUpperCase()}</div>
           <p>{game.tagline}</p>
           <div className="card-foot">

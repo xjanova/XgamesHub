@@ -1,0 +1,188 @@
+{
+  "mode": "Built-in imagegen tool",
+  "transparent_background": true,
+  "logos": [
+    {
+      "id": "xnova",
+      "name": "X-NOVA",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset for actual release, not a mockup. Text (verbatim): \"X-NOVA\". Premium high-impact sci-fi arcade shooter title logo. Giant italic gold X and machined violet-silver NOVA typography; cyan ion edges, orbital star slash cutting behind the wordmark, compact spacecraft wing motifs. Preserve the original gold X/violet NOVA identity. Energetic Gradius-like space battle branding, tactile bevels, no war scene. Composition: isolated wide horizontal centered logo taking most of the canvas width, modest empty transparent margin; no scene, no panel, no extra text or tagline, no watermark. Typography hand-crafted and polished, exact spelling, legible at card thumbnail size. Scene/backdrop: genuinely transparent alpha background, no solid black or white rectangle, no checkerboard baked into the artwork. Materials and lighting are contained within the logo silhouette; avoid wispy large glows or stray sparkles. Only one finished logo.",
+      "master": "public/art/logos/xnova.png",
+      "generatedOriginal": "exec-4163a99d-816a-417b-9245-a2befc36e83c.png"
+    },
+    {
+      "id": "umbra",
+      "name": "NOVA·UMBRA",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset for actual release, not a mockup. Text (verbatim): \"NOVA·UMBRA\". Prestige atmospheric 2.5D shadow adventure logo. Elegant ivory carved serif wordmark, violet glowing interpunct between NOVA and UMBRA. Small crescent enclosing a luminous lantern spirit above the words, fine thorn and mist silver filigree, ethereal teal light, restrained haunting dark-fantasy finish. Typography stays clearly readable, icon secondary. Composition: isolated wide horizontal centered logo taking most of the canvas width, modest empty transparent margin; no scene, no panel, no extra text or tagline, no watermark. Typography hand-crafted and polished, exact spelling, legible at card thumbnail size. Scene/backdrop: genuinely transparent alpha background, no solid black or white rectangle, no checkerboard baked into the artwork. Materials and lighting are contained within the logo silhouette; avoid wispy large glows or stray sparkles. Only one finished logo.",
+      "master": "public/art/logos/umbra.png",
+      "generatedOriginal": "exec-61f102d2-5159-4b36-bb9e-b9566a6117f9.png"
+    },
+    {
+      "id": "theone",
+      "name": "THE ONE",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset for actual release, not a mockup. Text (verbatim): \"THE ONE\". AAA fantasy action RPG title logo. Massive sculpted antique-gold serif lettering with ivory lit edges, astral witch crest above: eight-point star encircled by a slender crescent and elegant violet crystal ornament. Luxurious cosmic gothic treatment, starlit magical rune etching on lettering, no characters. Composition: isolated wide horizontal centered logo taking most of the canvas width, modest empty transparent margin; no scene, no panel, no extra text or tagline, no watermark. Typography hand-crafted and polished, exact spelling, legible at card thumbnail size. Scene/backdrop: genuinely transparent alpha background, no solid black or white rectangle, no checkerboard baked into the artwork. Materials and lighting are contained within the logo silhouette; avoid wispy large glows or stray sparkles. Only one finished logo.",
+      "master": "public/art/logos/theone.png",
+      "generatedOriginal": "exec-20ee7e84-1523-46a9-9c8d-36cc0977d31c.png"
+    },
+    {
+      "id": "chanthra",
+      "name": "MAE MO CHANTHRA",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset for actual release, not a mockup. Text (verbatim): \"MAE MO CHANTHRA\". Thai supernatural silhouette platformer title logo. Mystical old-gold serif letters, MAE MO smaller line above CHANTHRA large. Crescent moon and open divination eye crest, flowing white hair-like silver ornamental strands and a single hanging lantern, dark amethyst subtle glints. Haunting refined occult Thai fantasy, not gambling. Composition: isolated wide horizontal centered logo taking most of the canvas width, modest empty transparent margin; no scene, no panel, no extra text or tagline, no watermark. Typography hand-crafted and polished, exact spelling, legible at card thumbnail size. Scene/backdrop: genuinely transparent alpha background, no solid black or white rectangle, no checkerboard baked into the artwork. Materials and lighting are contained within the logo silhouette; avoid wispy large glows or stray sparkles. Only one finished logo.",
+      "master": "public/art/logos/chanthra.png",
+      "generatedOriginal": "exec-aeb2026c-7690-4bf7-824c-3f09fb4f5039.png"
+    },
+    {
+      "id": "tetrisvs",
+      "name": "TetrisVS",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"TetrisVS\". Competitive versus block puzzle game. Chunky polished translucent cyan-and-lime acrylic letters, VS in hot coral on the right, interlocking tetromino shapes and a sharp lightning duel crest. Electric esports arcade energy. Exact mixed case TetrisVS, no extra words. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/tetrisvs.png",
+      "generatedOriginal": "exec-29e87a9b-2fcf-43c2-a745-42b31ed5fc8e.png"
+    },
+    {
+      "id": "snake",
+      "name": "SNAKE.IO",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"SNAKE.IO\". Stylized multiplayer snake arena game. Bold curved three-dimensional lime-green and turquoise wordmark, a sleek expressive neon snake coils around the S and .IO with a readable tiny snake eye. Glossy scale texture, cheerful competitive arcade style, no realistic scary snake. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/snake.png",
+      "generatedOriginal": "exec-572ed17c-6ef3-4544-86b6-2a6cea0acc76.png"
+    },
+    {
+      "id": "8ball",
+      "name": "8 BALL POOL",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"8 BALL POOL\". Premium billiards sports game. Thick metallic ivory and gold slab lettering above a small green felt shield, dominant glossy black eight ball bearing numeral 8 behind the words, two tasteful crossed cues. Club-quality polished lacquer badge, jewel green accents, not a casino or gambling logo. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/8ball.png",
+      "generatedOriginal": "exec-a1f02504-c766-4398-9d8e-9cd3054cc83a.png"
+    },
+    {
+      "id": "snooker",
+      "name": "SNOOKER 2D",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"SNOOKER 2D\". Precision snooker sports game. Clean proud embossed silver-and-emerald sporting wordmark, carefully arranged red ball plus yellow ball and long slender wooden cue arc, compact shield silhouette with rich green enamel. Distinct from the eight-ball logo; no black eight ball, no casino. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/snooker.png",
+      "generatedOriginal": "exec-bd331eca-6740-4e75-92dd-e5d304b727fe.png"
+    },
+    {
+      "id": "tetris",
+      "name": "TETRIS CLASSIC",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"TETRIS CLASSIC\". Retro falling-block arcade puzzle game. Brilliant geometric extruded beveled letters built from interlocking colourful violet, gold, cyan, coral square modules. Main TETRIS large, CLASSIC smaller below, clean exact words, striking arcade cartridge-era personality with modern polish. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/tetris.png",
+      "generatedOriginal": "exec-5a60d8ee-2da0-446c-8672-b080582285a4.png"
+    },
+    {
+      "id": "space-shooter",
+      "name": "SPACE SHOOTER",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"SPACE SHOOTER\". Classic 2D arcade spaceship defense game. Heavy angular silver-blue letters with warm orange thruster-lit underside; a small triangular interceptor pierces the center crest, crisp laser chevrons behind wordmark, hard-surface mechanical embossed metal, readable strong horizontal logo. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/space-shooter.png",
+      "generatedOriginal": "exec-55c64d17-3a26-4eee-a86d-e38fedf67e26.png"
+    },
+    {
+      "id": "rollabrain",
+      "name": "ROLLABRAIN",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"ROLLABRAIN\". 3D physics rolling-ball collectible game. Playful but premium rounded sapphire and turquoise inflated letters; glossy neon blue ball with a small gold cube suspended in orbit, curved swoosh suggesting momentum. Inventive energetic science-play branding, readable exact word. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/rollabrain.png",
+      "generatedOriginal": "exec-8f41d56f-33c9-479e-a7ec-159cb851e01c.png"
+    },
+    {
+      "id": "maze",
+      "name": "MAZE CHASE",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"MAZE CHASE\". Retro maze pursuit game. Thick luminous yellow-orange three-dimensional arcade lettering, dark navy inset maze tracks on letters; a tiny abstract pellet trail turns through angular frame, tasteful pixel-labyrinth border and contrasting electric-blue accent. Original maze icon, no Pac-Man character or franchise mark. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/maze.png",
+      "generatedOriginal": "exec-0a92c268-7b66-4e58-9184-cb82f4e4608b.png"
+    },
+    {
+      "id": "rublicx",
+      "name": "RUBLICX",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"RUBLICX\". 3D puzzle cube trainer game. Precisely faceted white metallic geometric wordmark with red, blue, yellow and green square inlays. Isometric 3x3 puzzle cube crest, immaculate hard-surface construction and dynamic rotation orbit. Name exactly RUBLICX, not RUBIK; no other brand. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/rublicx.png",
+      "generatedOriginal": "exec-9c8f3b39-df3b-4daf-ba35-f432944ac507.png"
+    },
+    {
+      "id": "runeward",
+      "name": "RUNEWARD",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"RUNEWARD\". Tower defense on floating sky islands. Sculpted cool-silver and emerald fantasy serif letters, sapphire crystal heart in a shield above, tiny ancient rune masonry and floating-stone wing fragments at sides. Noble defensive magical energy, clean jade and cyan palette, readable title. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/runeward.png",
+      "generatedOriginal": "exec-dcfda590-ade1-49f7-a0d6-7f93125c17e5.png"
+    },
+    {
+      "id": "lucky",
+      "name": "LUCKY ISLES",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"LUCKY ISLES\". Thai island party board game. Bright juicy extruded sky-blue lettering edged in buttery gold, playful ivory dice crest with clear pips and tiny tropical palm and floating island silhouette. Charming colourful board-game personality, fun family party tone, no money or gambling imagery. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/lucky.png",
+      "generatedOriginal": "exec-861266b3-5126-44a7-948c-9c468d5950c4.png"
+    },
+    {
+      "id": "neon",
+      "name": "NEON COVEN",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"NEON COVEN\". Cyber gothic 1v1 fighting game. Razor-edged metallic black-chrome wordmark illuminated by electric magenta and violet tubes, circuit-etched occult crescent and fractured triangular sigil, aggressive stylish fighting-game energy, ornamental steel thorns. Never cover the letters. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/neon.png",
+      "generatedOriginal": "exec-22756007-e37f-417a-b020-2f59a572318b.png"
+    },
+    {
+      "id": "cafe",
+      "name": "CAFÉ PROJECT",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"CAFÉ PROJECT\". Cozy 2.5D cafe management game. Warm cream and caramel carved rounded serif lettering, CAFÉ large above PROJECT, tasteful mint-enamel coffee cup with latte-art heart and coffee-bean wreath. Boutique illustrated logo, appealing realistic ceramic and wood accents, cheerful refined artisanal branding. Include the accent É. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/cafe.png",
+      "generatedOriginal": "exec-3b3b4604-7730-46cc-85c9-e3b7a33cf877.png"
+    },
+    {
+      "id": "juntra",
+      "name": "JUNTRA",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"JUNTRA\". Lunar tarot interactive divination game. Elegant deeply sculpted pearlescent champagne-gold serif letters, crescent moon framing a beautiful ornate tarot card and luminous violet crystal. Fine astral chart details in a balanced compact ornamental crest, luxurious mystical reading room style; no other name or text. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/juntra.png",
+      "generatedOriginal": "exec-a9c93d51-5b42-45d3-a865-6193bba3f5e6.png"
+    },
+    {
+      "id": "theone-sunkalp",
+      "name": "THE ONE · สูญกัป",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"THE ONE · สูญกัป\". Dark xianxia isometric action RPG. Ancient weathered bronze-and-black carved serif THE ONE above exact Thai title สูญกัป, two distinct fully legible text lines. Shattered eclipse ring, long ritual sword, crimson ember fissures and subtle Thai-Chinese spiritual engraving. Menacing prestigious premium ARPG logo. Render Thai text accurately: สูญกัป. No English transliteration or extra words. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/theone-sunkalp.png",
+      "generatedOriginal": "exec-156ff982-713d-467f-bf06-11117fefdcc8.png"
+    },
+    {
+      "id": "xenon",
+      "name": "XENON",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"XENON\". Light gunship sci-fi game project. Clean heavy italic machined ivory-chrome letters with burnt-orange ceramic inserts and dark gunmetal bevels, compact sleek interceptor wing crest, minimal orange ion trail, technically precise tactical gunship branding. Different from gold-violet X-NOVA. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/xenon.png",
+      "generatedOriginal": "exec-f4303fe8-e6f3-40a3-800d-ed6db1a98473.png"
+    },
+    {
+      "id": "astral-pact",
+      "name": "ASTRAL PACT",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"ASTRAL PACT\". Elemental tarot-card battler game. Luxurious silver-and-champagne-gold engraved serif words across a crystalline arc, overlapping two ornate card silhouettes and blue-orange elemental star seal, jewel-like magical contract crest. Balanced exact readable words, premium strategic fantasy art. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/astral-pact.png",
+      "generatedOriginal": "exec-9bce4e18-ed73-4a5e-b023-30c8e283e487.png"
+    },
+    {
+      "id": "type-nova",
+      "name": "TYPE//NOVA",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"TYPE//NOVA\". Typing-to-fire sci-fi action game. Bold futuristic icy silver letterforms with neon cyan and violet illuminated keyboard-key faces; two bright slash cuts // visually central, tiny crosshair star and bracket-wing crest. High energy typing-meets-space-combat identity. Exact text TYPE//NOVA; do not remove slashes. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/type-nova.png",
+      "generatedOriginal": "exec-1e896484-94bd-41ff-bf2b-c22577b5035b.png"
+    },
+    {
+      "id": "soi-riot",
+      "name": "SOI RIOT",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"SOI RIOT\". Thai street-sports dodgeball brawler. Aggressive slanted orange-red and teal streetwear typography with chunky polished graffiti enamel; dynamic rubber dodgeball streak, restrained urban sticker-edge silhouette, tiny Thai street roof line accent. Competitive playful arcade combat, no guns or blood. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/soi-riot.png",
+      "generatedOriginal": "exec-594d0037-da04-4df9-a944-8661efb24ee4.png"
+    },
+    {
+      "id": "paradox-pinball",
+      "name": "PARADOX PINBALL",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"PARADOX PINBALL\". Dimensional spirit-market roguelite pinball game. Neon cyan and antique brass sculpted arcade lettering, chrome pinball crossing two interlocking spirit portal rings with stylish flipper brackets and a tiny talisman bell. Intricate whimsical night-market fantasy, not a casino, exact two words clearly readable. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/paradox-pinball.png",
+      "generatedOriginal": "exec-73945b51-56a0-44b5-a9f9-14cc286dc7e0.png"
+    },
+    {
+      "id": "lotus-ascension",
+      "name": "LOTUS ASCENSION",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"LOTUS ASCENSION\". Thai cultivation action RPG and sect-building game. Delicate but powerful carved ivory-and-rose-gold fantasy serif words, luminous jade lotus above with subtle elegant naga-inspired flowing ornament, ascending crystal aura contained in the crest. Thai high-fantasy prestige, refined sacred floral curves, no characters. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/lotus-ascension.png",
+      "generatedOriginal": "exec-d6ef221c-c392-4015-b1b6-44671966c735.png"
+    },
+    {
+      "id": "skyshard",
+      "name": "SKYSHARD",
+      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset to ship in an actual game, not a website icon, simple vector wordmark, mockup or sketch. Text (verbatim): \"SKYSHARD\". Turn-based rune-tank artillery game. Rugged embossed glacier-blue and silvery steel angular letters, floating sapphire rune crystal above a compact mythical armored cannon crest; stone wing fragments and pale violet rune accents. Strong tactical fantasy machinery, readable precise title. Composition: one polished isolated wide horizontal centered title logo occupying almost the full image width with safe margin, cohesive distinctive typography and integrated emblem. Genuinely transparent alpha background, no opaque rectangular background, no checkerboard rendered into the image, no scene. All shapes/glows contained within the logo silhouette. Crisp fine material detail and high-quality dimensional lighting, readable at a small card size. No tagline, watermark or extra words. Exact spelling.",
+      "master": "public/art/logos/skyshard.png",
+      "generatedOriginal": "exec-dcb16f26-cf01-4478-a848-4ee0acf49c94.png"
+    }
+  ]
+}

@@ -538,8 +538,8 @@ html.js[data-motion="on"] .rise:not(.in) {
   overflow: hidden;
   isolation: isolate;
 }
-.card-game-logo { display: block; width: 100%; height: 74px; object-fit: contain; object-position: left center; }
-.detail-game-logo { display: block; width: 100%; max-width: 440px; height: 118px; object-fit: contain; object-position: left center; }
+.card-game-logo { display: block; width: 100%; height: 104px; object-fit: contain; object-position: left center; }
+.detail-game-logo { display: block; width: 100%; max-width: 440px; height: 150px; object-fit: contain; object-position: left center; }
 .spotlight.has-media { background: #080914; }
 .spot-media { position: absolute; inset: 0; z-index: 0; }
 .spot-footage { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }

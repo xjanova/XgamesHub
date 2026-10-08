@@ -1,65 +1,56 @@
-# Catalogue game identities
+# Production PNG game identities
 
-The hub uses one logo registry for all 29 games, shared by spotlight slides,
-catalogue cards and game detail dialogs. The game name remains the image's
-accessible label. New vector marks are editable design proposals for the existing
-game concepts; the game executables themselves are unchanged.
+All 29 games have individual transparent PNG master logos for actual project use.
+The same identity is shared by hub slides, catalogue cards and detail dialogs.
+The web uses smaller alpha WebP versions via a picture source, with PNG fallback.
+Names remain accessible labels and work with the existing catalogue search.
 
-## Existing identities
+## Files
 
-- HIVE // BREACH: COREWAR: original `public/art/corewar-logo.webp`.
-- X-NOVA: BREAKER: original in-game `public/art/breaker/logo.webp`.
-- SIAM SPEED: original `D:/GameProject/SiamSpeed/assets/ui/logo.png`, converted
-  to WebP without visual edits, saved as `public/art/logos/siam-speed.webp`.
-- X-NOVA: title-screen italic heavy wordmark, gold X and violet NOVA from
-  `XNova/css/xnova.css`, adapted into a transparent SVG.
-- THE ONE: title-screen gold serif typography from `TheOne/css/game.css`.
-- NOVA·UMBRA: title-screen ivory serif wordmark and lavender interpunct from
-  `Umbra/css/umbra.css`.
+- Full-resolution masters: `public/art/logos/<game-id>.png` (29 files).
+- Optimised generated-logo previews: `public/art/logos/<game-id>.webp` (26 files).
+- Existing HIVE and BREAKER web previews remain at their original paths.
+- Registry and actual dimensions: `src/data/game-logos.ts`.
+- Exact final prompt set and provenance: `docs/game-logo-prompts.json`.
+- Optional local packaging script: `scripts/prepare-png-game-logos.mjs`.
+
+## Existing artwork preserved
+
+- HIVE // BREACH: COREWAR uses its original transparent PNG from
+  `HIVE II BREACH/Art/Game/corewar-logo-transparent-v4.png`.
+- X-NOVA: BREAKER uses the actual game's transparent `assets/img/logo.webp`,
+  decoded to PNG without visual edits. The raw `art_src/raw/logo.png` has a baked
+  checkerboard and is deliberately not used as a production master.
+- SIAM SPEED uses the game's original `assets/ui/logo.png`.
 
 `JuntraGame/assets/banners/logo.webp` was inspected and rejected: it is a full
-MAE MO CHANTHRA banner, not a JUNTRA game logo. Do not map it to JUNTRA.
+MAE MO CHANTHRA banner, not a JUNTRA game logo.
 
-## Newly designed marks
+## Newly created production art
 
-All output paths are `public/art/logos/<id>.svg`. Their exact editable vector
-design definitions are in `scripts/build-game-logos.mjs` (run with Node).
+26 new logos were generated separately with the built-in imagegen tool, each
+with genuine transparency, exact catalogue wording and its own game-specific
+materials and crest. X-NOVA retains its gold X / violet NOVA identity; UMBRA
+keeps ivory and lavender lunar motifs; THE ONE keeps gold astral fantasy motifs.
+Other logos reflect their actual genres: neon combat, billiards, rune defense,
+cozy cafe, tarot, Thai street sports, puzzle blocks and gunships. No simple SVG
+wordmarks or vector placeholders are used by the production logo registry.
 
-| Game | Symbol |
-| --- | --- |
-| MAE MO CHANTHRA | Crescent and divination eye |
-| TetrisVS | Interlocking blocks and versus lightning |
-| SNAKE.IO | Continuous snake trail |
-| 8 BALL POOL | Numbered eight ball |
-| SNOOKER 2D | Cue, ball and pocket geometry |
-| TETRIS CLASSIC | T-block and falling squares |
-| SPACE SHOOTER | Fighter silhouette and tracer lines |
-| ROLLABRAIN | Rolling globe and orbital trail |
-| MAZE CHASE | Open maze and collectible |
-| RUBLICX | Subdivided isometric cube |
-| RUNEWARD | Rune-bearing shield |
-| LUCKY ISLES | Tilted dice and island baseline |
-| NEON COVEN | Neon circle, triangle and energy bolt |
-| CAFÉ PROJECT | Cup, steam and saucer |
-| JUNTRA | Reading book under a crescent |
-| THE ONE · สูญกัป | Ritual sword and broken circular seal |
-| XENON | Light gunship silhouette |
-| ASTRAL PACT | Tarot card and pact star |
-| TYPE//NOVA | Code brackets and slash |
-| SOI RIOT | Street-sports ball |
-| PARADOX PINBALL | Pinball cabinet and phase bumper |
-| LOTUS ASCENSION | Layered lotus crest |
-| SKYSHARD | Rune shard above an artillery tank |
+The original generated PNGs are retained unchanged at full resolution. WebP
+conversion only resizes/encodes the same pixels while preserving alpha.
 
-Vector assets are repo-native designs, not AI-generated raster images. Transparent
-backgrounds, exact catalogue names and individual palettes are preserved.
+## Spotlight
 
-## Spotlight media
+The duplicate main-project banner above the carousel is removed. HIVE uses the
+original responsive concept-reveal video and poster from its full fund page.
+BREAKER uses the actual demo gameplay recording. Both slides retain their own
+logos, campaign links and live funding totals. Other slides retain interactive
+planets. Video playback respects Motion, tab visibility and data saving, with a
+visible play/pause control positioned clear of Nova. Nova docks for video slides.
 
-HIVE uses the original responsive concept-reveal video sources and poster from
-its full fundraising page. BREAKER uses its actual demo gameplay recording.
-Other slides retain their interactive planets; no footage is substituted from
-another game. The duplicate main-project banner above the carousel is removed.
-The carousel retains funding totals, page links, navigation and game actions.
-Videos pause offscreen, in background tabs and when Motion is disabled, and do
-not autoplay for a data-saving connection. Each clip has a pause/play control.
+## Context
+
+Existing hub context was read from the BrainX note:
+“Session 2026-10-05 - XgamesHub full-3D hub + Nova gamer-girl video guide
+(deployed via xmanstudio sites)”. The note is historical context; current releases
+are deployed by this repository's Release & Deploy workflow.

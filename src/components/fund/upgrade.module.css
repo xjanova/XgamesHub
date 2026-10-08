@@ -1,0 +1,283 @@
+.lab {
+  background: #0a1620;
+  border: 1px solid #43606e;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #dcecf3;
+}
+.topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 18px 25px;
+  background: #172d3b;
+  font-size: 12px;
+}
+.topline span {
+  letter-spacing: 0.15em;
+  color: #76e4ef;
+}
+.topline b {
+  font-weight: 400;
+  color: #ffb37c;
+}
+.shipTabs,
+.crewTabs,
+.rankTabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 23px 25px;
+}
+.lab button {
+  cursor: pointer;
+  color: #c9dce6;
+  background: #102635;
+  border: 1px solid #3b596b;
+  border-radius: 5px;
+}
+.lab button[aria-pressed="true"] {
+  background: #234453;
+  border-color: #7be9e9;
+  box-shadow: inset 0 -2px #7be9e9;
+  color: #fff;
+}
+.shipTabs button {
+  padding: 12px 22px;
+  font: 600 15px var(--font-d);
+}
+.buildGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 30px;
+  padding: 0 25px 28px;
+}
+.frame {
+  background:
+    radial-gradient(ellipse, #2c586744, transparent 65%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 29px,
+      #6bcada0c 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 29px,
+      #6bcada0c 30px
+    );
+  padding: 25px;
+  border: 1px solid #2d4a5b;
+}
+.frame > span,
+.paths > span {
+  color: #70d9e5;
+  font: 500 12px var(--font-d);
+}
+.frame img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  margin: 15px 0;
+}
+.frame small {
+  display: block;
+  font-size: 10px;
+  color: #aebfca;
+}
+.frame h3 {
+  font-size: 22px;
+  margin-top: 20px;
+}
+.frame p,
+.paths p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #bfd0dc;
+  margin-top: 10px;
+}
+.frame .cost {
+  color: #ffb37c;
+}
+.paths {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.paths button {
+  text-align: left;
+  padding: 21px;
+}
+.paths strong,
+.paths small,
+.paths b {
+  display: block;
+}
+.paths small {
+  color: #76e4ef;
+  font: 12px var(--font-d);
+  margin-bottom: 8px;
+}
+.paths strong {
+  font-size: 17px;
+}
+.paths b {
+  font-size: 12px;
+  margin-top: 15px;
+  color: #76e4ef;
+}
+.crewHeader {
+  padding: 30px 25px 0;
+  border-top: 1px solid #355060;
+}
+.crewHeader > span {
+  font: 12px var(--font-d);
+  color: #ffb37c;
+}
+.crewHeader h3 {
+  font-size: 23px;
+  margin: 10px 0;
+}
+.crewHeader p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #bfd0dc;
+}
+.crewTabs button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px;
+  flex: 1;
+  text-align: left;
+}
+.crewTabs img {
+  object-fit: cover;
+  object-position: top;
+  border-radius: 4px;
+}
+.crewTabs span {
+  font: 600 20px var(--font-d);
+}
+.crewTabs small {
+  display: block;
+  font: 11px var(--font-b);
+  margin-top: 5px;
+}
+.rankTabs {
+  padding-top: 0;
+}
+.rankTabs button {
+  padding: 12px 14px;
+  font: 600 12px var(--font-d);
+  flex: 1;
+}
+.rankTabs span {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffb37c;
+}
+.skillDetail {
+  margin: 0 25px 25px;
+  padding: 25px;
+  border: 1px solid #70d9e5;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 25px;
+  background: #173140;
+}
+.skillDetail span {
+  font: 12px var(--font-d);
+  color: #76e4ef;
+}
+.skillDetail h4 {
+  font: 600 29px var(--font-d);
+  margin: 10px 0;
+}
+.skillDetail p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-top: 10px;
+}
+.skillDetail small {
+  font-size: 12px;
+  color: #abc6d3;
+}
+.allRanks {
+  margin: 0 25px 20px;
+}
+.allRanks summary {
+  cursor: pointer;
+  color: #76e4ef;
+}
+.allRanks > div {
+  border-bottom: 1px solid #355060;
+  padding: 15px 0;
+}
+.allRanks b,
+.allRanks span {
+  display: block;
+  font-size: 13px;
+}
+.allRanks span {
+  color: #ffb37c;
+  margin: 5px 0;
+}
+.allRanks p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #bdd1db;
+}
+.notice {
+  font-size: 12px;
+  line-height: 1.9;
+  margin: 0;
+  padding: 22px 25px;
+  background: #1c2930;
+  color: #c6d4dc;
+}
+.lab button:focus-visible,
+.lab summary:focus-visible {
+  outline: 3px solid #ffb37c;
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .buildGrid,
+  .skillDetail {
+    grid-template-columns: 1fr;
+  }
+  .topline {
+    flex-direction: column;
+  }
+  .shipTabs,
+  .crewTabs,
+  .rankTabs {
+    padding-inline: 18px;
+  }
+  .buildGrid {
+    padding-inline: 18px;
+    gap: 20px;
+  }
+  .crewTabs button {
+    min-width: 100%;
+    flex: 1;
+  }
+  .rankTabs button {
+    flex: 0 0 calc(33.33% - 7px);
+    padding: 12px 4px;
+  }
+  .skillDetail {
+    margin-inline: 18px;
+    padding: 20px;
+  }
+  .skillDetail h4 {
+    font-size: 24px;
+  }
+  .frame {
+    padding: 18px;
+  }
+  .crewHeader {
+    padding-inline: 18px;
+  }
+}

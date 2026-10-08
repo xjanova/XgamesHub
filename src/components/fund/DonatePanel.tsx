@@ -10,7 +10,7 @@ import { formatPromptPayId, MAX_AMOUNT, promptPayPayload, promptPayTarget, valid
 const CUSTOM = "custom";
 const QUIET = 4; // modules of white border around the code, as the QR spec asks
 
-type Props = Pick<FundProject, "tiers" | "promptpay" | "contact"> & { project: string };
+type Props = Pick<FundProject, "tiers" | "promptpay" | "contact"> & { project: string; customNote?: string };
 
 const soldOut = (t: FundTier) => t.limit !== undefined && (t.taken ?? 0) >= t.limit;
 
@@ -31,7 +31,7 @@ function qrPath(payload: string) {
   return { d, size: modules.size + QUIET * 2, modules };
 }
 
-export default function DonatePanel({ tiers, promptpay, contact, project }: Props) {
+export default function DonatePanel({ tiers, promptpay, contact, project, customNote = "รับของรางวัลของระดับที่ยอดถึง" }: Props) {
   const [pick, setPick] = useState(() => (tiers.find((t) => t.highlight && !soldOut(t)) ?? tiers[0]).id);
   const [custom, setCustom] = useState("");
   const [copied, setCopied] = useState(false);
@@ -154,13 +154,13 @@ export default function DonatePanel({ tiers, promptpay, contact, project }: Prop
           </label>
           <ul>
             <li>ทุกยอดช่วยให้เกมเดินหน้า</li>
-            <li>รับของรางวัลของระดับที่ยอดถึง</li>
+            <li>{customNote}</li>
           </ul>
         </div>
       </div>
 
       <aside ref={payRef} className={s.pay} aria-live="polite">
-        <span className={s.eyebrow}>สแกนจ่ายด้วยพร้อมเพย์</span>
+        <span className={s.eyebrow}>{open ? "สแกนจ่ายด้วยพร้อมเพย์" : "ช่องทางสนับสนุน / ยังไม่เปิดรับ"}</span>
         <div className={s.payAmount}>
           {amountOk ? (
             <>
@@ -218,7 +218,7 @@ export default function DonatePanel({ tiers, promptpay, contact, project }: Prop
           <li>สแกนด้วยแอปธนาคารที่รองรับพร้อมเพย์ ยอดเงินจะขึ้นให้เอง</li>
           <li>ตรวจชื่อบัญชีก่อนยืนยัน แล้วเก็บสลิปไว้</li>
           <li>
-            ส่งสลิป ระดับที่เลือก และชื่อที่อยากให้แสดง ที่{" "}
+            ส่งสลิปพร้อมชื่อเกม {project} ระดับที่เลือก และชื่อที่อยากให้แสดง ที่{" "}
             <a href={contact.href} target="_blank" rel="noopener">
               {contact.label}
             </a>

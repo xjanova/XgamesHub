@@ -1,14 +1,8 @@
 import type { Featured } from "@/data/games";
 import { hiveBreachPage, type FundPage } from "@/data/fund-hive-breach";
+import { breakerPage, type BreakerPage } from "@/data/fund-breaker";
 
-/**
- * Projects that take donations, each with its own page at /fund/<id>/.
- *
- * The site is a static export, so nothing here updates by itself: after
- * checking incoming transfers, edit `raised`, `backers` and `updated` (and
- * `supporters` for names people asked to show), then rebuild and deploy.
- * Leave `promptpay.id` empty to show the page with donations closed.
- */
+/** Editorial campaign metadata. Live totals, donors and reward terms are managed by XMAN Studio /games-support. Legacy PromptPay fields are not used by the current payment flow. */
 
 export type FundTier = {
   id: string;
@@ -43,7 +37,7 @@ export type FundProject = {
   supporters: string[];
   /** Pinned first in the hub's spotlight. */
   spotlight: Featured;
-  page: FundPage;
+  page: FundPage | BreakerPage;
 };
 
 export const fundProjects: FundProject[] = [
@@ -135,6 +129,26 @@ export const fundProjects: FundProject[] = [
       tags: ["Main project", "Action × RTS", "ร่วมสนับสนุน"],
     },
     page: hiveBreachPage,
+  },
+  {
+    id: "breaker",
+    gameId: "breaker",
+    goal: 150_000,
+    raised: 0,
+    backers: 0,
+    updated: "2026-10-07",
+    // Intentionally closed until the owner supplies a public receiving account.
+    promptpay: { id: "", name: "" },
+    contact: { label: "ส่งสลิป BREAKER ที่หน้าติดต่อ XMAN Studio", href: "https://xman4289.com/contact" },
+    tiers: [
+      { id: "spark", amount: 100, name: "SPARK", title: "ประกายแรก", perks: ["ร่วมสมทบทุนภารกิจใหม่", "แสดงชื่อบนกำแพงผู้สนับสนุนเมื่อยืนยันรายการ (เลือกไม่เปิดเผยชื่อได้)"] },
+      { id: "salvager", amount: 300, name: "SALVAGER", title: "ทีมเก็บกู้", highlight: true, perks: ["ร่วมสมทบทุนงานด่านและอุปกรณ์", "รับคำขอบคุณและแสดงชื่อได้เช่นเดียวกับทุกระดับ"] },
+      { id: "wingmate", amount: 1000, name: "WINGMATE", title: "เพื่อนร่วมฝูงบิน", perks: ["ร่วมสมทบทุนงานบอสและเอฟเฟกต์", "ทุกระดับไม่มีโบนัสพลังหรืออาวุธพิเศษที่ซื้อได้ด้วยเงิน"] },
+      { id: "pathfinder", amount: 3000, name: "PATHFINDER", title: "ผู้เปิดเส้นทาง", perks: ["ร่วมสมทบทุนการทดสอบและเก็บรายละเอียด", "เป็นการสนับสนุนโดยสมัครใจ ไม่ใช่การสั่งซื้อเกมเต็ม"] },
+    ],
+    supporters: [],
+    spotlight: { id: "breaker", thumb: "/art/breaker/combat.webp", hook: "เดโมพร้อมเล่น · ภารกิจใหม่รอคุณ", pitch: ["ชิงอาวุธจากศัตรู แล้วดีดสวนกลับ", "ร่วมสร้างสามด่านใหม่ของเร็นและโนวา"], sector: "SECTOR / 02", sectorName: "KESSLER GRAVEYARD", tags: ["Playable demo", "2.5D", "ร่วมสนับสนุน"] },
+    page: breakerPage,
   },
 ];
 

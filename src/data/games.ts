@@ -168,6 +168,7 @@ export const games: Game[] = [
     note: "เดโมเว็บเล่นได้ 6–8 นาที มีเช็คพอยต์ คัตซีน และเสียงพากย์ เล่นบนคอมด้วยคีย์บอร์ดหรือจอย (Chrome / Edge)",
     image: "/art/breaker.webp",
     play: "/play/breaker/",
+    fund: "/fund/breaker/",
     palette: ["#ff7a3d", "#1b2433", "#49d6ff"],
     planet: 2,
     nova: [

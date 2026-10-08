@@ -78,7 +78,7 @@ export default function GameCard({
           <span className={`card-platform ${game.platform}`}>{game.platform === "roblox" ? "ROBLOX" : "PC"}</span>
         )}
         <span className="card-num">X / {String(index + 1).padStart(2, "0")}</span>
-        {game.fund && <span className="card-main">★ โปรเจกต์หลัก</span>}
+        {game.fund && <span className="card-main">{game.id === "hive-breach" ? "★ โปรเจกต์หลัก" : "ร่วมสนับสนุน"}</span>}
         <div className="card-body">
           <h3>{game.name}</h3>
           <div className="card-genre">{game.genre.toUpperCase()}</div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { baht, fundHref, fundPercent, mainProject } from "@/data/fund";
+import { baht, fundHref, mainProject, type FundProject } from "@/data/fund";
 import { gameById } from "@/data/games";
+import { useCommunity } from "@/lib/community";
 import { useMotion } from "@/lib/prefs";
 
 const pct = (n: number) => (n > 0 && n < 1 ? n.toFixed(1) : String(Math.floor(n)));
@@ -26,8 +27,10 @@ function BannerArt({ poster }: { poster: string }) {
 export default function MainProjectBanner() {
   const p = mainProject;
   const g = gameById(p.gameId);
+  const { data } = useCommunity();
+  const live = data?.games.find(x => x.slug === p.id);
   if (!g) return null;
-  const percent = fundPercent(p);
+  const percent = live && live.goal ? Math.min(100, live.raised / live.goal * 100) : 0;
   return (
     <a
       className="main-banner rise"
@@ -44,8 +47,8 @@ export default function MainProjectBanner() {
       </span>
       <span className="main-banner-fund">
         <span className="main-banner-nums">
-          ฿{baht(p.raised)} <i>/ ฿{baht(p.goal)}</i>
-          <em>{pct(percent)}%</em>
+          {live ? `฿${baht(live.raised)}` : "—"} <i>/ ฿{baht(live?.goal ?? p.goal)}</i>
+          <em>{live ? `${pct(percent)}%` : "รอยอดยืนยัน"}</em>
         </span>
         <span className="main-banner-bar" aria-hidden="true">
           <i style={{ width: `${percent}%` }} />
@@ -58,21 +61,23 @@ export default function MainProjectBanner() {
   );
 }
 
-/** Funding line inside the spotlight copy when the main project is showing. */
-export function SpotFund({ href }: { href: string }) {
-  const percent = fundPercent(mainProject);
+/** Funding line for the project currently selected in the spotlight. */
+export function SpotFund({ project }: { project: FundProject }) {
+  const { data } = useCommunity();
+  const live = data?.games.find(x => x.slug === project.id);
+  const percent = live && live.goal ? Math.min(100, live.raised / live.goal * 100) : 0;
   return (
     <div className="spot-fund">
       <div className="spot-fund-row">
         <span>
-          ระดมทุน <b>฿{baht(mainProject.raised)}</b> / ฿{baht(mainProject.goal)}
+          ระดมทุน <b>{live ? `฿${baht(live.raised)}` : "—"}</b> / ฿{baht(live?.goal ?? project.goal)}
         </span>
-        <em>{pct(percent)}%</em>
+        <em>{live ? `${pct(percent)}%` : "รอยอดยืนยัน"}</em>
       </div>
       <span className="spot-fund-bar" aria-hidden="true">
         <i style={{ width: `${percent}%` }} />
       </span>
-      <a className="spot-fund-cta" href={href}>
+      <a className="spot-fund-cta" href={fundHref(project)}>
         เปิดหน้าเกมเต็ม · ร่วมสนับสนุน <span aria-hidden="true">→</span>
       </a>
     </div>

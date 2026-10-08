@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import DonatePanel from "@/components/fund/DonatePanel";
+import CommunitySupport, { LiveFunding } from "@/components/fund/CommunitySupport";
 import HeroVideo from "@/components/fund/HeroVideo";
 import Lightbox from "@/components/fund/Lightbox";
+import BreakerFundPage from "@/components/fund/BreakerFundPage";
 import s from "@/components/fund/fund.module.css";
 import type { FundImage } from "@/data/fund-hive-breach";
-import { baht, fundById, fundHref, fundPercent, fundProjects, type FundProject } from "@/data/fund";
-import { thaiDate } from "@/lib/date";
+import { fundById, fundHref, fundProjects, type FundProject } from "@/data/fund";
 import { promptPayTarget } from "@/lib/promptpay";
 
 // static export: only the projects listed in src/data/fund.ts get a page
@@ -76,36 +76,7 @@ function SectionHead({ id, eyebrow, title, children }: { id: string; eyebrow: st
   );
 }
 
-function Progress({ p, large }: { p: FundProject; large?: boolean }) {
-  const pct = fundPercent(p);
-  return (
-    <div className={`${s.progress}${large ? ` ${s.progressLarge}` : ""}`}>
-      <div className={s.progressNums}>
-        <span>
-          <b>฿{baht(p.raised)}</b> <small>จากเป้า ฿{baht(p.goal)}</small>
-        </span>
-        <em>{pct < 1 && pct > 0 ? pct.toFixed(1) : Math.floor(pct)}%</em>
-      </div>
-      <div
-        className={s.bar}
-        role="progressbar"
-        aria-label="ยอดระดมทุน"
-        aria-valuemin={0}
-        aria-valuemax={p.goal}
-        aria-valuenow={p.raised}
-        aria-valuetext={`${baht(p.raised)} จาก ${baht(p.goal)} บาท`}
-      >
-        <i style={{ width: `${pct}%` }} />
-      </div>
-      <div className={s.progressMeta}>
-        <span>
-          <b>{baht(p.backers)}</b> ผู้สนับสนุน
-        </span>
-        <span>อัปเดต {thaiDate(p.updated)}</span>
-      </div>
-    </div>
-  );
-}
+function Progress({ p }: { p: FundProject; large?: boolean }) { return <LiveFunding slug={p.id} goal={p.goal} />; }
 
 export default async function FundPage(props: PageProps<"/fund/[id]">) {
   const p = fundById((await props.params).id);
@@ -115,6 +86,7 @@ export default async function FundPage(props: PageProps<"/fund/[id]">) {
     throw new Error(`fund "${p.id}": promptpay.id must be a mobile number, a national/tax ID or an e-wallet ID`);
   }
   const page = p.page;
+  if ("layout" in page) return <BreakerFundPage project={p} />;
 
   return (
     <div className={s.fund}>
@@ -505,10 +477,10 @@ export default async function FundPage(props: PageProps<"/fund/[id]">) {
 
         <section id="support" className={`${s.section} ${s.support}`} aria-labelledby="support-title">
           <SectionHead id="support" eyebrow="SUPPORT · ร่วมสนับสนุน" title={`ร่วมสร้าง ${page.title}`}>
-            <p>เลือกระดับการสนับสนุน แล้วสแกน QR พร้อมเพย์ ยอดเงินจะใส่ให้อัตโนมัติ</p>
+            <p>เลือกยอด โอนเข้าบัญชีบริษัท แล้วแนบสลิปพร้อมคำแนะนำในศูนย์สนับสนุน XMAN Studio</p>
           </SectionHead>
           <Progress p={p} large />
-          <DonatePanel tiers={p.tiers} promptpay={p.promptpay} contact={p.contact} project={page.title} />
+          <CommunitySupport slug={p.id} />
           {p.supporters.length > 0 && (
             <div className={s.wall}>
               <h3 className={s.subhead}>กำแพงผู้สนับสนุน</h3>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as RPointerEvent } from "react";
+import { CommunityBoard } from "@/components/fund/CommunitySupport";
 import Universe from "@/components/universe/Universe";
 import NovaGuide from "@/components/nova/NovaGuide";
 import { FACE } from "@/components/nova/clips";
@@ -850,6 +851,7 @@ export default function Hub() {
             )}
           </section>
 
+          <CommunityBoard />
           <section id="devlog" className="devlog-section" aria-labelledby="devlog-heading">
             <div className="library-heading rise">
               <div>

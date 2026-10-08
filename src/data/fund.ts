@@ -2,14 +2,7 @@ import type { Featured } from "@/data/games";
 import { hiveBreachPage, type FundPage } from "@/data/fund-hive-breach";
 import { breakerPage, type BreakerPage } from "@/data/fund-breaker";
 
-/**
- * Projects that take donations, each with its own page at /fund/<id>/.
- *
- * The site is a static export, so nothing here updates by itself: after
- * checking incoming transfers, edit `raised`, `backers` and `updated` (and
- * `supporters` for names people asked to show), then rebuild and deploy.
- * Leave `promptpay.id` empty to show the page with donations closed.
- */
+/** Editorial campaign metadata. Live totals, donors and reward terms are managed by XMAN Studio /games-support. Legacy PromptPay fields are not used by the current payment flow. */
 
 export type FundTier = {
   id: string;

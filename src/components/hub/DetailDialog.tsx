@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { supportUrl } from "@/lib/community";
+import { LiveFunding } from "@/components/fund/CommunitySupport";
 import type { Game } from "@/data/games";
 import { devNotes } from "@/data/devnotes";
 import type { Devlog } from "@/lib/devlog";
@@ -123,6 +125,8 @@ function DetailInner({
           </div>
         )}
 
+        <LiveFunding slug={game.id} goal={0} />
+        <a className="detail-fund" href={supportUrl(game.id)}>บริจาค / ดูรายนาม / แสดงความคิดเห็น / โหวต / ให้ดาว ↗</a>
         <div className="detail-actions">
           {game.play ? (
             <a className="button primary" href={game.play} target="_blank" rel="noopener" onClick={() => onPlay(game)}>

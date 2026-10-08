@@ -649,7 +649,9 @@ export default function Hub() {
 
           <section
             id="spotlight"
-            className={`spotlight rise${fMedia ? " has-media" : ""}`}
+            // The persistent carousel stays visible when its media class changes.
+            // The one-shot reveal observer cannot restore a class overwritten by React.
+            className={`spotlight${fMedia ? " has-media" : ""}`}
             aria-labelledby="feature-title"
             style={{
               ["--accent" as string]: fGame.palette[2],

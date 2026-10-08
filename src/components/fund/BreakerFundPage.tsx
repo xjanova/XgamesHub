@@ -429,6 +429,23 @@ export default function BreakerFundPage({
               <article className={s.futureCard} key={ship.name}>
                 <span className={s.eyebrow}>FRAME 0{i + 2} / CONCEPT</span>
                 <h3>{ship.name}</h3>
+                <button
+                  type="button"
+                  className={s.shipArt}
+                  data-zoom={ship.image}
+                  data-alt={ship.imageAlt}
+                  data-kind="ภาพคอนเซปต์ยาน"
+                  aria-label={`ขยายภาพคอนเซปต์ยาน ${ship.name}`}
+                >
+                  <img
+                    src={ship.image}
+                    alt={ship.imageAlt}
+                    width={1536}
+                    height={1024}
+                    loading="lazy"
+                  />
+                  <span>ภาพคอนเซปต์ · ขยายภาพ ↗</span>
+                </button>
                 <strong>{ship.role}</strong>
                 <p>{ship.skill}</p>
                 <div className={s.upgradeChoices}>

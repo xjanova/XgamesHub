@@ -7,6 +7,7 @@ import type { Game } from "@/data/games";
 import { devNotes } from "@/data/devnotes";
 import type { Devlog } from "@/lib/devlog";
 import DevlogView from "./DevlogView";
+import GameLogo from "./GameLogo";
 
 const STATE_LABEL: Record<Game["state"], string> = {
   play: "เล่นเดโมได้",
@@ -86,7 +87,7 @@ function DetailInner({
       </div>
       <div className="detail-body">
         <div className="eyebrow">{game.genre.toUpperCase()}</div>
-        <h2 id="detail-title">{game.name}</h2>
+        <h2 id="detail-title"><GameLogo game={game} className="detail-game-logo" /></h2>
         <div className="detail-sub">{game.subtitle}</div>
 
         <div className="detail-tabs" role="tablist" aria-label="ข้อมูลเกม">

@@ -13,7 +13,10 @@ import { devNotes } from "@/data/devnotes";
 import { thaiDate, useDevlogs, type DevEntry } from "@/lib/devlog";
 import DetailDialog, { type DetailTab } from "./DetailDialog";
 import GameCard from "./GameCard";
-import MainProjectBanner, { SpotFund } from "./MainProject";
+import { SpotFund } from "./MainProject";
+import SpotlightVideo from "./SpotlightVideo";
+import { spotlightMedia } from "@/data/spotlight-media";
+import GameLogo from "./GameLogo";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
 const HUB_VERSION = process.env.NEXT_PUBLIC_HUB_VERSION || "dev";
@@ -51,7 +54,7 @@ type TourStep = { go: string; line: Line; chips?: Chip[] };
 const TOUR: TourStep[] = [
   {
     go: "spotlight",
-    line: { text: "เริ่มที่ Spotlight! เกมเด่นของฮับอยู่ตรงนี้ ลากที่ดาวเคราะห์เพื่อหมุนดูได้เลย", pose: "present" },
+    line: { text: "เริ่มที่ Spotlight! เลือกเกมเด่นจากสไลด์ตรงนี้ ดูวิดีโอจากหน้าเกม หรือหมุนดาวเคราะห์ของเกมอื่นได้เลย", pose: "present" },
   },
   {
     go: `feature:${mainProject.gameId}`,
@@ -100,6 +103,7 @@ export default function Hub() {
   const said = useRef(new Set<string>());
 
   const fGame = gameById(SPOTLIGHT[feat].id)!;
+  const fMedia = spotlightMedia[fGame.id];
   const fFund = fundProjects.find((p) => p.gameId === fGame.id);
   const fMeta = SPOTLIGHT[feat];
   const list = useMemo(() => games.filter((g) => matches(g, filter, query)), [filter, query]);
@@ -643,20 +647,34 @@ export default function Hub() {
             <span className="intro-note">เลือกโลกที่ใช่ แล้วออกผจญภัย</span>
           </div>
 
-          <MainProjectBanner />
-
           <section
             id="spotlight"
-            className="spotlight rise"
+            className={`spotlight rise${fMedia ? " has-media" : ""}`}
             aria-labelledby="feature-title"
-            style={{ ["--accent" as string]: fGame.palette[2], ["--accent2" as string]: fGame.palette[0] }}
+            style={{
+              ["--accent" as string]: fGame.palette[2],
+              ["--accent2" as string]: fGame.palette[0],
+            }}
           >
+            {fMedia && (
+              <SpotlightVideo
+                key={`video-${fGame.id}`}
+                media={fMedia}
+                motion={motion}
+                onInteract={() => {
+                  touched.current = performance.now();
+                }}
+              />
+            )}
             <div className="spot-shade" />
             <div className="spot-scan" aria-hidden="true" />
             <div className="spot-head">
               {fGame.fund ? (
                 <a className="spot-kicker main" href={fGame.fund}>
-                  <span className="spark">★</span> {fGame.id === mainProject.gameId ? "โปรเจกต์หลัก · ร่วมสนับสนุน" : "เดโมพร้อมเล่น · ร่วมสนับสนุน"}
+                  <span className="spark">★</span>{" "}
+                  {fGame.id === mainProject.gameId
+                    ? "โปรเจกต์หลัก · ร่วมสนับสนุน"
+                    : "เดโมพร้อมเล่น · ร่วมสนับสนุน"}
                 </a>
               ) : (
                 <span className="spot-kicker">
@@ -666,19 +684,31 @@ export default function Hub() {
               <div className="spot-pagination">
                 <span className="spot-num">{pad2(feat + 1)}</span>
                 <span className="spot-total">/ {pad2(SPOTLIGHT.length)}</span>
-                <button type="button" onClick={() => chooseFeature(feat - 1, true)} aria-label="เกมเด่นก่อนหน้า">
+                <button
+                  type="button"
+                  onClick={() => chooseFeature(feat - 1, true)}
+                  aria-label="เกมเด่นก่อนหน้า"
+                >
                   ‹
                 </button>
-                <button type="button" onClick={() => chooseFeature(feat + 1, true)} aria-label="เกมเด่นถัดไป">
+                <button
+                  type="button"
+                  onClick={() => chooseFeature(feat + 1, true)}
+                  aria-label="เกมเด่นถัดไป"
+                >
                   ›
                 </button>
               </div>
             </div>
 
-            <div className="spot-copy" key={fGame.id}>
+            <div className="spot-copy" key={`copy-${fGame.id}`}>
               <span className="spot-category">{fGame.genre.toUpperCase()}</span>
-              <h2 id="feature-title" className="spot-title" data-long={fGame.name.length > 10 ? "1" : undefined}>
-                {fGame.name}
+              <h2
+                id="feature-title"
+                className="spot-title"
+                data-long={fGame.name.length > 10 ? "1" : undefined}
+              >
+                <GameLogo game={fGame} className="spot-game-logo" />
               </h2>
               <div className="spot-subtitle">{fGame.subtitle}</div>
               <p>
@@ -694,35 +724,56 @@ export default function Hub() {
               {fFund && <SpotFund project={fFund} />}
               <div className="spot-actions">
                 {fGame.play ? (
-                  <a className="button primary" href={fGame.play} target="_blank" rel="noopener" onClick={() => playGame(fGame)}>
+                  <a
+                    className="button primary"
+                    href={fGame.play}
+                    target="_blank"
+                    rel="noopener"
+                    onClick={() => playGame(fGame)}
+                  >
                     <span aria-hidden="true">▷</span> เล่นเดโมเลย
                   </a>
                 ) : null}
-                <button type="button" className={`button ${fGame.play ? "secondary" : "primary"}`} onClick={() => openGame(fGame)}>
+                <button
+                  type="button"
+                  className={`button ${fGame.play ? "secondary" : "primary"}`}
+                  onClick={() => openGame(fGame)}
+                >
                   สำรวจเกม <span aria-hidden="true">⊕</span>
                 </button>
               </div>
             </div>
 
-            <div
-              id="spotlight-stage"
-              className="spot-stage"
-              role="img"
-              aria-label={`ดาวเคราะห์ของ ${fGame.name} ลากเพื่อหมุน`}
-              tabIndex={0}
-              onPointerDown={onStageDown}
-              onPointerMove={onStageMove}
-              onPointerUp={onStageUp}
-              onPointerCancel={onStageUp}
-              onKeyDown={(e) => {
-                if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-                  e.preventDefault();
-                  window.dispatchEvent(new CustomEvent("xgh:spin", { detail: e.key === "ArrowLeft" ? -40 : 40 }));
-                }
-              }}
-            >
-              <img className="spot-fallback-art" src={fGame.image} alt="" aria-hidden="true" />
-            </div>
+            {!fMedia && (
+              <div
+                id="spotlight-stage"
+                className="spot-stage"
+                role="img"
+                aria-label={`ดาวเคราะห์ของ ${fGame.name} ลากเพื่อหมุน`}
+                tabIndex={0}
+                onPointerDown={onStageDown}
+                onPointerMove={onStageMove}
+                onPointerUp={onStageUp}
+                onPointerCancel={onStageUp}
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+                    e.preventDefault();
+                    window.dispatchEvent(
+                      new CustomEvent("xgh:spin", {
+                        detail: e.key === "ArrowLeft" ? -40 : 40,
+                      }),
+                    );
+                  }
+                }}
+              >
+                <img
+                  className="spot-fallback-art"
+                  src={fGame.image}
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+            )}
 
             <div className="world-coordinates" aria-hidden="true">
               <span>{fMeta.sector}</span>
@@ -731,10 +782,17 @@ export default function Hub() {
             </div>
             <div className="spot-bottom">
               <span className="ambient-label">
-                INTERACTIVE UNIVERSE<span className="ambient-dot" />
+                {fMedia?.kind ?? "INTERACTIVE UNIVERSE"}
+                <span className="ambient-dot" />
               </span>
-              <span className="spot-hint">ลากเพื่อหมุนดาวเคราะห์ · ใช้ปุ่มลูกศรได้</span>
-              <span className="spot-status">{fGame.play ? "DEMO AVAILABLE" : "IN DEVELOPMENT"}</span>
+              <span className="spot-hint">
+                {fMedia
+                  ? "วิดีโอและโลโก้จากหน้าเกม"
+                  : "ลากเพื่อหมุนดาวเคราะห์ · ใช้ปุ่มลูกศรได้"}
+              </span>
+              <span className="spot-status">
+                {fGame.play ? "DEMO AVAILABLE" : "IN DEVELOPMENT"}
+              </span>
             </div>
           </section>
 

@@ -125,7 +125,7 @@ export default function NovaGuide() {
       const H = Math.max(DOCK_H, Math.min((r?.height ?? 560) * 1.12, vh * 0.8));
       const W = H * (2 / 3);
       // she stands on the panel only while her head clears the top bar; scroll further and she docks
-      const stageOK = !small && vw >= 1280 && !!r && r.top < vh * 0.55 && r.bottom - H * 0.96 >= 40;
+      const stageOK = !small && vw >= 1280 && !!r && !spot?.classList.contains("has-media") && r.top < vh * 0.55 && r.bottom - H * 0.96 >= 40;
       const m: Mode = small ? "mini" : stageOK ? "stage" : "dock";
       if (m !== modeRef.current) {
         el.classList.add("flying");
@@ -166,11 +166,15 @@ export default function NovaGuide() {
       if (!raf) raf = requestAnimationFrame(place);
     };
     place();
+    const spot = document.getElementById("spotlight");
+    const observer = new MutationObserver(queue);
+    if (spot) observer.observe(spot, { attributes: true, attributeFilter: ["class"] });
     window.addEventListener("scroll", queue, { passive: true });
     window.addEventListener("resize", queue);
     return () => {
       cancelAnimationFrame(raf);
       window.clearTimeout(flyTimer);
+      observer.disconnect();
       window.removeEventListener("scroll", queue);
       window.removeEventListener("resize", queue);
     };

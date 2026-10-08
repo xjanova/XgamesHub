@@ -538,6 +538,24 @@ html.js[data-motion="on"] .rise:not(.in) {
   overflow: hidden;
   isolation: isolate;
 }
+.card-game-logo { display: block; width: 100%; height: 74px; object-fit: contain; object-position: left center; }
+.detail-game-logo { display: block; width: 100%; max-width: 440px; height: 118px; object-fit: contain; object-position: left center; }
+.spotlight.has-media { background: #080914; }
+.spot-media { position: absolute; inset: 0; z-index: 0; }
+.spot-footage { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; }
+.has-media .spot-shade { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg,#080914f5 0%,#080914d9 30%,#08091440 65%,#0809141a),linear-gradient(0deg,#080914c9,transparent 45%); }
+.has-media .spot-scan { z-index: 1; }
+.has-media .world-coordinates { display: none; }
+.spot-game-logo { display: block; width: 100%; max-width: 420px; height: auto; max-height: 170px; object-fit: contain; object-position: left; filter: drop-shadow(0 4px 18px #0009); }
+.spot-video-toggle { position: absolute; right: 30px; top: 90px; z-index: 4; padding: 9px 13px; border: 1px solid #ffffff60; border-radius: 8px; background: #080914dc; color: #edf7ff; font: 12px var(--font-b); }
+.spot-video-toggle:disabled { opacity: .7; cursor: default; }
+@media (max-width:760px) {
+  .has-media .spot-media { position: relative; order: 2; height: 230px; margin: 18px 0; }
+  .has-media .spot-shade { display: none; }
+  .has-media .spot-footage { object-position: center; }
+  .has-media .spot-video-toggle { right: 14px; top: auto; bottom: 12px; }
+  .has-media .spot-game-logo { max-height: 120px; }
+}
 .spotlight::before {
   /* accent glow that follows the featured world */
   content: "";

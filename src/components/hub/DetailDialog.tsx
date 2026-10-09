@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { supportUrl } from "@/lib/community";
 import { LiveFunding } from "@/components/fund/CommunitySupport";
+import { ITEM_KIND, useOwnedItems } from "@/lib/items";
 import type { Game } from "@/data/games";
 import { devNotes } from "@/data/devnotes";
 import type { Devlog } from "@/lib/devlog";
 import DevlogView from "./DevlogView";
+import GameReviews from "./GameReviews";
 import GameLogo from "./GameLogo";
 
 const STATE_LABEL: Record<Game["state"], string> = {
@@ -15,7 +17,7 @@ const STATE_LABEL: Record<Game["state"], string> = {
   concept: "Concept lab",
 };
 
-export type DetailTab = "about" | "dev";
+export type DetailTab = "about" | "dev" | "reviews";
 
 export default function DetailDialog({
   game,
@@ -73,6 +75,7 @@ function DetailInner({
 }) {
   const [tab, setTab] = useState<DetailTab>(initialTab);
   const log = devlog ?? devNotes[game.id];
+  const mine = Object.values(useOwnedItems()[game.id] ?? {});
   return (
     <div className="detail-inner">
       <button type="button" className="detail-close" onClick={onClose} aria-label="ปิดรายละเอียด">
@@ -97,9 +100,16 @@ function DetailInner({
           <button type="button" role="tab" aria-selected={tab === "dev"} onClick={() => setTab("dev")} disabled={!log}>
             บันทึกการพัฒนา{log?.version ? <span className="tab-ver">{log.version}</span> : null}
           </button>
+          <button type="button" role="tab" aria-selected={tab === "reviews"} onClick={() => setTab("reviews")}>
+            รีวิวผู้เล่น
+          </button>
         </div>
 
-        {tab === "about" || !log ? (
+        {tab === "reviews" ? (
+          <div role="tabpanel">
+            <GameReviews slug={game.id} />
+          </div>
+        ) : tab === "about" || !log ? (
           <div role="tabpanel">
             <p className="detail-desc">{game.description}</p>
             <ul className="detail-features">
@@ -110,6 +120,18 @@ function DetailInner({
             <p className="detail-note">
               <span aria-hidden="true">ⓘ</span> {game.note}
             </p>
+            {mine.length > 0 && (
+              <div className="detail-items">
+                <b>✦ ไอเท็มผู้สนับสนุนของคุณในเกมนี้</b>
+                <ul>
+                  {mine.map((it) => (
+                    <li key={it.key} title={it.description ?? undefined}>
+                      {it.name} <small>{ITEM_KIND[it.kind] ?? it.kind}</small>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {game.fund && (
               <a className="detail-fund" href={game.fund}>
                 <span>
@@ -127,7 +149,7 @@ function DetailInner({
         )}
 
         <LiveFunding slug={game.id} goal={0} />
-        <a className="detail-fund" href={supportUrl(game.id)}>บริจาค / ดูรายนาม / แสดงความคิดเห็น / โหวต / ให้ดาว ↗</a>
+        <a className="detail-fund" href={supportUrl(game.id)}>บริจาครับไอเท็ม / รีวิว / แสดงความคิดเห็น / โหวต / ให้ดาว ↗</a>
         <div className="detail-actions">
           {game.play ? (
             <a className="button primary" href={game.play} target="_blank" rel="noopener" onClick={() => onPlay(game)}>

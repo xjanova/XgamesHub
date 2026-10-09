@@ -41,7 +41,7 @@ export type Game = {
 
 export type Featured = {
   id: string;
-  thumb: string;
+  thumb?: string;
   hook: string;
   /** Two short lines for the spotlight copy. */
   pitch: [string, string];
@@ -685,7 +685,74 @@ export const featured: Featured[] = [
     sectorName: "MIRROR LAKE",
     tags: ["Adventure", "Puzzle", "In development"],
   },
+  {
+    id: "chanthra",
+    hook: "เดินตามแสงตะเกียงฝ่าหมอก",
+    pitch: ["พาจันทราเด็กสาวผมขาวฝ่าหมอกหนาและอสูรในเงามืด", "แพลตฟอร์มเงาบทที่ ๑ เล่นบนเว็บได้ทันที"],
+    sector: "SECTOR / 04",
+    sectorName: "MISTVEIL SHRINE",
+    tags: ["Platformer", "2D", "Web demo"],
+  },
+  {
+    id: "tetrisvs",
+    hook: "ส่งแถวขยะถล่มคู่แข่ง",
+    pitch: ["เรียงบล็อกแข่งกับ AI 4 ระดับ หรือดวลเพื่อนบนคีย์บอร์ดเดียว", "เคลียร์ให้ไว แล้วส่งแถวขยะไปถล่มอีกฝั่ง"],
+    sector: "SECTOR / 03",
+    sectorName: "STACK ARENA",
+    tags: ["Puzzle", "Versus", "Web demo"],
+  },
+  {
+    id: "snake",
+    hook: "กินแล้วโต หลบให้รอด",
+    pitch: ["หนอนออนไลน์สามมิติ แข่งกับผู้เล่นจริงหรือบอท AI", "ล่อคู่แข่งให้ชน แล้วกินพลังที่ทิ้งไว้"],
+    sector: "SECTOR / 05",
+    sectorName: "NEON GRID",
+    tags: [".io", "Multiplayer", "Play online"],
+  },
+  {
+    id: "8ball",
+    hook: "แทงพูล 8 ลูกบนเว็บ",
+    pitch: ["เล็งด้วยเส้นช่วยและลูกเงา ชาร์จแรงแล้วแทง", "แข่งกับ AI หรือเพื่อนบนเครื่องเดียวกัน"],
+    sector: "SECTOR / 08",
+    sectorName: "FELT DISTRICT",
+    tags: ["Billiards", "VS AI", "Web demo"],
+  },
+  {
+    id: "snooker",
+    hook: "สนุ๊กเกอร์และ 9-Ball",
+    pitch: ["โต๊ะสนุ๊กเกอร์ 2 มิติ กดค้างชาร์จแรงแล้วแทงลงหลุม", "เล่นกับ AI หรือสลับกันเล่นสองคน"],
+    sector: "SECTOR / 10",
+    sectorName: "GREEN BAIZE",
+    tags: ["Snooker", "9-Ball", "Web demo"],
+  },
+  {
+    id: "tetris",
+    hook: "เรียงบล็อกแบบคลาสสิก",
+    pitch: ["เก็บชิ้นใน Hold ทำคอมโบ แล้วเอาตัวรอดจากแถวขยะ", "ไต่ตาราง 10 อันดับในเครื่องของคุณ"],
+    sector: "SECTOR / 11",
+    sectorName: "FALLING CITY",
+    tags: ["Puzzle", "Classic", "Web demo"],
+  },
+  {
+    id: "space-shooter",
+    hook: "เกมยิงยานรุ่นแรกของทีม",
+    pitch: ["ขับยานยิงฝูงศัตรูที่บุกมาถี่ขึ้นเรื่อย ๆ", "สั้น ง่าย ติดมือ และเล่นใหม่ได้ทันที"],
+    sector: "SECTOR / 12",
+    sectorName: "OUTER RIM",
+    tags: ["Arcade", "Shooter", "Web demo"],
+  },
 ];
+
+/** Spotlight copy for a playable game that has no hand-written entry above. */
+export const featuredFor = (g: Game): Featured =>
+  featured.find((f) => f.id === g.id) ?? {
+    id: g.id,
+    hook: g.tagline,
+    pitch: [g.tagline, g.features.slice(0, 2).join(" · ")],
+    sector: "SECTOR / XX",
+    sectorName: g.subtitle,
+    tags: g.genre.split(" / ").slice(0, 3),
+  };
 
 export const gameById = (id: string) => games.find((g) => g.id === id);
 

@@ -72,7 +72,7 @@ export default function GameCard({
           <div className="card-art-fade" />
         </div>
         {game.edition === "full" ? (
-          <span className="card-badge full">★ FULL GAME</span>
+          <span className="card-badge full">★ CLOSED BETA</span>
         ) : (
           <span className={`card-badge ${game.state}`}>
             {game.state === "play" ? "▷ " : game.state === "concept" ? "✳ " : ""}

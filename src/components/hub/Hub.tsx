@@ -32,7 +32,7 @@ const PLAY_IDS = games
 
 const FILTERS: { id: Filter; label: string; count: number }[] = [
   { id: "all", label: "ทุกโลก", count: counts.all },
-  { id: "full", label: "เกมเต็ม", count: counts.full },
+  { id: "full", label: "Closed Beta", count: counts.full },
   { id: "play", label: "เล่นเดโมได้", count: counts.play },
   { id: "dev", label: "กำลังพัฒนา", count: counts.dev },
   { id: "concept", label: "Concept lab", count: counts.concept },
@@ -41,7 +41,7 @@ const FILTERS: { id: Filter; label: string; count: number }[] = [
 
 const FILTER_LINES: Partial<Record<Filter, Line>> = {
   full: {
-    text: "เกมเต็มของ XMAN Studio! เล่นเป็น guest ได้ทันที แล้วผูก XMAN ID ไว้ ความคืบหน้าจะตามไปทุกเครื่องเลย",
+    text: "เกมที่เปิด Closed Beta ของ XMAN Studio! เล่นเป็น guest ได้ทันที แล้วผูก XMAN ID ไว้ ความคืบหน้าจะตามไปทุกเครื่องเลย",
     pose: "cheer",
   },
   play: {
@@ -119,7 +119,7 @@ function SupporterCount() {
 
 const railLabel = (g: Game) =>
   g.edition === "full"
-    ? "FULL GAME"
+    ? "CLOSED BETA"
     : g.play
       ? g.play.startsWith("/play/")
         ? "WEB DEMO"
@@ -586,7 +586,7 @@ export default function Hub() {
           applyFilter("full", { scroll: true });
         }}
       >
-        <span className="nav-icon">★</span>Full games<span className="nav-count">{pad2(counts.full)}</span>
+        <span className="nav-icon">★</span>Closed Beta<span className="nav-count">{pad2(counts.full)}</span>
       </a>
       <a
         href="#games"

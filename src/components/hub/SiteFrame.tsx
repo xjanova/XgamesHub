@@ -22,7 +22,7 @@ export default function SiteFrame({ crumb, active, children }: { crumb: string; 
         <span className="nav-icon">◇</span>Discover
       </Link>
       <Link href="/?f=full#games" className="side-link">
-        <span className="nav-icon">★</span>Full games<span className="nav-count">{pad2(counts.full)}</span>
+        <span className="nav-icon">★</span>Closed Beta<span className="nav-count">{pad2(counts.full)}</span>
       </Link>
       <Link href="/?f=play#games" className="side-link">
         <span className="nav-icon">▷</span>Play now<span className="nav-count">{pad2(counts.play)}</span>

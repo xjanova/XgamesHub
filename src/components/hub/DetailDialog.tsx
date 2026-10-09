@@ -85,7 +85,7 @@ function DetailInner({
         <img src={game.image} alt={`ภาพเกม ${game.name}`} />
         <div className="detail-visual-fade" />
         <span className="detail-state" data-state={game.state} data-edition={game.edition}>
-          {game.edition === "full" ? "★ เกมเต็ม · Early access" : STATE_LABEL[game.state]}
+          {game.edition === "full" ? "★ Closed Beta" : STATE_LABEL[game.state]}
         </span>
       </div>
       <div className="detail-body">

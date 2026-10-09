@@ -14,6 +14,8 @@ export type Devlog = {
   id: string;
   version?: string;
   built?: string;
+  /** day of the latest deploy, Bangkok time (YYYY-MM-DD) */
+  updated?: string;
   summary?: string;
   status: string;
   entries: DevEntry[];
@@ -22,6 +24,12 @@ export type Devlog = {
 
 const str = (v: unknown) => (typeof v === "string" ? v : "");
 const strs = (v: unknown) => (Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : []);
+const day = (v: unknown) => (/^\d{4}-\d{2}-\d{2}$/.test(str(v)) ? str(v) : "");
+// devlogs published before "updated" existed only carry the UTC build time; Bangkok is UTC+7 all year
+const bangkokDay = (iso: string) => {
+  const ms = Date.parse(iso);
+  return ms ? new Date(ms + 7 * 3600e3).toISOString().slice(0, 10) : "";
+};
 
 function clean(raw: unknown, id: string): Devlog | null {
   if (!raw || typeof raw !== "object") return null;
@@ -36,6 +44,7 @@ function clean(raw: unknown, id: string): Devlog | null {
     id,
     version: str(r.version) || undefined,
     built: str(r.built) || undefined,
+    updated: day(r.updated) || bangkokDay(str(r.built)) || undefined,
     summary: str(r.summary) || undefined,
     status: str(r.status),
     entries,

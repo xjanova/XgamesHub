@@ -8,7 +8,7 @@ export default function DevlogView({ log, limit }: { log: Omit<Devlog, "id">; li
     <div className="devlog">
       <div className="devlog-head">
         {log.version && <span className="devlog-ver">{log.version}</span>}
-        {log.built && <span className="devlog-built">อัปเดต {thaiDate(log.built)}</span>}
+        {log.updated && <span className="devlog-built">อัปเดตล่าสุด {thaiDate(log.updated)}</span>}
       </div>
       {log.status && <p className="devlog-status">{log.status}</p>}
       {log.summary && <p className="devlog-summary">{log.summary}</p>}

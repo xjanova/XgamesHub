@@ -124,6 +124,9 @@ html.no-webgl .nebula-fallback {
   background: linear-gradient(180deg, rgba(10, 11, 22, 0.88), rgba(7, 8, 15, 0.94));
   border-right: 1px solid var(--line);
   backdrop-filter: blur(16px);
+  /* short screens: the menu scrolls instead of cutting off the bottom */
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 .brand img {
   width: 184px;
@@ -143,6 +146,13 @@ html.no-webgl .nebula-fallback {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+.side-group {
+  margin: 10px 0 2px 12px;
+  font-family: var(--font-d);
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  color: var(--dim);
 }
 .side-link {
   position: relative;
@@ -388,9 +398,9 @@ main {
   position: relative;
   padding-bottom: 28px;
 }
-/* the hero runs edge to edge; everything after it keeps the 1560px column
+/* home: the hero runs edge to edge; everything after it keeps the 1560px column
    (margin percentages resolve against main's width) */
-main > :not(.spotlight) {
+.hub-main > :not(.spotlight) {
   margin-inline: max(var(--gutter), calc((100% - 1560px) / 2 + var(--gutter)));
 }
 

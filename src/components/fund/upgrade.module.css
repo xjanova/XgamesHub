@@ -1,25 +1,25 @@
 .lab {
-  background: #0a1620;
-  border: 1px solid #43606e;
+  background: #0c0d1e;
+  border: 1px solid #474c6a;
   border-radius: 12px;
   overflow: hidden;
-  color: #dcecf3;
+  color: #ecffcc;
 }
 .topline {
   display: flex;
   justify-content: space-between;
   gap: 15px;
   padding: 18px 25px;
-  background: #172d3b;
+  background: #181a3a;
   font-size: 12px;
 }
 .topline span {
   letter-spacing: 0.15em;
-  color: #76e4ef;
+  color: #c7ff66;
 }
 .topline b {
   font-weight: 400;
-  color: #ffb37c;
+  color: #ffdc7c;
 }
 .shipTabs,
 .crewTabs,
@@ -31,16 +31,16 @@
 }
 .lab button {
   cursor: pointer;
-  color: #c9dce6;
-  background: #102635;
-  border: 1px solid #3b596b;
+  color: #d0d2df;
+  background: #141631;
+  border: 1px solid #424764;
   border-radius: 5px;
 }
 .lab button[aria-pressed="true"] {
-  background: #234453;
-  border-color: #7be9e9;
-  box-shadow: inset 0 -2px #7be9e9;
-  color: #fff;
+  background: #232753;
+  border-color: #c7ff65;
+  box-shadow: inset 0 -2px #c7ff65;
+  color: #ffffff;
 }
 .shipTabs button {
   padding: 12px 22px;
@@ -54,25 +54,25 @@
 }
 .frame {
   background:
-    radial-gradient(ellipse, #2c586744, transparent 65%),
+    radial-gradient(ellipse, #2c306744, transparent 65%),
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 29px,
-      #6bcada0c 30px
+      #bbff460c 30px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 29px,
-      #6bcada0c 30px
+      #bbff460c 30px
     );
   padding: 25px;
-  border: 1px solid #2d4a5b;
+  border: 1px solid #2d305b;
 }
 .frame > span,
 .paths > span {
-  color: #70d9e5;
+  color: #c1ff56;
   font: 500 12px var(--font-d);
 }
 .frame img {
@@ -93,7 +93,7 @@
 .frame small {
   display: block;
   font-size: 10px;
-  color: #aebfca;
+  color: #afb2c9;
 }
 .frame h3 {
   font-size: 22px;
@@ -103,11 +103,11 @@
 .paths p {
   font-size: 13px;
   line-height: 1.8;
-  color: #bfd0dc;
+  color: #c4c6d7;
   margin-top: 10px;
 }
 .frame .cost {
-  color: #ffb37c;
+  color: #ffdc7c;
 }
 .paths {
   display: flex;
@@ -124,7 +124,7 @@
   display: block;
 }
 .paths small {
-  color: #76e4ef;
+  color: #c7ff66;
   font: 12px var(--font-d);
   margin-bottom: 8px;
 }
@@ -134,15 +134,15 @@
 .paths b {
   font-size: 12px;
   margin-top: 15px;
-  color: #76e4ef;
+  color: #c7ff66;
 }
 .crewHeader {
   padding: 30px 25px 0;
-  border-top: 1px solid #355060;
+  border-top: 1px solid #353860;
 }
 .crewHeader > span {
   font: 12px var(--font-d);
-  color: #ffb37c;
+  color: #ffdc7c;
 }
 .crewHeader h3 {
   font-size: 23px;
@@ -151,7 +151,7 @@
 .crewHeader p {
   font-size: 13px;
   line-height: 1.8;
-  color: #bfd0dc;
+  color: #c4c6d7;
 }
 .crewTabs button {
   display: flex;
@@ -185,20 +185,20 @@
 .rankTabs span {
   display: block;
   margin-bottom: 8px;
-  color: #ffb37c;
+  color: #ffdc7c;
 }
 .skillDetail {
   margin: 0 25px 25px;
   padding: 25px;
-  border: 1px solid #70d9e5;
+  border: 1px solid #c1ff56;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 25px;
-  background: #173140;
+  background: #191c3e;
 }
 .skillDetail span {
   font: 12px var(--font-d);
-  color: #76e4ef;
+  color: #c7ff66;
 }
 .skillDetail h4 {
   font: 600 29px var(--font-d);
@@ -211,17 +211,17 @@
 }
 .skillDetail small {
   font-size: 12px;
-  color: #abc6d3;
+  color: #b2b6cc;
 }
 .allRanks {
   margin: 0 25px 20px;
 }
 .allRanks summary {
   cursor: pointer;
-  color: #76e4ef;
+  color: #c7ff66;
 }
 .allRanks > div {
-  border-bottom: 1px solid #355060;
+  border-bottom: 1px solid #353860;
   padding: 15px 0;
 }
 .allRanks b,
@@ -230,25 +230,25 @@
   font-size: 13px;
 }
 .allRanks span {
-  color: #ffb37c;
+  color: #ffdc7c;
   margin: 5px 0;
 }
 .allRanks p {
   font-size: 13px;
   line-height: 1.8;
-  color: #bdd1db;
+  color: #c2c5d6;
 }
 .notice {
   font-size: 12px;
   line-height: 1.9;
   margin: 0;
   padding: 22px 25px;
-  background: #1c2930;
-  color: #c6d4dc;
+  background: #1c1d30;
+  color: #c8cada;
 }
 .lab button:focus-visible,
 .lab summary:focus-visible {
-  outline: 3px solid #ffb37c;
+  outline: 3px solid #ffdc7c;
   outline-offset: 3px;
 }
 @media (max-width: 760px) {

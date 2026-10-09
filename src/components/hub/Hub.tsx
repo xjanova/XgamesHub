@@ -198,7 +198,18 @@ export default function Hub() {
       setRedeem({ open: true, code: m[1] ?? "" });
       history.replaceState(null, "", window.location.pathname + window.location.search);
     };
-    const t = window.setTimeout(fromHash, 0);
+    // /?f=play#games from a sub-page's sidebar opens the library on that filter
+    const fromQuery = () => {
+      const f = new URLSearchParams(window.location.search).get("f");
+      if (f && FILTERS.some((x) => x.id === f)) {
+        setFilter(f as Filter);
+        window.setTimeout(() => document.getElementById("games")?.scrollIntoView(), 80);
+      }
+    };
+    const t = window.setTimeout(() => {
+      fromQuery();
+      fromHash();
+    }, 0);
     window.addEventListener("hashchange", fromHash);
     return () => {
       window.clearTimeout(t);
@@ -749,7 +760,7 @@ export default function Hub() {
           </button>
         </div>
 
-        <main>
+        <main className="hub-main">
           <section
             id="spotlight"
             // every slide carries media now (video or a still), so Nova docks instead of standing on it

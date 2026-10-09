@@ -6,6 +6,7 @@ import CommunitySupport, { LiveFunding } from "@/components/fund/CommunitySuppor
 import HeroVideo from "@/components/fund/HeroVideo";
 import Lightbox from "@/components/fund/Lightbox";
 import BreakerFundPage from "@/components/fund/BreakerFundPage";
+import SiteFrame from "@/components/hub/SiteFrame";
 import s from "@/components/fund/fund.module.css";
 import type { FundImage } from "@/data/fund-hive-breach";
 import { fundById, fundHref, fundProjects, type FundProject } from "@/data/fund";
@@ -89,16 +90,13 @@ export default async function FundPage(props: PageProps<"/fund/[id]">) {
   if ("layout" in page) return <BreakerFundPage project={p} />;
 
   return (
+    <SiteFrame crumb={page.title} active={p.id}>
     <div className={s.fund}>
       <a className={s.skip} href="#support">
         ข้ามไปส่วนร่วมสนับสนุน
       </a>
 
       <header className={s.top}>
-        <Link href="/" className={s.back} aria-label="กลับไปที่ XMAN GAMES HUB">
-          <span aria-hidden="true">←</span>
-          <img src="/art/logo-v2.webp" alt="" width={760} height={314} />
-        </Link>
         <nav className={s.nav} aria-label="หัวข้อในหน้านี้">
           {NAV.map(([id, label]) => (
             <a key={id} href={`#${id}`}>
@@ -532,5 +530,6 @@ export default async function FundPage(props: PageProps<"/fund/[id]">) {
 
       <Lightbox />
     </div>
+    </SiteFrame>
   );
 }

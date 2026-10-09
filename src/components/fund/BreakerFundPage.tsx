@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteFrame from "@/components/hub/SiteFrame";
 import type { ReactNode } from "react";
 import CommunitySupport, {
   LiveFunding,
@@ -57,19 +58,12 @@ export default function BreakerFundPage({
   project: FundProject;
 }) {
   return (
+    <SiteFrame crumb="X-NOVA: BREAKER" active={p.id}>
     <div className={`${f.fund} ${s.page}`}>
       <a className={f.skip} href="#support">
         ข้ามไปส่วนร่วมสนับสนุน
       </a>
       <header className={s.top}>
-        <Link className={s.brand} href="/" aria-label="กลับ XMAN GAMES HUB">
-          <img
-            src="/art/logo-v2.webp"
-            alt="XMAN GAMES HUB"
-            width={130}
-            height={54}
-          />
-        </Link>
         <nav aria-label="หัวข้อ X-NOVA BREAKER">
           <a href="#gameplay">เกมเพลย์จริง</a>
           <a href="#missions">ด่านใหม่</a>
@@ -764,5 +758,6 @@ export default function BreakerFundPage({
       </footer>
       <Lightbox />
     </div>
+    </SiteFrame>
   );
 }

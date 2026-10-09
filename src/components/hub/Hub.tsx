@@ -5,7 +5,7 @@ import { CommunityBoard } from "@/components/fund/CommunitySupport";
 import Universe from "@/components/universe/Universe";
 import NovaGuide from "@/components/nova/NovaGuide";
 import { FACE } from "@/components/nova/clips";
-import { counts, featured, gameById, games, matches, type Featured, type Filter, type Game } from "@/data/games";
+import { counts, featured, featuredFor, gameById, games, matches, type Featured, type Filter, type Game } from "@/data/games";
 import { fundHref, fundProjects, mainProject } from "@/data/fund";
 import { guide, pick, type Chip, type Line } from "@/lib/guide";
 import { motionPref, useMotion } from "@/lib/prefs";
@@ -15,7 +15,8 @@ import DetailDialog, { type DetailTab } from "./DetailDialog";
 import GameCard from "./GameCard";
 import { SpotFund } from "./MainProject";
 import SpotlightVideo from "./SpotlightVideo";
-import { spotlightMedia } from "@/data/spotlight-media";
+import HeroStill from "./HeroStill";
+import { heroStill, spotlightMedia } from "@/data/spotlight-media";
 import GameLogo from "./GameLogo";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
@@ -59,7 +60,7 @@ type TourStep = { go: string; line: Line; chips?: Chip[] };
 const TOUR: TourStep[] = [
   {
     go: "spotlight",
-    line: { text: "เริ่มที่ Spotlight! เลือกเกมเด่นจากสไลด์ตรงนี้ ดูวิดีโอจากหน้าเกม หรือหมุนดาวเคราะห์ของเกมอื่นได้เลย", pose: "present" },
+    line: { text: "เริ่มที่สไลด์ด้านบน! ทุกเกมที่เล่นได้อยู่ในแถบโลโก้ตรงนี้ กดโลโก้ไหนก็ดูวิดีโอหรือภาพจากเกมนั้นได้เลย", pose: "present" },
   },
   {
     go: `feature:${mainProject.gameId}`,
@@ -71,7 +72,7 @@ const TOUR: TourStep[] = [
   },
   {
     go: "feature:theone",
-    line: { text: "กดลูกศรหรือเลือกด้านล่างเพื่อสลับโลก — อย่างนี่ THE ONE โลกแฟนตาซีที่โนวาเป็นนางเอก!", pose: "present" },
+    line: { text: "กดลูกศรหรือเลือกโลโก้ด้านล่างเพื่อสลับโลก — อย่างนี่ THE ONE โลกแฟนตาซีที่โนวาเป็นนางเอก!", pose: "present" },
   },
   {
     go: "filter:play",
@@ -87,8 +88,27 @@ const TOUR: TourStep[] = [
   },
 ];
 
-// the fund's main project always opens the spotlight, ahead of the regular featured games
-const SPOTLIGHT: Featured[] = [mainProject.spotlight, ...featured.filter((f) => f.id !== mainProject.spotlight.id).map((f) => fundProjects.find((p) => p.gameId === f.id)?.spotlight ?? f)];
+// the fund's main project always opens the hero, then the featured games, then every other game
+// that can be played right now — a new playable game joins the hero without touching this file
+const SPOTLIGHT: Featured[] = [
+  mainProject.spotlight,
+  ...[...featured.map((f) => f.id), ...games.filter((g) => g.state === "play").map((g) => g.id)]
+    .filter((id, i, all) => all.indexOf(id) === i && id !== mainProject.spotlight.id && gameById(id))
+    .map((id) => fundProjects.find((p) => p.gameId === id)?.spotlight ?? featuredFor(gameById(id)!)),
+];
+
+const railLabel = (g: Game) =>
+  g.edition === "full"
+    ? "FULL GAME"
+    : g.play
+      ? g.play.startsWith("/play/")
+        ? "WEB DEMO"
+        : "PLAY ONLINE"
+      : g.fund
+        ? "MAIN PROJECT"
+        : g.state === "dev"
+          ? "IN DEV"
+          : "CONCEPT";
 
 export default function Hub() {
   const motion = useMotion();
@@ -109,6 +129,7 @@ export default function Hub() {
 
   const fGame = gameById(SPOTLIGHT[feat].id)!;
   const fMedia = spotlightMedia[fGame.id];
+  const fStill = heroStill(fGame);
   const fFund = fundProjects.find((p) => p.gameId === fGame.id);
   const fMeta = SPOTLIGHT[feat];
   const list = useMemo(() => games.filter((g) => matches(g, filter, query)), [filter, query]);
@@ -442,23 +463,31 @@ export default function Hub() {
     return () => window.clearTimeout(t);
   }, [query, list.length]);
 
-  /* ---------------- planet drag ---------------- */
+  /* ---------------- hero: pointer parallax, logo rail ---------------- */
 
-  const drag = useRef<{ x: number; id: number } | null>(null);
-  const onStageDown = (e: RPointerEvent<HTMLDivElement>) => {
-    drag.current = { x: e.clientX, id: e.pointerId };
-    e.currentTarget.setPointerCapture(e.pointerId);
-    touched.current = performance.now();
+  const parallax = useRef(0);
+  const onHeroMove = (e: RPointerEvent<HTMLElement>) => {
+    if (e.pointerType !== "mouse" || parallax.current) return;
+    const el = e.currentTarget;
+    const { clientX: x, clientY: y } = e;
+    parallax.current = requestAnimationFrame(() => {
+      parallax.current = 0;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--px", ((x - r.left) / r.width - 0.5).toFixed(3));
+      el.style.setProperty("--py", ((y - r.top) / r.height - 0.5).toFixed(3));
+    });
   };
-  const onStageMove = (e: RPointerEvent<HTMLDivElement>) => {
-    if (!drag.current || drag.current.id !== e.pointerId) return;
-    const dx = e.clientX - drag.current.x;
-    drag.current.x = e.clientX;
-    window.dispatchEvent(new CustomEvent("xgh:spin", { detail: dx }));
-  };
-  const onStageUp = () => {
-    drag.current = null;
-  };
+  useEffect(() => () => cancelAnimationFrame(parallax.current), []);
+
+  // keep the chosen logo in view inside the rail (never scrolls the page itself)
+  const railRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const rail = railRef.current;
+    const tile = rail?.children[feat] as HTMLElement | undefined;
+    if (!rail || !tile) return;
+    const left = tile.offsetLeft - (rail.clientWidth - tile.offsetWidth) / 2;
+    rail.scrollTo({ left, behavior: motionPref.get() ? "smooth" : "auto" });
+  }, [feat]);
 
   const lastHover = useRef("");
   const onHover = (g: Game | null) => {
@@ -650,39 +679,32 @@ export default function Hub() {
         </div>
 
         <main>
-          <div className="page-intro rise">
-            <div>
-              <div className="eyebrow">
-                <span className="short-line" /> A NEW WORLD IS ONE CLICK AWAY
-              </div>
-              <h1 className="title-3d">
-                Worlds <span>await.</span>
-              </h1>
-            </div>
-            <span className="intro-note">เลือกโลกที่ใช่ แล้วออกผจญภัย</span>
-          </div>
-
           <section
             id="spotlight"
-            // The persistent carousel stays visible when its media class changes.
-            // The one-shot reveal observer cannot restore a class overwritten by React.
-            className={`spotlight${fMedia ? " has-media" : ""}`}
+            // every slide carries media now (video or a still), so Nova docks instead of standing on it
+            className="spotlight has-media"
             aria-labelledby="feature-title"
+            onPointerMove={onHeroMove}
             style={{
               ["--accent" as string]: fGame.palette[2],
               ["--accent2" as string]: fGame.palette[0],
             }}
           >
-            {fMedia && (
-              <SpotlightVideo
-                key={`video-${fGame.id}`}
-                media={fMedia}
-                motion={motion}
-                onInteract={() => {
-                  touched.current = performance.now();
-                }}
-              />
-            )}
+            <h1 className="sr-only">XMAN GAMES HUB</h1>
+            <div className="hero-media">
+              {fMedia ? (
+                <SpotlightVideo
+                  key={`video-${fGame.id}`}
+                  media={fMedia}
+                  motion={motion}
+                  onInteract={() => {
+                    touched.current = performance.now();
+                  }}
+                />
+              ) : (
+                <HeroStill key={`still-${fGame.id}`} still={fStill} alt={`ภาพจากเกม ${fGame.name}`} flip={feat % 2 === 1} />
+              )}
+            </div>
             <div className="spot-shade" />
             <div className="spot-scan" aria-hidden="true" />
             <div className="spot-head">
@@ -716,6 +738,12 @@ export default function Hub() {
                   ›
                 </button>
               </div>
+              <span className="hero-meta" aria-hidden="true">
+                <span className="ambient-dot" />
+                {fMedia?.kind ?? fStill.kind}
+                <i />
+                {fMeta.sector} · {fMeta.sectorName}
+              </span>
             </div>
 
             <div className="spot-copy" key={`copy-${fGame.id}`}>
@@ -761,90 +789,30 @@ export default function Hub() {
               </div>
             </div>
 
-            {!fMedia && (
-              <div
-                id="spotlight-stage"
-                className="spot-stage"
-                role="img"
-                aria-label={`ดาวเคราะห์ของ ${fGame.name} ลากเพื่อหมุน`}
-                tabIndex={0}
-                onPointerDown={onStageDown}
-                onPointerMove={onStageMove}
-                onPointerUp={onStageUp}
-                onPointerCancel={onStageUp}
-                onKeyDown={(e) => {
-                  if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-                    e.preventDefault();
-                    window.dispatchEvent(
-                      new CustomEvent("xgh:spin", {
-                        detail: e.key === "ArrowLeft" ? -40 : 40,
-                      }),
-                    );
-                  }
-                }}
-              >
-                <img
-                  className="spot-fallback-art"
-                  src={fGame.image}
-                  alt=""
-                  aria-hidden="true"
-                />
+            <div className="hero-rail" role="group" aria-label="เลือกเกมเด่น">
+              <div className="rail-track" ref={railRef}>
+                {SPOTLIGHT.map((f, i) => {
+                  const g = gameById(f.id)!;
+                  return (
+                    <button
+                      key={f.id}
+                      type="button"
+                      className={`rail-choice${i === feat ? " selected" : ""}${g.fund ? " main" : ""}`}
+                      aria-pressed={i === feat}
+                      aria-label={`${g.name} — ${f.hook}`}
+                      title={f.hook}
+                      onClick={() => chooseFeature(i, true)}
+                      style={{ ["--accent" as string]: g.palette[2] }}
+                    >
+                      <GameLogo game={g} className="rail-logo" lazy />
+                      <span className={`rail-state${g.edition === "full" ? " full" : g.play ? "" : " dim"}`}>{railLabel(g)}</span>
+                      {i === feat && <i key={cycle} className={motion ? "run" : undefined} />}
+                    </button>
+                  );
+                })}
               </div>
-            )}
-
-            <div className="world-coordinates" aria-hidden="true">
-              <span>{fMeta.sector}</span>
-              <span>{fMeta.sectorName}</span>
-              <i />
-            </div>
-            <div className="spot-bottom">
-              <span className="ambient-label">
-                {fMedia?.kind ?? "INTERACTIVE UNIVERSE"}
-                <span className="ambient-dot" />
-              </span>
-              <span className="spot-hint">
-                {fMedia
-                  ? "วิดีโอและโลโก้จากหน้าเกม"
-                  : "ลากเพื่อหมุนดาวเคราะห์ · ใช้ปุ่มลูกศรได้"}
-              </span>
-              <span className="spot-status">
-                {fGame.edition === "full" ? "FULL GAME · EARLY ACCESS" : fGame.play ? "DEMO AVAILABLE" : "IN DEVELOPMENT"}
-              </span>
             </div>
           </section>
-
-          <div
-            className="spot-selector rise"
-            role="group"
-            aria-label="เลือกเกมเด่น"
-            // past four choices the names run out of room in one row: wrap into rows of three
-            style={{ ["--n" as string]: SPOTLIGHT.length <= 4 ? SPOTLIGHT.length : Math.ceil(SPOTLIGHT.length / 2) }}
-          >
-            {SPOTLIGHT.map((f, i) => {
-              const g = gameById(f.id)!;
-              return (
-                <button
-                  key={f.id}
-                  type="button"
-                  className={`spot-choice${i === feat ? " selected" : ""}${g.fund ? " main" : ""}`}
-                  aria-pressed={i === feat}
-                  onClick={() => chooseFeature(i, true)}
-                  style={{ ["--accent" as string]: g.palette[2] }}
-                >
-                  <span className="choice-number">{pad2(i + 1)}</span>
-                  <img src={f.thumb} alt="" />
-                  <span className="choice-text">
-                    <b>{g.name}</b>
-                    <small>{f.hook}</small>
-                  </span>
-                  <span className={`choice-status${g.edition === "full" ? " full" : g.play ? "" : " dim"}`}>
-                    {g.edition === "full" ? "FULL GAME" : g.play ? "WEB DEMO" : "IN DEV"}
-                  </span>
-                  {i === feat && <i key={cycle} className={motion ? "run" : undefined} />}
-                </button>
-              );
-            })}
-          </div>
 
           <section id="games" className="library" aria-labelledby="library-heading">
             <div className="library-heading rise">

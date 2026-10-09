@@ -35,6 +35,8 @@ export type Game = {
   nova: string[];
   /** Where it runs (default "web"): "native" = desktop build only, "roblox" = a Roblox experience. */
   platform?: "web" | "native" | "roblox";
+  /** "full" = built as a complete game with accounts and saves, not a demo or a prototype. */
+  edition?: "full";
 };
 
 export type Featured = {
@@ -49,6 +51,29 @@ export type Featured = {
 };
 
 export const games: Game[] = [
+  {
+    id: "krungsri",
+    name: "ขุนศึกกรุงศรี",
+    subtitle: "WARLORDS OF KRUNGSRI",
+    genre: "Idle loot RPG / Fantasy Ayutthaya / 2.5D",
+    state: "play",
+    edition: "full",
+    stage: "Early access",
+    tagline: "เปิดหีบมหาลาภ เลือกอาวุธ แล้วคุ้มกันกองเรือค้าขายทั่วกรุงศรี",
+    description:
+      "เกมเต็มเกมแรกของ XMAN Studio ขุนศึกกรุงศรี: หีบมหาลาภ เป็น RPG เปิดหีบแบบ idle รับบทกล้าหรือมะลิ นักรบคุ้มกันการค้าในกรุงศรีแฟนตาซี เปิดหีบหาอุปกรณ์ 6 ช่อง จัดวิชาดาบไว สวนกลับ หรือยืนระยะ ชวนสหายร่วมทาง แล้วล้มบอสทั้งสามท่าน้ำ ระหว่างทางมีมินิเกมหกเกม เควสรายวันและรายสัปดาห์ และท่าเรือที่เก็บรายได้ให้แม้ไม่ได้เล่น",
+    features: ["24 ด่าน 3 บท บอส 3 ตัว", "มินิเกม 6 เกม", "สหายร่วมทาง 3 ตัว", "เล่นแบบ guest ได้ทันที"],
+    note: "เปิดทดสอบบนเว็บ (Early access) เริ่มเล่นแบบ guest ได้ทันที ผูก XMAN ID เพื่อเก็บความคืบหน้าข้ามเครื่อง ร้านค้าของแต่งปิดอยู่ระหว่างพัฒนา ชุดแต่งตัวและท่าต่อสู้บางส่วนยังอยู่ระหว่างผลิต",
+    image: "/art/krungsri.webp",
+    play: "/play/krungsri/",
+    palette: ["#e8b54a", "#5a1a14", "#ffd88a"],
+    planet: 1,
+    nova: [
+      "ขุนศึกกรุงศรีเป็นเกมเต็มเกมแรกของเราเลยนะ! ได้ดาบลายกนกจากหีบเมื่อไหร่ อย่าลืมเทียบค่าพลังก่อนกดสวมใส่~",
+      "บอสท่าน้ำตีหนักมาก ลองวิชาสวนกลับดูสิ กันจังหวะดี ๆ แล้วสวนคืนได้เลย",
+      "พักจากการสู้ไปตกปลาที่ท่าน้ำบ้างก็ได้ ปลาทุกตัวที่จับได้จะถูกจดไว้ในสมุดกรุงศรีเลยนะ!",
+    ],
+  },
   {
     id: "xnova",
     name: "X-NOVA",
@@ -616,6 +641,15 @@ export const games: Game[] = [
 
 export const featured: Featured[] = [
   {
+    id: "krungsri",
+    thumb: "/art/thumb-krungsri.webp",
+    hook: "เกมเต็มเกมแรกของ XMAN",
+    pitch: ["เปิดหีบมหาลาภ จัดวิชาดาบ แล้วล้มบอสทุกท่าน้ำของกรุงศรี", "เล่นแบบ guest ได้ทันที แล้วผูก XMAN ID เมื่อพร้อม"],
+    sector: "SECTOR / 15",
+    sectorName: "AYUTTHAYA PIER",
+    tags: ["Full game", "Idle RPG", "Early access"],
+  },
+  {
     id: "xnova",
     thumb: "/art/thumb-xnova.webp",
     hook: "ทะยานสู่สมรภูมิอวกาศ",
@@ -657,15 +691,17 @@ export const gameById = (id: string) => games.find((g) => g.id === id);
 
 export const counts = {
   all: games.length,
+  full: games.filter((g) => g.edition === "full").length,
   roblox: games.filter((g) => g.platform === "roblox").length,
   play: games.filter((g) => g.state === "play").length,
   dev: games.filter((g) => g.state !== "concept").length,
   concept: games.filter((g) => g.state === "concept").length,
 };
 
-export type Filter = "all" | "play" | "dev" | "concept" | "roblox";
+export type Filter = "all" | "full" | "play" | "dev" | "concept" | "roblox";
 
 export function matches(g: Game, filter: Filter, query: string) {
+  if (filter === "full" && g.edition !== "full") return false;
   if (filter === "roblox" && g.platform !== "roblox") return false;
   if (filter === "play" && g.state !== "play") return false;
   if (filter === "dev" && g.state === "concept") return false;

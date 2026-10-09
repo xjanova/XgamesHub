@@ -25,6 +25,8 @@ const existing = [
   ["hive-breach", "public/art/corewar-logo.webp"],
   ["breaker", "public/art/breaker/logo.webp"],
   ["siam-speed", "public/art/logos/siam-speed.webp"],
+  // the game's own title logo, cropped to its alpha bounds (PNG master checked in)
+  ["krungsri", "public/art/logos/krungsri.webp"],
 ];
 for (const [id, source] of existing) {
   const metadata = await sharp(source).metadata();
@@ -34,6 +36,6 @@ for (const [id, source] of existing) {
   if (!originalExists) await sharp(source).png().toFile(png);
   registry[id] = { src: `/${source.replace(/^public\//, "")}`, png: `/art/logos/${id}.png`, width: metadata.width, height: metadata.height };
 }
-if (Object.keys(registry).length !== 29) throw new Error("Expected all 29 games.");
+if (Object.keys(registry).length !== 30) throw new Error("Expected all 30 games.");
 await fs.writeFile("src/data/game-logos.ts", `/** Production raster identities; PNG masters and optimised alpha previews. */\nexport type GameLogo = { src: string; png: string; width: number; height: number };\nexport const gameLogos: Record<string, GameLogo> = ${JSON.stringify(registry, null, 2)};\n`);
 console.log(`Prepared ${Object.keys(registry).length} production identities.`);

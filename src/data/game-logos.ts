@@ -174,5 +174,11 @@ export const gameLogos: Record<string, GameLogo> = {
     "png": "/art/logos/siam-speed.png",
     "width": 1024,
     "height": 413
+  },
+  "krungsri": {
+    "src": "/art/logos/krungsri.webp",
+    "png": "/art/logos/krungsri.png",
+    "width": 1200,
+    "height": 537
   }
 };

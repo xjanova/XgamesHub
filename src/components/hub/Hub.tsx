@@ -27,6 +27,7 @@ const PLAY_IDS = games
 
 const FILTERS: { id: Filter; label: string; count: number }[] = [
   { id: "all", label: "ทุกโลก", count: counts.all },
+  { id: "full", label: "เกมเต็ม", count: counts.full },
   { id: "play", label: "เล่นเดโมได้", count: counts.play },
   { id: "dev", label: "กำลังพัฒนา", count: counts.dev },
   { id: "concept", label: "Concept lab", count: counts.concept },
@@ -34,6 +35,10 @@ const FILTERS: { id: Filter; label: string; count: number }[] = [
 ];
 
 const FILTER_LINES: Partial<Record<Filter, Line>> = {
+  full: {
+    text: "เกมเต็มของ XMAN Studio! เล่นเป็น guest ได้ทันที แล้วผูก XMAN ID ไว้ ความคืบหน้าจะตามไปทุกเครื่องเลย",
+    pose: "cheer",
+  },
   play: {
     text: `เดโมที่เล่นได้ตอนนี้มี ${counts.play} เกม — ${games
       .filter((g) => g.play)
@@ -485,6 +490,16 @@ export default function Hub() {
       </a>
       <a
         href="#games"
+        className={`side-link${navActive("full") ? " active" : ""}`}
+        onClick={(e) => {
+          e.preventDefault();
+          applyFilter("full", { scroll: true });
+        }}
+      >
+        <span className="nav-icon">★</span>Full games<span className="nav-count">{pad2(counts.full)}</span>
+      </a>
+      <a
+        href="#games"
         className={`side-link${navActive("play") ? " active" : ""}`}
         onClick={(e) => {
           e.preventDefault();
@@ -733,7 +748,7 @@ export default function Hub() {
                     rel="noopener"
                     onClick={() => playGame(fGame)}
                   >
-                    <span aria-hidden="true">▷</span> เล่นเดโมเลย
+                    <span aria-hidden="true">▷</span> {fGame.edition === "full" ? "เข้าเล่น" : "เล่นเดโมเลย"}
                   </a>
                 ) : null}
                 <button
@@ -793,7 +808,7 @@ export default function Hub() {
                   : "ลากเพื่อหมุนดาวเคราะห์ · ใช้ปุ่มลูกศรได้"}
               </span>
               <span className="spot-status">
-                {fGame.play ? "DEMO AVAILABLE" : "IN DEVELOPMENT"}
+                {fGame.edition === "full" ? "FULL GAME · EARLY ACCESS" : fGame.play ? "DEMO AVAILABLE" : "IN DEVELOPMENT"}
               </span>
             </div>
           </section>
@@ -802,7 +817,8 @@ export default function Hub() {
             className="spot-selector rise"
             role="group"
             aria-label="เลือกเกมเด่น"
-            style={{ ["--n" as string]: SPOTLIGHT.length }}
+            // past four choices the names run out of room in one row: wrap into rows of three
+            style={{ ["--n" as string]: SPOTLIGHT.length <= 4 ? SPOTLIGHT.length : Math.ceil(SPOTLIGHT.length / 2) }}
           >
             {SPOTLIGHT.map((f, i) => {
               const g = gameById(f.id)!;
@@ -821,7 +837,9 @@ export default function Hub() {
                     <b>{g.name}</b>
                     <small>{f.hook}</small>
                   </span>
-                  <span className={`choice-status${g.play ? "" : " dim"}`}>{g.play ? "WEB DEMO" : "IN DEV"}</span>
+                  <span className={`choice-status${g.edition === "full" ? " full" : g.play ? "" : " dim"}`}>
+                    {g.edition === "full" ? "FULL GAME" : g.play ? "WEB DEMO" : "IN DEV"}
+                  </span>
                   {i === feat && <i key={cycle} className={motion ? "run" : undefined} />}
                 </button>
               );

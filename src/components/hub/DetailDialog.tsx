@@ -81,8 +81,8 @@ function DetailInner({
       <div className="detail-visual">
         <img src={game.image} alt={`ภาพเกม ${game.name}`} />
         <div className="detail-visual-fade" />
-        <span className="detail-state" data-state={game.state}>
-          {STATE_LABEL[game.state]}
+        <span className="detail-state" data-state={game.state} data-edition={game.edition}>
+          {game.edition === "full" ? "★ เกมเต็ม · Early access" : STATE_LABEL[game.state]}
         </span>
       </div>
       <div className="detail-body">
@@ -131,7 +131,8 @@ function DetailInner({
         <div className="detail-actions">
           {game.play ? (
             <a className="button primary" href={game.play} target="_blank" rel="noopener" onClick={() => onPlay(game)}>
-              <span aria-hidden="true">▷</span> {game.platform === "roblox" ? "เล่นใน Roblox" : "เล่นเดโมเลย"}
+              <span aria-hidden="true">▷</span>{" "}
+              {game.platform === "roblox" ? "เล่นใน Roblox" : game.edition === "full" ? "เข้าเล่น" : "เล่นเดโมเลย"}
             </a>
           ) : (
             <span className="button ghost" aria-disabled="true">

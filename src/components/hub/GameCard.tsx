@@ -71,10 +71,14 @@ export default function GameCard({
           <img src={game.image} alt="" loading="lazy" decoding="async" draggable={false} />
           <div className="card-art-fade" />
         </div>
-        <span className={`card-badge ${game.state}`}>
-          {game.state === "play" ? "▷ " : game.state === "concept" ? "✳ " : ""}
-          {BADGE[game.state]}
-        </span>
+        {game.edition === "full" ? (
+          <span className="card-badge full">★ FULL GAME</span>
+        ) : (
+          <span className={`card-badge ${game.state}`}>
+            {game.state === "play" ? "▷ " : game.state === "concept" ? "✳ " : ""}
+            {BADGE[game.state]}
+          </span>
+        )}
         {game.platform && game.platform !== "web" && (
           <span className={`card-platform ${game.platform}`}>{game.platform === "roblox" ? "ROBLOX" : "PC"}</span>
         )}
@@ -91,7 +95,8 @@ export default function GameCard({
             </span>
             {game.play ? (
               <a className="card-cta play" href={game.play} target="_blank" rel="noopener" onClick={(e) => e.stopPropagation()}>
-                {game.platform === "roblox" ? "เล่นใน Roblox" : "เล่นเลย"} <span aria-hidden="true">▷</span>
+                {game.platform === "roblox" ? "เล่นใน Roblox" : game.edition === "full" ? "เข้าเล่น" : "เล่นเลย"}{" "}
+                <span aria-hidden="true">▷</span>
               </a>
             ) : (
               <span className="card-cta">

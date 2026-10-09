@@ -14,6 +14,8 @@
   --lime-deep: #7dbb1a;
   --violet: #8b5cff;
   --cyan: #5ee7ff;
+  --gold: #e8a93a;
+  --gold-hi: #ffd88a;
   --side: 236px;
   --gutter: 40px;
   --radius: 22px;
@@ -892,6 +894,9 @@ html.no-webgl .spot-fallback-art {
 .choice-status.dim {
   color: var(--dim);
 }
+.choice-status.full {
+  color: var(--gold-hi);
+}
 .spot-choice i {
   position: absolute;
   left: 0;
@@ -1087,6 +1092,12 @@ html.no-webgl .spot-fallback-art {
   color: #0b0d10;
   border-color: transparent;
   box-shadow: 0 6px 18px -4px rgba(192, 255, 75, 0.6);
+}
+.card-badge.full {
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  color: #1a0d04;
+  border-color: transparent;
+  box-shadow: 0 6px 20px -4px rgba(240, 190, 80, 0.7);
 }
 .card-num {
   position: absolute;
@@ -1385,6 +1396,10 @@ html[data-motion="on"] .detail-inner {
 .detail-state[data-state="play"] {
   background: var(--lime);
   color: #0b0d10;
+}
+.detail-state[data-edition="full"] {
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  color: #1a0d04;
 }
 .detail-body {
   padding: 40px 36px 34px;

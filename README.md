@@ -101,6 +101,10 @@ QR สร้างในเบราว์เซอร์ (`src/lib/promptpay.ts
 
 SNAKE.IO ลิงก์ไปเล่นบนเว็บ Thai Prompt (ยังผูกกับเซิร์ฟเวอร์เกมของที่นั่น) — ไม่มี `/play/` ของตัวเอง
 
+**ขุนศึกกรุงศรี** (`/play/krungsri/`, เกมเต็มเกมแรก `edition: "full"`) ไม่ได้ใช้ workflow ข้างล่าง เพราะมี PHP API
+(guest, cloud save, ผูก XMAN ID, XMAN Wallet) อยู่นอก web root ด้วย — deploy จาก repo ของเกมเองด้วย `bash server/deploy.sh`
+ซึ่งสร้าง `devlog.json` จาก `DEVLOG.md` ด้วย `tools/hub-publish.mjs` ตัวเดียวกัน
+
 ในแต่ละ repo เกม:
 
 - `tools/hub-publish.mjs` — แพ็กไฟล์ที่เบราว์เซอร์โหลด (ค่าเริ่มต้น index.html, manifest, css, js, assets หรือกำหนดใน `hub.json`

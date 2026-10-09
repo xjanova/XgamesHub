@@ -70,6 +70,7 @@ function RedeemInner({ initialCode, onClose }: { initialCode: string; onClose: (
   const games = Object.entries(owned);
   return (
     <div className="redeem-inner">
+      <img className="redeem-art" src="/art/hero/items.webp" alt="" aria-hidden="true" width={1536} height={1024} />
       <button type="button" className="detail-close" onClick={onClose} aria-label="ปิด">
         ×
       </button>

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent as RPointerEvent } from "react";
 import { CommunityBoard } from "@/components/fund/CommunitySupport";
+import { supportUrl } from "@/lib/community";
 import Universe from "@/components/universe/Universe";
 import NovaGuide from "@/components/nova/NovaGuide";
 import { FACE } from "@/components/nova/clips";
@@ -626,6 +627,16 @@ export default function Hub() {
         }}
       >
         <span className="nav-icon">⬢</span>Roblox<span className="nav-count">{counts.roblox ? pad2(counts.roblox) : "SOON"}</span>
+      </a>
+      <span className="side-group">ร่วมสร้างเกม</span>
+      {fundProjects.map((p) => (
+        <a key={p.id} href={fundHref(p)} className="side-link">
+          <span className="nav-icon">♦</span>
+          {p.page.title}
+        </a>
+      ))}
+      <a href={supportUrl()} className="side-link">
+        <span className="nav-icon">♥</span>Community
       </a>
       <a
         href="#redeem"

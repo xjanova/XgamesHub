@@ -33,6 +33,9 @@ export default function SiteFrame({ crumb, active, children }: { crumb: string; 
       <Link href="/?f=concept#games" className="side-link">
         <span className="nav-icon">✳</span>Concept lab<span className="nav-count">{pad2(counts.concept)}</span>
       </Link>
+      <Link href="/?f=roblox#games" className="side-link">
+        <span className="nav-icon">⬢</span>Roblox<span className="nav-count">{counts.roblox ? pad2(counts.roblox) : "SOON"}</span>
+      </Link>
       <span className="side-group">ร่วมสร้างเกม</span>
       {fundProjects.map((p) => (
         <Link key={p.id} href={fundHref(p)} className={`side-link${active === p.id ? " active" : ""}`} aria-current={active === p.id ? "page" : undefined}>
@@ -49,6 +52,9 @@ export default function SiteFrame({ crumb, active, children }: { crumb: string; 
       </Link>
       <Link href="/#devlog" className="side-link">
         <span className="nav-icon">✎</span>Dev log
+      </Link>
+      <Link href="/#studio" className="side-link">
+        <span className="nav-icon">⌘</span>Meet the studio
       </Link>
     </nav>
   );

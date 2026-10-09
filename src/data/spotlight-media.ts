@@ -37,12 +37,13 @@ const heroStills: Partial<Record<string, HeroStill>> = {
   theone: { src: "/art/theone.webp", style: "art", focus: "55% 35%", kind: "KEY ART" },
   umbra: { src: "/art/umbra.webp", style: "art", focus: "62% 45%", kind: "KEY ART" },
   chanthra: { src: "/art/hero/chanthra.webp", style: "art", focus: "50% 30%", kind: "KEY ART" },
-  tetrisvs: { src: "/art/tetrisvs.webp", style: "screen", kind: "IN-GAME" },
-  snake: { src: "/art/snake.webp", style: "screen", kind: "TITLE SCREEN" },
-  "8ball": { src: "/art/8ball.webp", style: "screen", kind: "IN-GAME" },
-  snooker: { src: "/art/snooker.webp", style: "screen", kind: "IN-GAME" },
-  tetris: { src: "/art/tetris.webp", style: "screen", kind: "IN-GAME" },
-  "space-shooter": { src: "/art/space-shooter.webp", style: "screen", kind: "IN-GAME" },
+  // key art made with ChatGPT for the games whose only picture was a screenshot
+  tetrisvs: { src: "/art/hero/tetrisvs.webp", style: "art", focus: "55% 45%", kind: "KEY ART" },
+  snake: { src: "/art/hero/snake.webp", style: "art", focus: "70% 45%", kind: "KEY ART" },
+  "8ball": { src: "/art/hero/8ball.webp", style: "art", focus: "75% 40%", kind: "KEY ART" },
+  snooker: { src: "/art/hero/snooker.webp", style: "art", focus: "50% 55%", kind: "KEY ART" },
+  tetris: { src: "/art/hero/tetris.webp", style: "art", focus: "55% 50%", kind: "KEY ART" },
+  "space-shooter": { src: "/art/hero/space-shooter.webp", style: "art", focus: "70% 45%", kind: "KEY ART" },
 };
 
 /** Games without an entry fall back to their card art. */

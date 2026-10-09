@@ -128,9 +128,14 @@
 }
 .board {
   padding: 45px 28px;
-  border: 1px solid #474c6b;
-  background: #0f1024;
-  border-radius: 12px;
+  border: 1px solid rgba(168, 176, 255, 0.18);
+  /* Nova cheering in the hub (ChatGPT art), behind the heading on the right */
+  background:
+    linear-gradient(90deg, rgba(10, 11, 24, 0.97) 0%, rgba(10, 11, 24, 0.9) 45%, rgba(10, 11, 24, 0.55) 75%, rgba(10, 11, 24, 0.35)),
+    linear-gradient(0deg, rgba(10, 11, 24, 0.98) 30%, rgba(10, 11, 24, 0) 70%),
+    url("/art/hero/community.webp") right top / auto 520px no-repeat,
+    #0f1024;
+  border-radius: 20px;
   color: #ecffcc;
   margin: 30px 0;
 }

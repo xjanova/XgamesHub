@@ -12,6 +12,7 @@ import { motionPref, useMotion } from "@/lib/prefs";
 import { devNotes } from "@/data/devnotes";
 import { thaiDate, useDevlogs, type DevEntry } from "@/lib/devlog";
 import { heroOrder, useHubControl, type Announcement } from "@/lib/hub-control";
+import { countItems, useOwnedItems } from "@/lib/items";
 import DetailDialog, { type DetailTab } from "./DetailDialog";
 import GameCard from "./GameCard";
 import { SpotFund } from "./MainProject";
@@ -19,6 +20,7 @@ import SpotlightVideo from "./SpotlightVideo";
 import HeroStill from "./HeroStill";
 import { heroStill, spotlightMedia } from "@/data/spotlight-media";
 import GameLogo from "./GameLogo";
+import RedeemDialog from "./RedeemDialog";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
 const HUB_VERSION = process.env.NEXT_PUBLIC_HUB_VERSION || "dev";
@@ -108,6 +110,12 @@ const closedAnnouncements = (): number[] => {
   }
 };
 
+/** Items redeemed on this browser; its own component so a redeem re-renders only this. */
+function SupporterCount() {
+  const n = countItems(useOwnedItems());
+  return <span className="nav-count">{n ? pad2(n) : "CODE"}</span>;
+}
+
 const railLabel = (g: Game) =>
   g.edition === "full"
     ? "FULL GAME"
@@ -131,6 +139,7 @@ export default function Hub() {
   const [featId, setFeatId] = useState<string | null>(null);
   const feat = featId ? Math.max(0, spot.findIndex((f) => f.id === featId)) : 0;
   const [closedAnn, setClosedAnn] = useState<number[]>([]);
+  const [redeem, setRedeem] = useState<{ open: boolean; code: string }>({ open: false, code: "" });
   const [filter, setFilter] = useState<Filter>("all");
   const [query, setQuery] = useState("");
   const [detail, setDetail] = useState<Game | null>(null);
@@ -179,6 +188,22 @@ export default function Hub() {
       min = localStorage.getItem("xgh.nova.min") === "1";
     } catch {}
     if (min) guide.setMinimized(true);
+  }, []);
+
+  useEffect(() => {
+    const fromHash = () => {
+      const m = window.location.hash.match(/^#redeem(?:=([A-Za-z0-9 -]{0,40}))?$/);
+      if (!m) return;
+      setDetail(null); // one modal at a time
+      setRedeem({ open: true, code: m[1] ?? "" });
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    };
+    const t = window.setTimeout(fromHash, 0);
+    window.addEventListener("hashchange", fromHash);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("hashchange", fromHash);
+    };
   }, []);
 
   /* ---------------- helpers ---------------- */
@@ -592,6 +617,17 @@ export default function Hub() {
         <span className="nav-icon">⬢</span>Roblox<span className="nav-count">{counts.roblox ? pad2(counts.roblox) : "SOON"}</span>
       </a>
       <a
+        href="#redeem"
+        className="side-link"
+        onClick={(e) => {
+          e.preventDefault();
+          setMenu(false);
+          setRedeem({ open: true, code: "" });
+        }}
+      >
+        <span className="nav-icon">✦</span>Supporter items<SupporterCount />
+      </a>
+      <a
         href="#devlog"
         className={`side-link${section === "Dev log" ? " active" : ""}`}
         onClick={(e) => {
@@ -676,6 +712,17 @@ export default function Hub() {
             />
             <span className="search-hint">{counts.all} WORLDS</span>
           </label>
+          <button
+            type="button"
+            className="pill-button redeem-pill"
+            onClick={() => setRedeem({ open: true, code: "" })}
+            title="แลกโค้ดไอเท็มผู้สนับสนุน"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-1.5-3-5-3.5-5-1.2C7 7 9.5 7 12 7zm0 0c1.5-3 5-3.5 5-1.2C17 7 14.5 7 12 7z" />
+            </svg>
+            <span className="pill-word">แลกโค้ด</span>
+          </button>
           <button
             type="button"
             className="pill-button"
@@ -1035,6 +1082,7 @@ export default function Hub() {
         onClose={() => setDetail(null)}
         onPlay={playGame}
       />
+      <RedeemDialog open={redeem.open} initialCode={redeem.code} onClose={() => setRedeem({ open: false, code: "" })} />
       <NovaGuide />
     </>
   );

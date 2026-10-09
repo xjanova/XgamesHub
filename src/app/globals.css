@@ -1186,6 +1186,175 @@ html[data-motion="on"] .spot-copy > :nth-child(6) {
   margin-top: 10px;
 }
 
+/* supporter item codes: topbar button, redeem dialog, owned items in the game dialog */
+.redeem-pill svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--lime);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+dialog.redeem {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  width: min(560px, 94vw);
+  max-width: none;
+  max-height: 92vh;
+}
+dialog.redeem::backdrop {
+  background: rgba(4, 5, 10, 0.72);
+  backdrop-filter: blur(6px);
+}
+.redeem-inner {
+  position: relative;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 30px 28px 24px;
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--lime) 30%, transparent);
+  background: linear-gradient(160deg, rgba(20, 22, 42, 0.98), rgba(9, 10, 20, 0.98));
+  box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.9);
+}
+.redeem-inner h2 {
+  margin: 8px 0 8px;
+  font-family: var(--font-d);
+  font-size: 24px;
+}
+.redeem-inner h3 {
+  margin: 22px 0 10px;
+  font-family: var(--font-d);
+  font-size: 15px;
+  color: #dfe2f2;
+}
+.redeem-lead,
+.redeem-note,
+.redeem-empty {
+  color: var(--muted);
+  font-size: 14px;
+}
+.redeem-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+.redeem-form input {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line-strong);
+  background: rgba(6, 7, 14, 0.8);
+  color: #fff;
+  font-family: var(--font-d);
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.redeem-form input:focus {
+  outline: none;
+  border-color: var(--lime);
+}
+.redeem-form .button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.redeem-status {
+  min-height: 22px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.redeem-status.ok {
+  color: var(--lime);
+}
+.redeem-status.bad {
+  color: #ff8a8a;
+}
+.redeem-list {
+  display: grid;
+  gap: 12px;
+}
+.redeem-list > li > b {
+  font-family: var(--font-d);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: #c9cce0;
+}
+.redeem-list ul {
+  display: grid;
+  gap: 8px;
+  margin-top: 6px;
+}
+.redeem-list ul li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+.redeem-list img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.redeem-list strong {
+  display: block;
+  color: #fff;
+}
+.redeem-list small {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+.redeem-note {
+  margin-top: 16px;
+  font-size: 13px;
+}
+.redeem-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 12px;
+  font-family: var(--font-d);
+  font-size: 13.5px;
+}
+.redeem-links a {
+  color: var(--lime);
+}
+.detail-items {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--lime) 35%, transparent);
+  background: color-mix(in srgb, var(--lime) 7%, transparent);
+}
+.detail-items b {
+  font-family: var(--font-d);
+  font-size: 13px;
+  color: var(--lime);
+}
+.detail-items ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.detail-items li {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 13px;
+}
+.detail-items small {
+  color: var(--muted);
+}
+
 /* ================================================================ library */
 .library {
   padding-top: 64px;

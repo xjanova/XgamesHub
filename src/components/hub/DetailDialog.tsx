@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { supportUrl } from "@/lib/community";
 import { LiveFunding } from "@/components/fund/CommunitySupport";
+import { ITEM_KIND, useOwnedItems } from "@/lib/items";
 import type { Game } from "@/data/games";
 import { devNotes } from "@/data/devnotes";
 import type { Devlog } from "@/lib/devlog";
@@ -74,6 +75,7 @@ function DetailInner({
 }) {
   const [tab, setTab] = useState<DetailTab>(initialTab);
   const log = devlog ?? devNotes[game.id];
+  const mine = Object.values(useOwnedItems()[game.id] ?? {});
   return (
     <div className="detail-inner">
       <button type="button" className="detail-close" onClick={onClose} aria-label="ปิดรายละเอียด">
@@ -118,6 +120,18 @@ function DetailInner({
             <p className="detail-note">
               <span aria-hidden="true">ⓘ</span> {game.note}
             </p>
+            {mine.length > 0 && (
+              <div className="detail-items">
+                <b>✦ ไอเท็มผู้สนับสนุนของคุณในเกมนี้</b>
+                <ul>
+                  {mine.map((it) => (
+                    <li key={it.key} title={it.description ?? undefined}>
+                      {it.name} <small>{ITEM_KIND[it.kind] ?? it.kind}</small>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             {game.fund && (
               <a className="detail-fund" href={game.fund}>
                 <span>

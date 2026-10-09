@@ -214,7 +214,12 @@ rm -rf sites/xgameshub.xman4289.com && cp -a ../GamesHub/out sites/xgameshub.xma
 
 ### ไอเท็มผู้สนับสนุนในเกม (`public/sdk/xman-items.js`)
 
-ผู้บริจาคได้โค้ด `XG-XXXX-XXXX-XXXX-XXXX` ต่อไอเท็มเมื่อทีมอนุมัติสลิป (ดูได้ที่ `xman4289.com/games-support/my-items`) เกมบนฮับใส่ช่องกรอกโค้ดได้ด้วยสคริปต์เดียว:
+ผู้บริจาคได้โค้ด `XG-XXXX-XXXX-XXXX-XXXX` ต่อไอเท็มเมื่อทีมอนุมัติสลิป (ดูได้ที่ `xman4289.com/games-support/my-items`) แล้วแลกได้ 2 ทาง:
+
+- **ในฮับ** — ปุ่ม "แลกโค้ด" บนแถบบน / เมนู Supporter items หรือลิงก์ `/#redeem=<โค้ด>` จากหน้าไอเท็มของฉัน (`RedeemDialog.tsx`, `src/lib/items.ts`) ไม่ต้องระบุเกม หลังบ้านบอกเองว่าโค้ดเป็นของเกมไหน
+- **ในเกมเอง** — ด้วยสคริปต์เดียว
+
+ทั้งสองทางเก็บไว้ใน `localStorage` คีย์ `xman.items.<id>` ของ origin เดียวกัน เกมใต้ `/play/<id>/` จึงเห็นไอเท็มที่แลกในฮับทันที แค่เช็ก `owns()`:
 
 ```html
 <script src="/sdk/xman-items.js"></script>

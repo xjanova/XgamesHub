@@ -115,6 +115,11 @@ SNAKE.IO ลิงก์ไปเล่นบนเว็บ Thai Prompt (ยั
   เช็ก `devlog.json` บนเว็บจริง แล้วออก release `v1.0.<run>`
 - `DEVLOG.md` — บันทึกการพัฒนาที่ผู้เล่นอ่าน (รูปแบบ: `# ชื่อ — บันทึกการพัฒนา`, `> สรุป`, `**สถานะ:** …`,
   `## YYYY-MM-DD — หัวข้อ` + bullet, `## แผนต่อไป`)
+- บรรทัด `Devlog: <ข้อความภาษาไทย>` ในเนื้อความ commit — ทุกครั้งที่ deploy `hub-publish.mjs` อ่านจาก `git log`
+  (workflow ใช้ `fetch-depth: 0`) แล้วรวมเข้า timeline ตามวันของ commit (เวลาไทย): วันเดียวกับหัวข้อใน `DEVLOG.md` → ต่อท้าย,
+  วันอื่น → เป็นรายการใหม่ · commit ที่ไม่มีบรรทัดนี้ไม่ขึ้น timeline · บรรทัดที่ไม่มีภาษาไทยหรือมีชื่อ code host จะถูกตัดทิ้ง (เตือน แต่ไม่ล้ม deploy),
+  ตัดอีเมลออก · ใส่ข้อความใน `hub.json` `"devlogHide": [...]` เพื่อซ่อนบรรทัดที่ผิด · `devlog.json` มี `updated` (วันที่ deploy เวลาไทย)
+  ที่ฮับแสดงเป็น "อัปเดตล่าสุด" · กติกาสำหรับผู้พัฒนาอยู่ใน `AGENTS.md` ของแต่ละเกม
 
 ฮับอ่าน `/play/<id>/devlog.json` ตอนเปิดหน้า (`src/lib/devlog.ts`) — เกมออกเวอร์ชันใหม่แล้วฮับเห็นทันทีโดยไม่ต้อง deploy ฮับ
 เกมที่ยังไม่มี build (คอนเซปต์ / ต้นแบบ Godot) ใช้บันทึกใน `src/data/devnotes.ts`
@@ -125,6 +130,7 @@ SNAKE.IO ลิงก์ไปเล่นบนเว็บ Thai Prompt (ยั
 
 ชุดเครื่องมือสำหรับ repo เกมใหม่อยู่ที่ `scripts/gamekit/`:
 `hub-publish.mjs` (→ `tools/`), `deploy-xgameshub.yml` (→ `.github/workflows/`, แทน `__GAME_ID__`),
+`AGENTS.md` (→ root ของ repo, แทน `__GAME_ID__`, และใส่ `@AGENTS.md` ใน `CLAUDE.md`)
 และ `setup-game-keys.sh id:Repo …` (สร้างโฟลเดอร์ `play/<id>`, ติดตั้งคีย์ rrsync เฉพาะโฟลเดอร์นั้น, ทดสอบว่าเปิด shell ไม่ได้,
 ตั้ง secrets แล้วลบ private key — รันจากเครื่องที่มีคีย์ admin)
 

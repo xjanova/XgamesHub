@@ -33,10 +33,10 @@ export const spotlightMedia: Partial<Record<string, SpotlightMedia>> = {
 export type HeroStill = { src: string; style: "art" | "screen"; /** object-position of the art */ focus?: string; kind: string };
 
 const heroStills: Partial<Record<string, HeroStill>> = {
-  xnova: { src: "/art/xnova.webp", style: "art", focus: "50% 28%", kind: "KEY ART" },
-  theone: { src: "/art/theone.webp", style: "art", focus: "55% 35%", kind: "KEY ART" },
+  xnova: { src: "/art/xnova.webp", style: "art", focus: "50% 8%", kind: "KEY ART" },
+  theone: { src: "/art/theone.webp", style: "art", focus: "55% 10%", kind: "KEY ART" },
   umbra: { src: "/art/umbra.webp", style: "art", focus: "62% 45%", kind: "KEY ART" },
-  chanthra: { src: "/art/hero/chanthra.webp", style: "art", focus: "50% 30%", kind: "KEY ART" },
+  chanthra: { src: "/art/hero/chanthra.webp", style: "art", focus: "50% 12%", kind: "KEY ART" },
   // key art made with ChatGPT for the games whose only picture was a screenshot
   tetrisvs: { src: "/art/hero/tetrisvs.webp", style: "art", focus: "55% 45%", kind: "KEY ART" },
   snake: { src: "/art/hero/snake.webp", style: "art", focus: "70% 45%", kind: "KEY ART" },
@@ -46,5 +46,5 @@ const heroStills: Partial<Record<string, HeroStill>> = {
   "space-shooter": { src: "/art/hero/space-shooter.webp", style: "art", focus: "70% 45%", kind: "KEY ART" },
 };
 
-/** Games without an entry fall back to their card art. */
-export const heroStill = (g: Game): HeroStill => heroStills[g.id] ?? { src: g.image, style: "art", kind: "KEY ART" };
+/** Games without an entry fall back to their card art, anchored high so a character keeps their head. */
+export const heroStill = (g: Game): HeroStill => heroStills[g.id] ?? { src: g.image, style: "art", focus: "50% 10%", kind: "KEY ART" };

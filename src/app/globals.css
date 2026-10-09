@@ -624,7 +624,8 @@ html[data-motion="on"] .spot-media {
   mask-composite: intersect;
 }
 .hero-still.art .still-img {
-  transform-origin: 62% 40%;
+  /* zoom from near the top edge: the drift never pushes a character's head out of frame */
+  transform-origin: 60% 6%;
 }
 .hero-still.screen .still-back {
   filter: blur(26px) saturate(1.5) brightness(0.5);
@@ -693,18 +694,18 @@ html[data-motion="on"] .still-sparks i {
 }
 @keyframes kenburns {
   from {
-    transform: scale(1.04);
+    transform: scale(1.03);
   }
   to {
-    transform: scale(1.15) translate3d(-2.4%, -1.6%, 0);
+    transform: scale(1.12) translate3d(-2.4%, 0, 0);
   }
 }
 @keyframes kenburnsFlip {
   from {
-    transform: scale(1.15) translate3d(2%, -1.2%, 0);
+    transform: scale(1.12) translate3d(2%, 0, 0);
   }
   to {
-    transform: scale(1.04);
+    transform: scale(1.03);
   }
 }
 @keyframes floaty {
@@ -1895,6 +1896,7 @@ html[data-motion="on"] .detail-inner {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 15%;
 }
 .detail-visual-fade {
   position: absolute;

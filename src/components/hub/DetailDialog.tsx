@@ -7,6 +7,7 @@ import type { Game } from "@/data/games";
 import { devNotes } from "@/data/devnotes";
 import type { Devlog } from "@/lib/devlog";
 import DevlogView from "./DevlogView";
+import GameReviews from "./GameReviews";
 import GameLogo from "./GameLogo";
 
 const STATE_LABEL: Record<Game["state"], string> = {
@@ -15,7 +16,7 @@ const STATE_LABEL: Record<Game["state"], string> = {
   concept: "Concept lab",
 };
 
-export type DetailTab = "about" | "dev";
+export type DetailTab = "about" | "dev" | "reviews";
 
 export default function DetailDialog({
   game,
@@ -97,9 +98,16 @@ function DetailInner({
           <button type="button" role="tab" aria-selected={tab === "dev"} onClick={() => setTab("dev")} disabled={!log}>
             บันทึกการพัฒนา{log?.version ? <span className="tab-ver">{log.version}</span> : null}
           </button>
+          <button type="button" role="tab" aria-selected={tab === "reviews"} onClick={() => setTab("reviews")}>
+            รีวิวผู้เล่น
+          </button>
         </div>
 
-        {tab === "about" || !log ? (
+        {tab === "reviews" ? (
+          <div role="tabpanel">
+            <GameReviews slug={game.id} />
+          </div>
+        ) : tab === "about" || !log ? (
           <div role="tabpanel">
             <p className="detail-desc">{game.description}</p>
             <ul className="detail-features">
@@ -127,7 +135,7 @@ function DetailInner({
         )}
 
         <LiveFunding slug={game.id} goal={0} />
-        <a className="detail-fund" href={supportUrl(game.id)}>บริจาค / ดูรายนาม / แสดงความคิดเห็น / โหวต / ให้ดาว ↗</a>
+        <a className="detail-fund" href={supportUrl(game.id)}>บริจาครับไอเท็ม / รีวิว / แสดงความคิดเห็น / โหวต / ให้ดาว ↗</a>
         <div className="detail-actions">
           {game.play ? (
             <a className="button primary" href={game.play} target="_blank" rel="noopener" onClick={() => onPlay(game)}>

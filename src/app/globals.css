@@ -496,7 +496,8 @@ html.js[data-motion="on"] .rise:not(.in) {
   --py: 0;
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  /* announcement, head, copy, rail */
+  grid-template-rows: auto auto 1fr auto;
   height: calc(100svh - 72px);
   min-height: 640px;
   max-height: 1060px;
@@ -573,6 +574,10 @@ html[data-motion="on"] .spot-media {
 .spot-video-toggle:disabled {
   opacity: 0.7;
   cursor: default;
+}
+/* an announcement row pushes the head down */
+.hero-ann + .hero-media .spot-video-toggle {
+  top: 136px;
 }
 
 /* still slide — key art drifts on the right; a screenshot floats as a screen */
@@ -722,7 +727,7 @@ html[data-motion="on"] .still-sparks i {
 
 /* head: kicker, pagination, what the slide shows */
 .spot-head {
-  grid-row: 1;
+  grid-row: 2;
   position: relative;
   z-index: 3;
   display: flex;
@@ -803,7 +808,7 @@ html[data-motion="on"] .still-sparks i {
 
 /* copy */
 .spot-copy {
-  grid-row: 2;
+  grid-row: 3;
   align-self: center;
   position: relative;
   z-index: 3;
@@ -907,7 +912,7 @@ html[data-motion="on"] .spot-copy > :nth-child(6) {
 
 /* rail of game logos */
 .hero-rail {
-  grid-row: 3;
+  grid-row: 4;
   position: relative;
   z-index: 3;
   min-width: 0;
@@ -1021,6 +1026,164 @@ html[data-motion="on"] .spot-copy > :nth-child(6) {
   .spotlight {
     --nova-room: 0px;
   }
+  .hero-ann {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin: 10px 12px 0;
+    font-size: 13px;
+  }
+  .hero-ann p {
+    flex-basis: calc(100% - 50px);
+    order: 3;
+  }
+}
+
+/* announcement from the XMAN Studio back office (/games-support/hub.json) */
+.hero-ann {
+  --ann: var(--cyan);
+  grid-row: 1;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px var(--hero-pad) 0;
+  padding: 8px 8px 8px 12px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--ann) 45%, transparent);
+  background: color-mix(in srgb, var(--ann) 14%, rgba(8, 9, 20, 0.84));
+  backdrop-filter: blur(10px);
+  font-size: 14px;
+}
+.hero-ann.event {
+  --ann: var(--lime);
+}
+.hero-ann.warning {
+  --ann: #ffb84d;
+}
+.hero-ann-tag {
+  flex: none;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--ann);
+  color: #07080f;
+  font-family: var(--font-d);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.hero-ann p {
+  flex: 1;
+  min-width: 0;
+  color: #eef0f6;
+}
+.hero-ann a {
+  flex: none;
+  color: var(--ann);
+  font-family: var(--font-d);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hero-ann button {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 18px;
+}
+.hero-ann button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* player reviews in the game dialog */
+.reviews-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 6px 0 14px;
+}
+.reviews-score {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+.reviews-score b {
+  font-family: var(--font-d);
+  font-size: 28px;
+  color: #fff;
+}
+.reviews-score span,
+.reviews-stars {
+  color: #ffd36b;
+  letter-spacing: 0.08em;
+}
+.reviews-score small,
+.reviews-empty,
+.reviews-note {
+  color: var(--muted);
+  font-size: 13px;
+}
+.reviews-write {
+  flex: none;
+  padding: 7px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-d);
+  font-size: 13px;
+  color: var(--lime);
+}
+.reviews-list {
+  display: grid;
+  gap: 10px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.reviews-list li {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+.reviews-list li.featured {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.reviews-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.reviews-meta b {
+  color: #fff;
+  font-weight: 600;
+}
+.reviews-meta em {
+  font-style: normal;
+  font-family: var(--font-d);
+  font-size: 11px;
+  color: var(--accent);
+}
+.reviews-list strong {
+  display: block;
+  margin-top: 6px;
+  color: #fff;
+}
+.reviews-list p {
+  margin-top: 4px;
+  color: #d5d8e8;
+  font-size: 14px;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.reviews-note {
+  margin-top: 10px;
 }
 
 /* ================================================================ library */
@@ -1986,6 +2149,9 @@ html[data-motion="on"] .nova-figure {
   .spot-video-toggle {
     top: 62px;
     right: 14px;
+  }
+  .hero-ann + .hero-media .spot-video-toggle {
+    top: 150px;
   }
   .hero-rail {
     padding: 0 0 16px;

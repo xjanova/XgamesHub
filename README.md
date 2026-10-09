@@ -198,3 +198,31 @@ rm -rf sites/xgameshub.xman4289.com && cp -a ../GamesHub/out sites/xgameshub.xma
 - `.htaccess` มาจาก `public/.htaccess`
 - lock file: CI ใช้ npm 10 (Node 22) — ถ้าแก้ dependency บน Windows ด้วย npm 11 แล้ว `npm ci` ใน CI ล้ม ให้สร้าง lock ใหม่ด้วย
   `npx -y npm@10 install --package-lock-only`
+
+## หลังบ้านที่ XMAN Studio (`xman4289.com/admin/gameshub`)
+
+ฮับเป็น static export แต่ส่วนที่ต้องเปลี่ยนได้โดยไม่ build ใหม่ อ่านจาก XMAN Studio ตอนเปิดหน้า (`src/lib/hub-control.ts`, แคชฝั่งเซิร์ฟเวอร์ 1 นาที) — ล้มเมื่อไหร่ฮับใช้ค่าในตัวเอง:
+
+| ข้อมูล | มาจาก | ใช้ที่ |
+| --- | --- | --- |
+| ประกาศ (สูงสุด 3, ตั้งเวลาเริ่ม/หยุดได้) | `/games-support/hub.json` → `announcements` | แถบบนสุดของฮีโร่ ปิดได้ จำไว้ใน `localStorage` |
+| ลำดับเกมในฮีโร่ / ซ่อนเกม | `/games-support/hub.json` → `hero` | เกมที่ปักขึ้นก่อนตามลำดับ ที่เหลือตามลำดับของฮับ |
+| รีวิวที่อนุมัติแล้ว | `/games-support/<id>/reviews.json` | แท็บ "รีวิวผู้เล่น" ในหน้ารายละเอียดเกม |
+| ยอดบริจาค โหวต ดาว | `/games-support/summary.json` | ฮีโร่ หน้ารายละเอียด และบอร์ดชุมชน |
+
+`NEXT_PUBLIC_XMAN_STUDIO_URL` (ค่าเริ่มต้น `https://xman4289.com`) ชี้ไปหลังบ้าน — ทดสอบกับหลังบ้านบนเครื่องได้ด้วย `.env.local` (อย่า commit)
+
+### ไอเท็มผู้สนับสนุนในเกม (`public/sdk/xman-items.js`)
+
+ผู้บริจาคได้โค้ด `XG-XXXX-XXXX-XXXX-XXXX` ต่อไอเท็มเมื่อทีมอนุมัติสลิป (ดูได้ที่ `xman4289.com/games-support/my-items`) เกมบนฮับใส่ช่องกรอกโค้ดได้ด้วยสคริปต์เดียว:
+
+```html
+<script src="/sdk/xman-items.js"></script>
+<script>
+  const items = XmanItems.forGame("breaker");          // id เดียวกับใน games.ts
+  const r = await items.redeem(codeFromPlayer);         // { ok, item, message } ข้อความภาษาไทยพร้อมแสดง
+  if (items.owns("founder-badge")) unlockBadge();       // จำไว้ใน localStorage ของเครื่องนั้น
+</script>
+```
+
+ไอเท็มต้องเป็นของแต่ง ฉายา ตรา หรือบัตรผ่าน ไม่ใช่พลังที่ได้เปรียบ (โค้ดใช้ได้ตามจำนวนเครื่องที่หลังบ้านกำหนด และถูกยกเลิกเมื่อยกเลิกยอดบริจาค)

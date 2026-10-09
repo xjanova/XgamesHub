@@ -11,6 +11,7 @@ import { guide, pick, type Chip, type Line } from "@/lib/guide";
 import { motionPref, useMotion } from "@/lib/prefs";
 import { devNotes } from "@/data/devnotes";
 import { thaiDate, useDevlogs, type DevEntry } from "@/lib/devlog";
+import { heroOrder, useHubControl, type Announcement } from "@/lib/hub-control";
 import DetailDialog, { type DetailTab } from "./DetailDialog";
 import GameCard from "./GameCard";
 import { SpotFund } from "./MainProject";
@@ -97,6 +98,16 @@ const SPOTLIGHT: Featured[] = [
     .map((id) => fundProjects.find((p) => p.gameId === id)?.spotlight ?? featuredFor(gameById(id)!)),
 ];
 
+const ANN_TAG: Record<Announcement["tone"], string> = { info: "ข่าว", event: "ใหม่", warning: "แจ้งเตือน" };
+const ANN_KEY = "xgh.ann.closed";
+const closedAnnouncements = (): number[] => {
+  try {
+    return JSON.parse(localStorage.getItem(ANN_KEY) || "[]");
+  } catch {
+    return [];
+  }
+};
+
 const railLabel = (g: Game) =>
   g.edition === "full"
     ? "FULL GAME"
@@ -112,7 +123,14 @@ const railLabel = (g: Game) =>
 
 export default function Hub() {
   const motion = useMotion();
-  const [feat, setFeat] = useState(0);
+  // the XMAN Studio back office can pin, hide and announce; without it the built-in order stands
+  const control = useHubControl();
+  const spot = useMemo(() => heroOrder(SPOTLIGHT, control?.hero), [control]);
+  // the slide is tracked by game, so a reorder from the back office never swaps what is on screen;
+  // until something picks a slide (null), the hero opens on whatever comes first
+  const [featId, setFeatId] = useState<string | null>(null);
+  const feat = featId ? Math.max(0, spot.findIndex((f) => f.id === featId)) : 0;
+  const [closedAnn, setClosedAnn] = useState<number[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
   const [query, setQuery] = useState("");
   const [detail, setDetail] = useState<Game | null>(null);
@@ -127,11 +145,14 @@ export default function Hub() {
   const tourStep = useRef(-1);
   const said = useRef(new Set<string>());
 
-  const fGame = gameById(SPOTLIGHT[feat].id)!;
+  const fMeta = spot[feat];
+  const fGame = gameById(fMeta.id)!;
   const fMedia = spotlightMedia[fGame.id];
   const fStill = heroStill(fGame);
   const fFund = fundProjects.find((p) => p.gameId === fGame.id);
-  const fMeta = SPOTLIGHT[feat];
+  // control only arrives after mount, so reading localStorage here never differs from the static HTML
+  const announcement = control?.announcements.find((a) => !closedAnn.includes(a.id) && !closedAnnouncements().includes(a.id));
+  const annLink = announcement?.link_url && /^(https:\/\/|\/(?!\/))/.test(announcement.link_url) ? announcement.link_url : null;
   const list = useMemo(() => games.filter((g) => matches(g, filter, query)), [filter, query]);
 
   // newest development entries across every game: live devlogs first, static notes as fallback
@@ -166,16 +187,19 @@ export default function Hub() {
     document.getElementById(id)?.scrollIntoView({ behavior: motionPref.get() ? "smooth" : "auto", block });
   }, []);
 
-  const chooseFeature = useCallback((i: number, byUser: boolean) => {
-    const n = (i + SPOTLIGHT.length) % SPOTLIGHT.length;
-    setFeat(n);
-    setCycle((c) => c + 1);
-    if (byUser) {
-      touched.current = performance.now();
-      const g = gameById(SPOTLIGHT[n].id)!;
-      guide.say({ text: g.nova[0], pose: "present", priority: 3 });
-    }
-  }, []);
+  const chooseFeature = useCallback(
+    (i: number, byUser: boolean) => {
+      const n = (i + spot.length) % spot.length;
+      setFeatId(spot[n].id);
+      setCycle((c) => c + 1);
+      if (byUser) {
+        touched.current = performance.now();
+        const g = gameById(spot[n].id)!;
+        guide.say({ text: g.nova[0], pose: "present", priority: 3 });
+      }
+    },
+    [spot],
+  );
 
   const applyFilter = useCallback(
     (f: Filter, opts: { scroll?: boolean; speak?: boolean } = {}) => {
@@ -209,7 +233,7 @@ export default function Hub() {
       if (kind === "spotlight") scrollTo("spotlight", "center");
       if (kind === "feature") {
         scrollTo("spotlight", "center");
-        const idx = SPOTLIGHT.findIndex((f) => f.id === arg);
+        const idx = spot.findIndex((f) => f.id === arg);
         if (idx >= 0) chooseFeature(idx, false);
         touched.current = performance.now();
       }
@@ -286,7 +310,7 @@ export default function Hub() {
         window.location.href = fundHref(mainProject);
       },
     });
-  }, [applyFilter, chooseFeature, openGame, playGame, scrollTo]);
+  }, [applyFilter, chooseFeature, openGame, playGame, scrollTo, spot]);
 
   /* ---------------- greeting ---------------- */
 
@@ -691,6 +715,30 @@ export default function Hub() {
             }}
           >
             <h1 className="sr-only">XMAN GAMES HUB</h1>
+            {announcement && (
+              <div className={`hero-ann ${announcement.tone}`} role="status">
+                <span className="hero-ann-tag">{ANN_TAG[announcement.tone] ?? ANN_TAG.info}</span>
+                <p>{announcement.message}</p>
+                {annLink && (
+                  <a href={annLink} {...(annLink.startsWith("/") ? {} : { target: "_blank", rel: "noopener" })}>
+                    {announcement.link_label || "ดูเพิ่ม"} <span aria-hidden="true">→</span>
+                  </a>
+                )}
+                <button
+                  type="button"
+                  aria-label="ปิดประกาศนี้"
+                  onClick={() => {
+                    const ids = [...closedAnnouncements(), announcement.id].slice(-30);
+                    try {
+                      localStorage.setItem(ANN_KEY, JSON.stringify(ids));
+                    } catch {}
+                    setClosedAnn(ids);
+                  }}
+                >
+                  ×
+                </button>
+              </div>
+            )}
             <div className="hero-media">
               {fMedia ? (
                 <SpotlightVideo
@@ -722,7 +770,7 @@ export default function Hub() {
               )}
               <div className="spot-pagination">
                 <span className="spot-num">{pad2(feat + 1)}</span>
-                <span className="spot-total">/ {pad2(SPOTLIGHT.length)}</span>
+                <span className="spot-total">/ {pad2(spot.length)}</span>
                 <button
                   type="button"
                   onClick={() => chooseFeature(feat - 1, true)}
@@ -791,7 +839,7 @@ export default function Hub() {
 
             <div className="hero-rail" role="group" aria-label="เลือกเกมเด่น">
               <div className="rail-track" ref={railRef}>
-                {SPOTLIGHT.map((f, i) => {
+                {spot.map((f, i) => {
                   const g = gameById(f.id)!;
                   return (
                     <button

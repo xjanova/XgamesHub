@@ -1,5 +1,5 @@
 /*
- * XMAN supporter items — drop-in client for games on xgameshub.xman4289.com/play/<id>/.
+ * XMAN supporter items — drop-in client for games on xmangameshub.online/play/<id>/.
  *
  *   <script src="/sdk/xman-items.js"></script>
  *   const items = XmanItems.forGame("breaker");

@@ -6,7 +6,7 @@ import s from "./breaker.module.css";
 export default function ShareCampaign() {
   const [status, setStatus] = useState("");
   const [fallback, setFallback] = useState(false);
-  const url = "https://xgameshub.xman4289.com/fund/breaker/";
+  const url = "https://xmangameshub.online/fund/breaker/";
   async function copy() {
     try {
       await navigator.clipboard.writeText(url);

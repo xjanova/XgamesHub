@@ -1,6 +1,17 @@
 Options -Indexes
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+# The hub moved to xmangameshub.online on 2026-10-10. The old domain's web root
+# is a symlink to this one, so both hosts reach this file: send the old host
+# across, path and query kept. Not the Krungsri API — installed Android apps call
+# it on the old domain, and a redirect would turn their POSTs into GETs.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^(www\.)?xgameshub\.xman4289\.com$ [NC]
+  RewriteCond %{REQUEST_URI} !^/play/krungsri/api(/|$)
+  RewriteRule ^ https://xmangameshub.online%{REQUEST_URI} [R=301,L]
+</IfModule>
+
 
 # No HTTPS redirect here: Cloudflare sits in front and terminates TLS, so an
 # origin-side redirect can loop. Same as the other xman4289 static sites.

@@ -27,7 +27,7 @@ import {
   futureQuests,
 } from "@/data/breaker-future";
 
-const PLAY = "https://xgameshub.xman4289.com/play/breaker/";
+const PLAY = "https://xmangameshub.online/play/breaker/";
 const ART = "/art/breaker/";
 
 function Heading({

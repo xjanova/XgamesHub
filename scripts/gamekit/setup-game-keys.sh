@@ -11,7 +11,7 @@ cd "$(dirname "$0")"
 
 ADMIN_KEY="$HOME/.ssh/thaiprompt_admin"
 HOST="${XGH_HOST:?set XGH_HOST to the origin server IP (kept out of this public repo)}"
-ROOT=/home/admin/domains/xgameshub.xman4289.com/public_html/play
+ROOT=/home/admin/domains/xmangameshub.online/public_html/play
 [ -s xgh_known_hosts ] || ssh-keyscan -t ed25519 "$HOST" > xgh_known_hosts 2>/dev/null
 ssh-keygen -lf xgh_known_hosts | grep -q "SHA256:gjB6mR0eu8RqxRtZKJAQtV4PpQzSOf1cg7VG8Nozm1I" \
   || { echo "host key fingerprint does not match — stopping" >&2; exit 1; }

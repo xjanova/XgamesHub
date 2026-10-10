@@ -20,7 +20,7 @@ const description =
   "เข้าสู่จักรวาลเกมของ XMAN Studio สำรวจทุกโลกเกม เล่นเดโม X-NOVA, X-NOVA: BREAKER, THE ONE, NOVA·UMBRA และอีกหลายเกมบนเบราว์เซอร์ โดยมีโนวาเป็นไกด์";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://xgameshub.xman4289.com"),
+  metadataBase: new URL("https://xmangameshub.online"),
   title: "XMAN GAMES HUB — Worlds await.",
   description,
   openGraph: {

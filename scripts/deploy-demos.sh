@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Upload the playable web demos to https://xgameshub.xman4289.com/play/<id>/.
+# Upload the playable web demos to https://xmangameshub.online/play/<id>/.
 #
 # The demos are NOT in this repo on purpose: XgamesHub (and xmanstudio) are
 # public repositories, and the game sources are not. Their source of truth is
@@ -18,7 +18,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 KEY="${DEPLOY_KEY:-$HOME/.ssh/thaiprompt_admin}"
 HOST="${DEPLOY_HOST:?set DEPLOY_HOST=user@origin-host}"
-WEBROOT="/home/admin/domains/xgameshub.xman4289.com/public_html/play"
+WEBROOT="/home/admin/domains/xmangameshub.online/public_html/play"
 
 declare -A SRC=([xnova]="XNova" [breaker]="XNova Breaker" [theone]="TheOne")
 ids=("$@")

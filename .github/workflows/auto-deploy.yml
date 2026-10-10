@@ -1,7 +1,7 @@
 name: Release & Deploy
 
 # Every merge to main that passes CI becomes a release:
-#   build -> deploy to xgameshub.xman4289.com -> check the live page -> GitHub Release
+#   build -> deploy to xmangameshub.online -> check the live page -> GitHub Release
 # The release carries the built site as a zip, so any version can be put back by
 # re-running this workflow on its tag (Actions -> Run workflow -> pick the tag).
 
@@ -20,7 +20,7 @@ permissions:
   contents: write
 
 env:
-  SITE_URL: https://xgameshub.xman4289.com
+  SITE_URL: https://xmangameshub.online
 
 jobs:
   release:
@@ -62,7 +62,7 @@ jobs:
           test -f out/index.html
 
       # Deploy key is locked on the server to
-      #   restrict,command="/usr/bin/rrsync -wo -munge /home/admin/domains/xgameshub.xman4289.com/public_html"
+      #   restrict,command="/usr/bin/rrsync -wo -munge /home/admin/domains/xmangameshub.online/public_html"
       # so it can only write into this site's web root (same setup as bass-build).
       - name: Deploy (rsync)
         id: deploy

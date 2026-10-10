@@ -4,7 +4,7 @@
 
 ## ฐานที่มีจริง
 
-- เดโม WebGL2 / JavaScript: https://xgameshub.xman4289.com/play/breaker/
+- เดโม WebGL2 / JavaScript: https://xmangameshub.online/play/breaker/
 - กติกาหลัก: ยิงจุดยึด ชิงอุปกรณ์สามช่อง ใช้ความร้อน/พลังงาน ดีดอุปกรณ์ และ NOVA BREAKER
 - Reflector, Railgun, Arc Drone; เส้นทาง dock/convoy; บอส ARGUS สามเฟส
 - เว็บไซต์เดิม Next.js แบบ static export; หน้าใหม่ `/fund/breaker/` อยู่ร่วมกับ HIVE BREACH

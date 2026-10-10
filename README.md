@@ -1,6 +1,10 @@
 # XMAN GAMES HUB
 
-ฮับรวมโลกเกมของ XMAN Studio — **https://xgameshub.xman4289.com**
+ฮับรวมโลกเกมของ XMAN Studio — **https://xmangameshub.online**
+
+> ย้ายมาจาก `xgameshub.xman4289.com` เมื่อ 2026-10-10: ไฟล์จริงอยู่ที่ `/home/admin/domains/xmangameshub.online/{public_html,krungsri}`
+> ส่วน path เดิมของ `xgameshub.xman4289.com` เป็น symlink มาที่นี่ และโดเมนเดิมยังเสิร์ฟไฟล์ชุดเดียวกัน
+> (แอปขุนศึกกรุงศรีบน Android เรียก API ที่โดเมนเดิม) — **ห้ามลบโดเมนเดิมใน DirectAdmin**
 
 ดีไซน์ต่อยอดจากต้นแบบ "XMAN Games Hub — Future UI v2" (Codex): เมนูข้าง, Spotlight เกมเด่น,
 คลัง 10 โลก, ส่วนแนะนำสตูดิโอ — แล้วยกทั้งหน้าขึ้นเป็น 3D เต็มรูปแบบ โดยมี **โนวา (Nova)**
@@ -158,7 +162,7 @@ npm run build    # static export -> out/
 merge เข้า `main` → CI (`ci.yml`) ผ่าน → workflow **Release & Deploy** (`auto-deploy.yml`):
 
 1. build static site (`out/`)
-2. `rsync` ขึ้น `/home/admin/domains/xgameshub.xman4289.com/public_html` (ไม่แตะ `/play`, `/cgi-bin`, `/.well-known`)
+2. `rsync` ขึ้น `/home/admin/domains/xmangameshub.online/public_html` (ไม่แตะ `/play`, `/cgi-bin`, `/.well-known`)
 3. เช็กว่าหน้าเว็บจริงเสิร์ฟ build นี้แล้ว
 4. ออก **GitHub Release** `v2.0.<run>` พร้อม release notes (จาก PR) และไฟล์ `xgameshub-site-<tag>.zip`
 
@@ -170,7 +174,7 @@ merge เข้า `main` → CI (`ci.yml`) ผ่าน → workflow **Release 
 คีย์ deploy ล็อกบนเซิร์ฟเวอร์ด้วย `rrsync` ให้เขียนได้เฉพาะ web root ของเว็บนี้ (แบบเดียวกับ bass-build):
 
 ```
-restrict,command="/usr/bin/rrsync -wo -munge /home/admin/domains/xgameshub.xman4289.com/public_html" ssh-ed25519 … xgameshub-gha-deploy
+restrict,command="/usr/bin/rrsync -wo -munge /home/admin/domains/xmangameshub.online/public_html" ssh-ed25519 … xgameshub-gha-deploy
 ```
 
 Secrets ใน **Settings → Secrets and variables → Actions**:

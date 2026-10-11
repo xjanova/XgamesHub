@@ -13,6 +13,12 @@ export const gameLogos: Record<string, GameLogo> = {
     "width": 1200,
     "height": 480
   },
+  "umbra2": {
+    "src": "/art/logos/umbra2.webp",
+    "png": "/art/logos/umbra2.png",
+    "width": 1200,
+    "height": 480
+  },
   "theone": {
     "src": "/art/logos/theone.webp",
     "png": "/art/logos/theone.png",

@@ -35,7 +35,8 @@ export type HeroStill = { src: string; style: "art" | "screen"; /** object-posit
 const heroStills: Partial<Record<string, HeroStill>> = {
   xnova: { src: "/art/xnova.webp", style: "art", focus: "50% 8%", kind: "KEY ART" },
   theone: { src: "/art/theone.webp", style: "art", focus: "55% 10%", kind: "KEY ART" },
-  umbra: { src: "/art/umbra.webp", style: "art", focus: "62% 45%", kind: "KEY ART" },
+  umbra: { src: "/art/hero/umbra.webp", style: "screen", kind: "IN-GAME" },
+  umbra2: { src: "/art/umbra2.webp", style: "art", focus: "62% 45%", kind: "KEY ART" },
   chanthra: { src: "/art/hero/chanthra.webp", style: "art", focus: "50% 12%", kind: "KEY ART" },
   // key art made with ChatGPT for the games whose only picture was a screenshot
   tetrisvs: { src: "/art/hero/tetrisvs.webp", style: "art", focus: "55% 45%", kind: "KEY ART" },

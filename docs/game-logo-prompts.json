@@ -11,10 +11,16 @@
     },
     {
       "id": "umbra",
-      "name": "NOVA·UMBRA",
-      "prompt": "Use case: logo-brand. Production-ready raster game title logo asset for actual release, not a mockup. Text (verbatim): \"NOVA·UMBRA\". Prestige atmospheric 2.5D shadow adventure logo. Elegant ivory carved serif wordmark, violet glowing interpunct between NOVA and UMBRA. Small crescent enclosing a luminous lantern spirit above the words, fine thorn and mist silver filigree, ethereal teal light, restrained haunting dark-fantasy finish. Typography stays clearly readable, icon secondary. Composition: isolated wide horizontal centered logo taking most of the canvas width, modest empty transparent margin; no scene, no panel, no extra text or tagline, no watermark. Typography hand-crafted and polished, exact spelling, legible at card thumbnail size. Scene/backdrop: genuinely transparent alpha background, no solid black or white rectangle, no checkerboard baked into the artwork. Materials and lighting are contained within the logo silhouette; avoid wispy large glows or stray sparkles. Only one finished logo.",
+      "name": "NOVA·UMBRA ภาค 1",
+      "prompt": "Redraw of the NOVA·UMBRA title logo for part 1, the shadow edition: same carved serif wordmark \"NOVA·UMBRA\" with interpunct, crescent moon holding a lantern, thorn filigree, fully monochrome (black, charcoal, misty silver-white, soft white lantern glow), small engraved Roman numeral \"I\" under the wordmark. Isolated wide horizontal logo, genuinely transparent background, no extra text, no watermark.",
       "master": "public/art/logos/umbra.png",
       "generatedOriginal": "exec-61f102d2-5159-4b36-bb9e-b9566a6117f9.png"
+    },
+    {
+      "id": "umbra2",
+      "name": "NOVA·UMBRA ภาค 2",
+      "prompt": "Redraw of the NOVA·UMBRA title logo for part 2, the full-color edition: same layout, ivory-gold letters with golden starlight edges, luminous teal and violet glow, glowing blue crystal flowers and tiny gold stars in the filigree, bright star in the lantern, small engraved Roman numeral \"II\" under the wordmark. Isolated wide horizontal logo, genuinely transparent background, no extra text, no watermark.",
+      "master": "public/art/logos/umbra2.png"
     },
     {
       "id": "theone",

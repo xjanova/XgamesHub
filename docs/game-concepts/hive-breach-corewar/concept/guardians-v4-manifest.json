@@ -1,0 +1,452 @@
+{
+  "version": 4,
+  "status": "concept-only",
+  "activePolicy": "hero-specific",
+  "passivePolicy": "shared-flexible-paths",
+  "heroes": [
+    {
+      "id": "lyra",
+      "name": "LYRA",
+      "race": "HUMAN",
+      "role": "MOBILE MEDIC",
+      "personalBranches": [
+        [
+          "PULSE PISTOL",
+          "PULSE SHOT",
+          "RICOCHET SHOT",
+          "GUARDIAN BURST",
+          "PRECISION FEED"
+        ],
+        [
+          "MOBILE MEDIC",
+          "AUTO HEAL",
+          "NANO BOOST",
+          "RECOVERY TIMING",
+          "MEDIC RESERVE"
+        ],
+        [
+          "SWIFT STEP",
+          "PHASE STRIDE",
+          "RESCUE DASH",
+          "FAST FOOTWORK",
+          "MOBILE AIM"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "PULSE SHOT",
+        "RICOCHET SHOT",
+        "PHASE STRIDE",
+        "GUARDIAN BURST"
+      ],
+      "signature": "AUTO HEAL 3% MAX HP / SEC AFTER 4 SEC WITHOUT DAMAGE; MOVE 120%"
+    },
+    {
+      "id": "velvet",
+      "name": "VELVET",
+      "race": "HUMAN",
+      "role": "REAPER / BLOODGUARD",
+      "personalBranches": [
+        [
+          "HEAVY COMBO",
+          "SWEEP",
+          "LIFT",
+          "SLAM",
+          "REQUIEM BREAKER"
+        ],
+        [
+          "BLOOD ENGINE",
+          "BLOOD SIPHON",
+          "BLOOD POWER",
+          "BLOOD SURGE",
+          "SIPHON RESERVOIR"
+        ],
+        [
+          "REAPER DEFENSE",
+          "REAPER GUARD",
+          "CARAPACE BREAK",
+          "GUARD WINDOW",
+          "HEAVY ENDURANCE"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "SWEEP",
+        "LIFT",
+        "SLAM",
+        "REQUIEM BREAKER"
+      ],
+      "signature": "HIGH ARMOR; SIPHON TRIGGERS ON KILL ONLY"
+    },
+    {
+      "id": "astra",
+      "name": "ASTRA",
+      "race": "HUMAN",
+      "role": "ELEMENTALIST",
+      "personalBranches": [
+        [
+          "FIRE",
+          "FIRE LANCE",
+          "EMBER TRAIL",
+          "METEOR BURST",
+          "BURNING FOCUS"
+        ],
+        [
+          "FROST",
+          "FROST NOVA",
+          "ICE WALL",
+          "SHATTER SHOT",
+          "COLD MASTERY"
+        ],
+        [
+          "LIGHTNING",
+          "CHAIN ARC",
+          "ARC STEP",
+          "STATIC FIELD",
+          "LIGHTNING MASTERY"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "FIRE LANCE",
+        "FROST NOVA",
+        "CHAIN ARC",
+        "METEOR BURST"
+      ],
+      "signature": "FIRE / FROST / LIGHTNING BELONG TO ASTRA"
+    },
+    {
+      "id": "echo",
+      "name": "ECHO",
+      "race": "HUMAN",
+      "role": "FIREARMS SPECIALIST",
+      "personalBranches": [
+        [
+          "PISTOL",
+          "QUICK DRAW",
+          "MOBILE SHOT",
+          "RICOCHET",
+          "PISTOL TUNING"
+        ],
+        [
+          "SNIPER",
+          "FOCUS",
+          "PIERCE SHOT",
+          "WEAKPOINT",
+          "STEADY AIM"
+        ],
+        [
+          "MACHINE GUN",
+          "SUPPRESS",
+          "HEAT VENT",
+          "OVERDRIVE",
+          "FEED BELT"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "QUICK DRAW",
+        "PIERCE SHOT",
+        "SUPPRESS",
+        "HEAT VENT"
+      ],
+      "signature": "SELECT PISTOL / SNIPER / MACHINE GUN WITHIN ECHO KIT"
+    },
+    {
+      "id": "rhea",
+      "name": "RHEA",
+      "race": "HUMAN",
+      "role": "SHIELD BASTION",
+      "personalBranches": [
+        [
+          "SHIELD STRIKE",
+          "SHIELD BASH",
+          "SHIELD RUSH",
+          "IMPACT EDGE",
+          "STAGGER FORCE"
+        ],
+        [
+          "FORTRESS",
+          "IRON WALL",
+          "CORE ANCHOR",
+          "FORTRESS FIELD",
+          "UNBREAKABLE"
+        ],
+        [
+          "SECOND WIND",
+          "SECOND WIND",
+          "RECOVERY TIMING",
+          "CHALLENGE PULSE",
+          "HEAVY ENDURANCE"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "SHIELD BASH",
+        "IRON WALL",
+        "CORE ANCHOR",
+        "SHIELD RUSH"
+      ],
+      "signature": "TOWER SHIELD IS THE WEAPON; VERY HIGH DURABILITY"
+    },
+    {
+      "id": "seraph",
+      "name": "SERAPH-09",
+      "race": "ANDROID",
+      "role": "LIGHTBLADE GUARDIAN",
+      "personalBranches": [
+        [
+          "LIGHTBLADE",
+          "LIGHT SLASH",
+          "PHOTON EDGE",
+          "PHOTON TEMPEST",
+          "BLADE MASTERY"
+        ],
+        [
+          "PRISM GUARD",
+          "PRISM PARRY",
+          "REFRACT GUARD",
+          "PRISM BUFFER",
+          "GUARD WINDOW"
+        ],
+        [
+          "AEGIS MOTION",
+          "AEGIS DASH",
+          "BLADE ORBIT",
+          "DASH RESET",
+          "ENERGY FLOW"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "LIGHT SLASH",
+        "PRISM PARRY",
+        "AEGIS DASH",
+        "PHOTON TEMPEST"
+      ],
+      "signature": "LIGHT SWORD + ENERGY SHIELD; ANDROID ORIGIN"
+    },
+    {
+      "id": "nova",
+      "name": "NOVA-7",
+      "race": "ANDROID",
+      "role": "FIELD ENGINEER",
+      "personalBranches": [
+        [
+          "TURRETS",
+          "DEPLOY TURRET",
+          "OVERCLOCK",
+          "SENTRY LINK",
+          "CORE REPAIR"
+        ],
+        [
+          "TRAPS",
+          "ARC TRAP",
+          "CRYO MINE",
+          "CHAIN GRID",
+          "QUICK RESET"
+        ],
+        [
+          "DRONES",
+          "SCOUT DRONE",
+          "FIELD REPAIR",
+          "AMMO RELAY",
+          "RECOVERY DRONE"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "DEPLOY TURRET",
+        "ARC TRAP",
+        "SCOUT DRONE",
+        "OVERCLOCK"
+      ],
+      "signature": "BUILD TURRETS / TRAPS / DRONES; NO TEAM HEAL CAST"
+    },
+    {
+      "id": "iris",
+      "name": "IRIS-3",
+      "race": "ANDROID",
+      "role": "RESONANCE HEALER",
+      "personalBranches": [
+        [
+          "RESTORE",
+          "HEAL PULSE",
+          "RENEWAL FIELD",
+          "PULSE AMPLIFY",
+          "REGEN AURA"
+        ],
+        [
+          "CLEANSE",
+          "CLEANSE",
+          "PURIFY WAVE",
+          "STABILITY",
+          "WARD"
+        ],
+        [
+          "RESCUE",
+          "REVIVE LINK",
+          "EMERGENCY SHIELD",
+          "LAST LIGHT",
+          "SAFE RETURN"
+        ]
+      ],
+      "illustratedActiveBar": [
+        "HEAL PULSE",
+        "CLEANSE",
+        "REVIVE LINK",
+        "EMERGENCY SHIELD"
+      ],
+      "signature": "HEALS HUMAN + ANDROID; DOES NOT REPAIR THE CORE"
+    }
+  ],
+  "imageSpecs": [
+    {
+      "file": "guardian-roster-v4.png",
+      "source": "guardian-roster-v3.png"
+    },
+    {
+      "file": "corewar-main-menu-v4.png",
+      "source": "corewar-main-menu-v3.png"
+    },
+    {
+      "file": "myrax-strategic-fog-gameplay-v4.png",
+      "references": [
+        "myrax-rts-gameplay-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "aetherion-strategic-fog-gameplay-v4.png",
+      "references": [
+        "aetherion-rts-gameplay-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "guardian-early-exploration-gameplay-v4.png",
+      "references": [
+        "guardian-roster-v4.png",
+        "lyra-design-v1.png",
+        "velvet-tripo-front-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "auto-skills-upgrade-plans-ui-v4.png",
+      "references": [
+        "lyra-design-v1.png",
+        "myrax-research-ui-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "guardian-creation-ui-v4.png",
+      "references": [
+        "guardian-roster-v4.png",
+        "lyra-design-v1.png",
+        "velvet-tripo-front-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "passive-constellation-atlas-ui-v4.png",
+      "references": [
+        "lyra-design-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "lyra-character-skill-tree-ui-v4.png",
+      "references": [
+        "lyra-design-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "velvet-character-skill-tree-ui-v4.png",
+      "references": [
+        "velvet-tripo-front-v1.png",
+        "velvet-hammer-tripo-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "astra-character-skill-tree-ui-v4.png",
+      "references": [
+        "guardian-roster-v4.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "echo-character-skill-tree-ui-v4.png",
+      "references": [
+        "guardian-roster-v4.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "rhea-character-skill-tree-ui-v4.png",
+      "references": [
+        "guardian-roster-v4.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "seraph-character-skill-tree-ui-v4.png",
+      "references": [
+        "guardian-roster-v4.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "nova-character-skill-tree-ui-v4.png",
+      "references": [
+        "guardian-roster-v4.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "iris-character-skill-tree-ui-v4.png",
+      "references": [
+        "guardian-roster-v4.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "attack-frost-relay-gameplay-v4.png",
+      "references": [
+        "guardian-roster-v4.png",
+        "lyra-design-v1.png",
+        "corewar-party-gameplay-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "tank-ash-garden-gameplay-v4.png",
+      "references": [
+        "guardian-roster-v4.png",
+        "velvet-tripo-front-v1.png",
+        "corewar-party-gameplay-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "support-ash-garden-gameplay-v4.png",
+      "references": [
+        "guardian-roster-v4.png",
+        "corewar-party-gameplay-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "healer-orbital-rain-gameplay-v4.png",
+      "references": [
+        "guardian-roster-v4.png",
+        "lyra-design-v1.png",
+        "corewar-party-gameplay-v1.png"
+      ],
+      "transparent": false
+    },
+    {
+      "file": "corewar-logo-transparent-v4.png",
+      "references": [
+        "corewar-main-menu-v4.png"
+      ],
+      "transparent": true
+    }
+  ]
+}

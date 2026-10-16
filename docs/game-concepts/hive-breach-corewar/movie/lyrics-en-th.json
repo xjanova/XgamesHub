@@ -1,0 +1,206 @@
+{
+  "song": "Guard the Star Core",
+  "durationSeconds": 217.2,
+  "translationStyle": "cinematic Thai; 1–2 readable lines",
+  "timingStatus": "pending_word_timestamp_review",
+  "lines": [
+    {
+      "id": 1,
+      "section": "Intro",
+      "en": "Humanity, stand up!",
+      "th": "มนุษยชาติ จงลุกขึ้น!"
+    },
+    {
+      "id": 2,
+      "section": "Intro",
+      "en": "Androids, lock in!",
+      "th": "เหล่าแอนดรอยด์ เตรียมพร้อม!"
+    },
+    {
+      "id": 3,
+      "section": "Intro",
+      "en": "The star core is ours to defend!",
+      "th": "แกนพลังแห่งดวงดาว\nเราจะปกป้องไว้!"
+    },
+    {
+      "id": 4,
+      "section": "Verse 1",
+      "en": "Red alarms split the midnight sky",
+      "th": "สัญญาณเตือนสีแดง\nฉีกท้องฟ้ายามเที่ยงคืน"
+    },
+    {
+      "id": 5,
+      "section": "Verse 1",
+      "en": "Steel hearts answer, side by side",
+      "th": "หัวใจเหล็กกล้าขานรับ\nเคียงบ่าเคียงไหล่"
+    },
+    {
+      "id": 6,
+      "section": "Verse 1",
+      "en": "On the citadel, we take our place",
+      "th": "บนป้อมปราการ\nเราประจำแนวรบ"
+    },
+    {
+      "id": 7,
+      "section": "Verse 1",
+      "en": "One last shield against the swarm's embrace",
+      "th": "เป็นโล่ด่านสุดท้าย\nต้านฝูงเอเลี่ยนที่โอบล้อม"
+    },
+    {
+      "id": 8,
+      "section": "Pre-Chorus 1",
+      "en": "Hold the line, let the engines roar",
+      "th": "ยืนหยัดแนวรบ\nให้เครื่องยนต์คำราม"
+    },
+    {
+      "id": 9,
+      "section": "Pre-Chorus 1",
+      "en": "They can break the gate, not what we fight for",
+      "th": "พวกมันพังประตูได้\nแต่พังอุดมการณ์ของเราไม่ได้"
+    },
+    {
+      "id": 10,
+      "section": "Chorus 1",
+      "en": "Guard the star core, never let it fall",
+      "th": "ปกป้องแกนพลังแห่งดวงดาว\nอย่ายอมให้มันพังทลาย"
+    },
+    {
+      "id": 11,
+      "section": "Chorus 1",
+      "en": "Human hearts and android souls unite us all",
+      "th": "หัวใจมนุษย์และวิญญาณแอนดรอยด์\nรวมเราเป็นหนึ่งเดียว"
+    },
+    {
+      "id": 12,
+      "section": "Chorus 1",
+      "en": "When the alien tide comes crashing through",
+      "th": "เมื่อคลื่นเอเลี่ยน\nถาโถมเข้ามา"
+    },
+    {
+      "id": 13,
+      "section": "Chorus 1",
+      "en": "We ignite, we rise, we see this battle through!",
+      "th": "เราลุกเป็นไฟ เราหยัดยืน\nจะสู้ศึกนี้จนถึงที่สุด!"
+    },
+    {
+      "id": 14,
+      "section": "Verse 2",
+      "en": "Chrome hands blazing, brave eyes bright",
+      "th": "มือโลหะลุกเป็นไฟ\nดวงตาผู้กล้าส่องประกาย"
+    },
+    {
+      "id": 15,
+      "section": "Verse 2",
+      "en": "Every step turns fear to fight",
+      "th": "ทุกย่างก้าวเปลี่ยนความกลัว\nให้กลายเป็นแรงต่อสู้"
+    },
+    {
+      "id": 16,
+      "section": "Verse 2",
+      "en": "Through the breach, their shadows pour",
+      "th": "เงาของพวกมันหลั่งไหล\nผ่านรอยแยกเข้ามา"
+    },
+    {
+      "id": 17,
+      "section": "Verse 2",
+      "en": "We are the answer, we are the door",
+      "th": "เราคือคำตอบ\nเราคือประตูด่านสุดท้าย"
+    },
+    {
+      "id": 18,
+      "section": "Pre-Chorus 2",
+      "en": "Hold the line, let the engines roar",
+      "th": "ยืนหยัดแนวรบ\nให้เครื่องยนต์คำราม"
+    },
+    {
+      "id": 19,
+      "section": "Pre-Chorus 2",
+      "en": "They can break the gate, not what we fight for",
+      "th": "พวกมันพังประตูได้\nแต่พังอุดมการณ์ของเราไม่ได้"
+    },
+    {
+      "id": 20,
+      "section": "Chorus 2",
+      "en": "Guard the star core, never let it fall",
+      "th": "ปกป้องแกนพลังแห่งดวงดาว\nอย่ายอมให้มันพังทลาย"
+    },
+    {
+      "id": 21,
+      "section": "Chorus 2",
+      "en": "Human hearts and android souls unite us all",
+      "th": "หัวใจมนุษย์และวิญญาณแอนดรอยด์\nรวมเราเป็นหนึ่งเดียว"
+    },
+    {
+      "id": 22,
+      "section": "Chorus 2",
+      "en": "When the alien tide comes crashing through",
+      "th": "เมื่อคลื่นเอเลี่ยน\nถาโถมเข้ามา"
+    },
+    {
+      "id": 23,
+      "section": "Chorus 2",
+      "en": "We ignite, we rise, we see this battle through!",
+      "th": "เราลุกเป็นไฟ เราหยัดยืน\nจะสู้ศึกนี้จนถึงที่สุด!"
+    },
+    {
+      "id": 24,
+      "section": "Bridge",
+      "en": "No surrender! No retreat!",
+      "th": "ไม่ยอมแพ้! ไม่ถอยหนี!"
+    },
+    {
+      "id": 25,
+      "section": "Bridge",
+      "en": "One tomorrow—one heartbeat!",
+      "th": "เพื่อวันพรุ่งนี้เดียวกัน\nด้วยหัวใจที่เต้นเป็นหนึ่ง!"
+    },
+    {
+      "id": 26,
+      "section": "Bridge",
+      "en": "Raise your hands, defend the flame",
+      "th": "ชูมือขึ้น\nปกป้องเปลวไฟ"
+    },
+    {
+      "id": 27,
+      "section": "Bridge",
+      "en": "We stand together, we remain!",
+      "th": "เรายืนหยัดร่วมกัน\nเราจะอยู่รอด!"
+    },
+    {
+      "id": 28,
+      "section": "Final Chorus",
+      "en": "Guard the star core, never let it fall",
+      "th": "ปกป้องแกนพลังแห่งดวงดาว\nอย่ายอมให้มันพังทลาย"
+    },
+    {
+      "id": 29,
+      "section": "Final Chorus",
+      "en": "Human hearts and android souls unite us all",
+      "th": "หัวใจมนุษย์และวิญญาณแอนดรอยด์\nรวมเราเป็นหนึ่งเดียว"
+    },
+    {
+      "id": 30,
+      "section": "Final Chorus",
+      "en": "Let the whole void hear what we can do",
+      "th": "ให้ห้วงอวกาศทั้งมวล\nได้ยินพลังของเรา"
+    },
+    {
+      "id": 31,
+      "section": "Final Chorus",
+      "en": "We ignite, we rise—this world is coming through!",
+      "th": "เราลุกเป็นไฟ เราหยัดยืน\nโลกนี้จะรอดพ้นไป!"
+    },
+    {
+      "id": 32,
+      "section": "Outro",
+      "en": "Humanity! Androids!",
+      "th": "มนุษยชาติ! แอนดรอยด์!"
+    },
+    {
+      "id": 33,
+      "section": "Outro",
+      "en": "Defend the core!",
+      "th": "ปกป้องแกนพลัง!"
+    }
+  ]
+}

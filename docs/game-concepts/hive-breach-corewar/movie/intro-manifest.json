@@ -1,0 +1,412 @@
+{
+  "version": "COREWAR-CLASS-INTROS-V1",
+  "status": "selected_final_keyframes",
+  "tool": "built-in image_gen",
+  "guardianCount": 8,
+  "advancedCareerPathLabels": 16,
+  "commanderAppearanceBonusCount": 4,
+  "requestedAspectRatio": "16:9",
+  "actualSourceSize": {
+    "width": 1672,
+    "height": 941
+  },
+  "targetVideo": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "scaling": "Fill"
+  },
+  "introDurationSeconds": 48,
+  "guardianOnlyIntroDurationSeconds": 32,
+  "shots": [
+    {
+      "id": "01",
+      "key": "lyra",
+      "name": "LYRA",
+      "class": "MOBILE MEDIC",
+      "roleTh": "ปืนพกคล่องตัว / ฟื้นฟูตัวเอง",
+      "careers": [
+        "PULSE SAINT",
+        "PHASE GUNNER"
+      ],
+      "race": "HUMAN",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/shot-02-lyra-awakens.png",
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/lyra-tripo-front-v1.png"
+      ],
+      "scene": "Image 1 is finished LYRA facial/material continuity reference, image 2 costume geometry reference. LYRA adult beautiful woman, blue eyes, silver-lavender short ponytail, pearl-white/gold armor jacket over graphite high-neck bodice, cyan waist core, white gauntlets and white boots, glowing flowing translucent cyan/lavender flared OUTER skirt over opaque inner skirt and combat shorts. ONE compact pearl-white/gold/cyan energy PISTOL held in a confident raised-ready two-handed grip pointing toward upper right, no shot during recovery. Athletic three-quarter stance after a fast sidestep behind broken alloy cover in a misty rocky outpost, silhouette sharp, soft cyan self-recovery motes at waist and skirt edge. No healing another character, no rifle or sword. Cold cyan edge light, warm distant sparks, 40mm medium-wide portrait with her adult face clearly visible. Preserve her exact reference face.",
+      "motion": "Gentle lateral dolly around LYRA holding her pistol ready after entering cover. A subtle self-recovery glow pulses from her waist, her skirt edges and hair move slightly. Preserve face, hands and pistol. Keep the left title area and all title lettering perfectly still and readable. No shooting while recovery begins.",
+      "file": "intro-01-lyra-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Image 1 is finished LYRA facial/material continuity reference, image 2 costume geometry reference. LYRA adult beautiful woman, blue eyes, silver-lavender short ponytail, pearl-white/gold armor jacket over graphite high-neck bodice, cyan waist core, white gauntlets and white boots, glowing flowing translucent cyan/lavender flared OUTER skirt over opaque inner skirt and combat shorts. ONE compact pearl-white/gold/cyan energy PISTOL held in a confident raised-ready two-handed grip pointing toward upper right, no shot during recovery. Athletic three-quarter stance after a fast sidestep behind broken alloy cover in a misty rocky outpost, silhouette sharp, soft cyan self-recovery motes at waist and skirt edge. No healing another character, no rifle or sword. Cold cyan edge light, warm distant sparks, 40mm medium-wide portrait with her adult face clearly visible. Preserve her exact reference face.\nText (verbatim), big line: 'LYRA'. Class line: 'MOBILE MEDIC'. Third small line: 'PULSE SAINT / PHASE GUNNER'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-d769a90b-b0a2-43f0-9a49-138ddc640ca4.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-01-lyra-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "02",
+      "key": "velvet",
+      "name": "VELVET",
+      "class": "BLOODGUARD",
+      "roleTh": "ค้อนยักษ์ / เกราะหนัก / ดูดพลังเมื่อฆ่า",
+      "careers": [
+        "REQUIEM VANGUARD",
+        "CRIMSON REAPER"
+      ],
+      "race": "HUMAN",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/shot-08-velvet-requiem-slam.png",
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/velvet-hammer-tripo-v1.png"
+      ],
+      "scene": "Image 1 VELVET face/costume continuity, image 2 giant hammer design. Beautiful adult woman, long pink twin ponytails, black pointed ribbon ornaments, black/burgundy gothic armor with silver detailing, ruby waist gem, layered flowing black/rose skirt over opaque combat shorts, armored thigh boots. TWO hands grip the long handle of ONE huge black/silver rectangular ruby-cored war hammer, poised just after striking cracked ground. Ground shockwave and broken ivory MYRAX shells in right-side background, thin magenta life motes from defeated shells moving toward waist ruby; not blood or gore. Her face fierce and clearly lit, stance powerful and stable, 35mm low camera with readable hammer head; no axe or scythe, no self-heal from merely standing. Magenta rim light and subdued cyan facility glow.",
+      "motion": "Slow low cinematic orbit after VELVET's hammer has landed. One rose-red shockwave dissipates, luminous life motes from already-defeated alien shells flow toward the ruby waist gem, twin tails and layered skirt settle. Preserve hammer geometry and two-hand grip. Keep the left title block locked and legible; no repeated hammer impact.",
+      "file": "intro-02-velvet-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Image 1 VELVET face/costume continuity, image 2 giant hammer design. Beautiful adult woman, long pink twin ponytails, black pointed ribbon ornaments, black/burgundy gothic armor with silver detailing, ruby waist gem, layered flowing black/rose skirt over opaque combat shorts, armored thigh boots. TWO hands grip the long handle of ONE huge black/silver rectangular ruby-cored war hammer, poised just after striking cracked ground. Ground shockwave and broken ivory MYRAX shells in right-side background, thin magenta life motes from defeated shells moving toward waist ruby; not blood or gore. Her face fierce and clearly lit, stance powerful and stable, 35mm low camera with readable hammer head; no axe or scythe, no self-heal from merely standing. Magenta rim light and subdued cyan facility glow.\nText (verbatim), big line: 'VELVET'. Class line: 'BLOODGUARD'. Third small line: 'REQUIEM VANGUARD / CRIMSON REAPER'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-9ffbe303-eae7-42e3-9627-a9b57f7406eb.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-02-velvet-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "03",
+      "key": "astra",
+      "name": "ASTRA",
+      "class": "ELEMENTALIST",
+      "roleTh": "โจมตีเวทย์ธาตุ ไฟ / น้ำแข็ง / สายฟ้า",
+      "careers": [
+        "STORM WEAVER",
+        "FROSTFIRE ORACLE"
+      ],
+      "race": "HUMAN",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/guardian-roster-v4.png"
+      ],
+      "scene": "The input is the SIX-character roster: ONLY use its FIRST figure ASTRA as identity/costume reference; ignore every other roster character and all roster text. ASTRA is an adult beautiful human woman with long deep-purple braided hair, amber eyes, black/violet armored bodice with copper trim, flowing violet rune-lit flared skirt over opaque shorts. Floating small DIAMOND SPELL FOCUS close to her right hand, fingers clearly separated. Dramatic spellcast atop an icy rocky relay courtyard: a controlled fire lance curls diagonally toward upper right, ice shards glow near her boots and a few thin violet lightning arcs circle the diamond focus, a readable tri-element identity without clutter. Her focused beautiful face sharply visible, 35mm three-quarter low camera, wind lifting braid and skirt, real CG skin and hair. No pistol, no human rifle, no staffs blocking face, no giant magical army. Main fire action stays on right, left text area calm.",
+      "motion": "Slow camera push toward ASTRA's face and floating diamond focus. One controlled fire ribbon advances slightly to the right while frost particles and thin lightning arcs flicker close to the focus. Hair and skirt move in wind. Preserve the three-element colors and human anatomy; keep all left title lettering static.",
+      "file": "intro-03-astra-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: The input is the SIX-character roster: ONLY use its FIRST figure ASTRA as identity/costume reference; ignore every other roster character and all roster text. ASTRA is an adult beautiful human woman with long deep-purple braided hair, amber eyes, black/violet armored bodice with copper trim, flowing violet rune-lit flared skirt over opaque shorts. Floating small DIAMOND SPELL FOCUS close to her right hand, fingers clearly separated. Dramatic spellcast atop an icy rocky relay courtyard: a controlled fire lance curls diagonally toward upper right, ice shards glow near her boots and a few thin violet lightning arcs circle the diamond focus, a readable tri-element identity without clutter. Her focused beautiful face sharply visible, 35mm three-quarter low camera, wind lifting braid and skirt, real CG skin and hair. No pistol, no human rifle, no staffs blocking face, no giant magical army. Main fire action stays on right, left text area calm.\nText (verbatim), big line: 'ASTRA'. Class line: 'ELEMENTALIST'. Third small line: 'STORM WEAVER / FROSTFIRE ORACLE'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-ef23ec77-4366-4747-a94c-80abcb9c5d65.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-03-astra-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "04",
+      "key": "echo",
+      "name": "ECHO",
+      "class": "FIREARMS SPECIALIST",
+      "roleTh": "ปืนพก / สไนเปอร์ / ปืนกล",
+      "careers": [
+        "DEADEYE",
+        "ARSENAL RUNNER"
+      ],
+      "race": "HUMAN",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/guardian-roster-v4.png"
+      ],
+      "scene": "The reference is the SIX-character roster: ONLY its SECOND figure ECHO is the identity and costume reference. Adult beautiful human woman, long auburn high ponytail, green eyes, charcoal/burgundy tactical armor, short flared split battle coat over opaque combat shorts, dark armored thigh boots. ONE futuristic white-black SNIPER RIFLE clearly supported with two gloved hands in a braced low firing-ready posture atop a metallic canyon vantage point; buttstock against shoulder, eye aligned to scope but face still readable three-quarter, no shot frozen over her face. Small holstered pistol on thigh is secondary; no third gun floating, no simultaneously wielding three weapons. Fine atmospheric long-range tracer in distant right background, warm brass sparks and cold outpost mist. Precision and attitude, natural adult face, cinematic 50mm lens, wind-swept ponytail.",
+      "motion": "Very subtle cinematic dolly toward ECHO's disciplined sniper stance. She adjusts her aim by a few degrees without firing, ponytail and coat move gently, distant haze drifts. Preserve scope alignment, rifle proportions and two-hand grip. Keep the left name, class and career text fixed and clear.",
+      "file": "intro-04-echo-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: The reference is the SIX-character roster: ONLY its SECOND figure ECHO is the identity and costume reference. Adult beautiful human woman, long auburn high ponytail, green eyes, charcoal/burgundy tactical armor, short flared split battle coat over opaque combat shorts, dark armored thigh boots. ONE futuristic white-black SNIPER RIFLE clearly supported with two gloved hands in a braced low firing-ready posture atop a metallic canyon vantage point; buttstock against shoulder, eye aligned to scope but face still readable three-quarter, no shot frozen over her face. Small holstered pistol on thigh is secondary; no third gun floating, no simultaneously wielding three weapons. Fine atmospheric long-range tracer in distant right background, warm brass sparks and cold outpost mist. Precision and attitude, natural adult face, cinematic 50mm lens, wind-swept ponytail.\nText (verbatim), big line: 'ECHO'. Class line: 'FIREARMS SPECIALIST'. Third small line: 'DEADEYE / ARSENAL RUNNER'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-b66070c2-ab08-49c5-8421-043fe07fb41e.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-04-echo-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "05",
+      "key": "rhea",
+      "name": "RHEA",
+      "class": "SHIELD BASTION",
+      "roleTh": "แท็งค์โล่หนัก / ฟื้นฟูตัวเอง",
+      "careers": [
+        "IRON CITADEL",
+        "IMPACT WARDEN"
+      ],
+      "race": "HUMAN",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/guardian-roster-v4.png"
+      ],
+      "scene": "The reference is the SIX-character roster: ONLY its THIRD figure RHEA is the identity/costume reference. Adult beautiful athletic human woman, short dark-teal bob, strong mature face, navy-white/silver heavy segmented armor, armored flared waist coat over opaque leggings, robust boots. A HUGE PHYSICAL hexagonal silver-blue TOWER SHIELD is her sole weapon, braced forward against a charging ivory Carapace Brute in the right midground. Shield must sit slightly below and to her side so her face remains clear. Sparks on shield edge, grounded boots and rock fragments emphasize impact and durability, subtle cool recovery glow in armor seams after a safe pause. No sword, no lightsaber, no gun. Low cinematic 28mm wide angle, heavy shield silhouette, courageous determined expression, sharp physical contact and no gory wounds.",
+      "motion": "Low cinematic camera slide beside RHEA's planted tower-shield stance. A restrained impact shiver and small sparks dissipate on the shield edge, dust settles, she exhales steadily. Keep the shield shape, bracing posture and face unchanged; no sword appears. Keep the left title block static.",
+      "file": "intro-05-rhea-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: The reference is the SIX-character roster: ONLY its THIRD figure RHEA is the identity/costume reference. Adult beautiful athletic human woman, short dark-teal bob, strong mature face, navy-white/silver heavy segmented armor, armored flared waist coat over opaque leggings, robust boots. A HUGE PHYSICAL hexagonal silver-blue TOWER SHIELD is her sole weapon, braced forward against a charging ivory Carapace Brute in the right midground. Shield must sit slightly below and to her side so her face remains clear. Sparks on shield edge, grounded boots and rock fragments emphasize impact and durability, subtle cool recovery glow in armor seams after a safe pause. No sword, no lightsaber, no gun. Low cinematic 28mm wide angle, heavy shield silhouette, courageous determined expression, sharp physical contact and no gory wounds.\nText (verbatim), big line: 'RHEA'. Class line: 'SHIELD BASTION'. Third small line: 'IRON CITADEL / IMPACT WARDEN'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-88af7216-4d7b-4b42-944d-96d3e78f1982.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-05-rhea-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "06",
+      "key": "seraph",
+      "name": "SERAPH-09",
+      "class": "LIGHTBLADE GUARDIAN",
+      "roleTh": "แท็งค์คล่องตัว / โล่กับดาบแสง",
+      "careers": [
+        "PRISM PALADIN",
+        "PHOTON DUELIST"
+      ],
+      "race": "ANDROID",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/guardian-roster-v4.png",
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/shot-09-last-stand-at-the-core.png"
+      ],
+      "scene": "Image 1 is SIX-character roster, use ONLY its FOURTH figure SERAPH-09 for identity and costume. Image 2 is completed team cinematic, use ONLY the white-haired sword/shield woman at front center for lighting/material continuity. Adult beautiful female android, long straight WHITE hair, golden eyes, pearl-white/gold segmented armor with subtle mechanical joints, flared articulated armored skirt and translucent cyan outer hem over opaque shorts. ONE cyan LIGHT SWORD in right hand and ONE angular hard-light SHIELD on left arm, clearly separate from each other. Powerful three-quarter parry-and-riposte pose in a shattered metallic courtyard: shield catches green acid sparks at right foreground, blade extends toward right bottom with a restrained curved cyan slash trail, face not hidden. Cold light, golden edge highlights, 35mm eye-level heroic frame. No wings, no second sword, no huge sword made into a staff.",
+      "motion": "Gentle cinematic orbit around SERAPH-09 holding a parry-ready shield and lightblade. Acid sparks fade on the shield, one short cyan blade trail settles, white hair and cyan skirt hem drift gently. Keep shield and sword in separate hands and preserve android joints. All left title lettering stays static.",
+      "file": "intro-06-seraph-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Image 1 is SIX-character roster, use ONLY its FOURTH figure SERAPH-09 for identity and costume. Image 2 is completed team cinematic, use ONLY the white-haired sword/shield woman at front center for lighting/material continuity. Adult beautiful female android, long straight WHITE hair, golden eyes, pearl-white/gold segmented armor with subtle mechanical joints, flared articulated armored skirt and translucent cyan outer hem over opaque shorts. ONE cyan LIGHT SWORD in right hand and ONE angular hard-light SHIELD on left arm, clearly separate from each other. Powerful three-quarter parry-and-riposte pose in a shattered metallic courtyard: shield catches green acid sparks at right foreground, blade extends toward right bottom with a restrained curved cyan slash trail, face not hidden. Cold light, golden edge highlights, 35mm eye-level heroic frame. No wings, no second sword, no huge sword made into a staff.\nText (verbatim), big line: 'SERAPH-09'. Class line: 'LIGHTBLADE GUARDIAN'. Third small line: 'PRISM PALADIN / PHOTON DUELIST'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-d0286675-e709-4b0e-9c8e-486aed02aacb.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-06-seraph-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "07",
+      "key": "nova",
+      "name": "NOVA-7",
+      "class": "FIELD ENGINEER",
+      "roleTh": "ซัพพอร์ต ป้อม / กับดัก / โดรน",
+      "careers": [
+        "SIEGE ARCHITECT",
+        "TRAP ARTIFICER"
+      ],
+      "race": "ANDROID",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/guardian-roster-v4.png"
+      ],
+      "scene": "Reference is SIX-character roster, ONLY its FIFTH figure NOVA-7 is identity/costume. Adult beautiful female android, short MINT-green bob, amber eyes, navy-orange utility armor, pleated flared technical skirt over opaque combat shorts, subtle mechanical joints and practical gauntlets. In a half-kneeling dynamic engineer pose commanding a compact ALREADY-DEPLOYED white/orange turret at right foreground using holographic wrist construction controls with ABSTRACT shapes and no readable UI text. One small white/orange wrench/scout drone beside shoulder, ONE circular arc trap lies on ground near right edge. Turret, drone and trap all distinct and grounded, no buildings materializing fully formed. She looks toward incoming aliens off-frame with confident smile. Warm orange mechanical sparks, cyan scan glow, rocky forward outpost, 40mm cinematic medium-wide frame. No healer staff or team healing rays, no oversized rifle held by NOVA.",
+      "motion": "Slow cinematic slide around NOVA-7 and the already-deployed turret. The turret rotates a little toward the right, the shoulder drone hovers a short steady distance, trap rim pulses once and abstract wrist control light flickers. Preserve all equipment count and placement. Keep left name, class and career lettering fixed.",
+      "file": "intro-07-nova-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Reference is SIX-character roster, ONLY its FIFTH figure NOVA-7 is identity/costume. Adult beautiful female android, short MINT-green bob, amber eyes, navy-orange utility armor, pleated flared technical skirt over opaque combat shorts, subtle mechanical joints and practical gauntlets. In a half-kneeling dynamic engineer pose commanding a compact ALREADY-DEPLOYED white/orange turret at right foreground using holographic wrist construction controls with ABSTRACT shapes and no readable UI text. One small white/orange wrench/scout drone beside shoulder, ONE circular arc trap lies on ground near right edge. Turret, drone and trap all distinct and grounded, no buildings materializing fully formed. She looks toward incoming aliens off-frame with confident smile. Warm orange mechanical sparks, cyan scan glow, rocky forward outpost, 40mm cinematic medium-wide frame. No healer staff or team healing rays, no oversized rifle held by NOVA.\nText (verbatim), big line: 'NOVA-7'. Class line: 'FIELD ENGINEER'. Third small line: 'SIEGE ARCHITECT / TRAP ARTIFICER'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-aa420f00-09ee-4830-8cff-5375e6bd1422.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-07-nova-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "08",
+      "key": "iris",
+      "name": "IRIS-3",
+      "class": "RESONANCE HEALER",
+      "roleTh": "ฮีลทีม / ชำระสถานะ / ชุบชีวิต",
+      "careers": [
+        "RESONANCE ORACLE",
+        "RESCUE SERAPH"
+      ],
+      "race": "ANDROID",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/guardian-roster-v4.png"
+      ],
+      "scene": "Reference is SIX-character roster, ONLY its SIXTH figure IRIS-3 is identity/costume. Adult beautiful female android, lavender/teal hair in TWO SHORT ORBITAL-LOOP BUNS (not long pink twin tails), luminous teal eyes, pearl-white/lilac medical armor, flowing layered flared skirt over opaque combat shorts, subtle mechanical joints. She holds ONE cyan crystal healing STAFF with both hands naturally, its ringed crystal tip to upper right, her face kind but resolute and visible. A controlled turquoise resonance pulse flows from staff to a single allied human soldier kneeling in the far right background, soft medical drone near staff and translucent emergency shield around ally. She heals HUMAN/ANDROID allies, not the planet core or turret. Ruined orbital dock in thin rain, cool medical light and pearlescent cloth, cinematic 50mm portrait. No offensive fireball, no rifle, no healing giant building.",
+      "motion": "Very slow cinematic push toward IRIS-3 as a gentle turquoise healing pulse travels to the already-present allied soldier on the far right. Medical drone hovers steadily, light rain and flowing skirt shimmer softly. Preserve her short orbital buns, staff and ally placement; do not heal buildings. Keep left title text static.",
+      "file": "intro-08-iris-class-reveal.png",
+      "duration": 4,
+      "category": "guardian",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Reference is SIX-character roster, ONLY its SIXTH figure IRIS-3 is identity/costume. Adult beautiful female android, lavender/teal hair in TWO SHORT ORBITAL-LOOP BUNS (not long pink twin tails), luminous teal eyes, pearl-white/lilac medical armor, flowing layered flared skirt over opaque combat shorts, subtle mechanical joints. She holds ONE cyan crystal healing STAFF with both hands naturally, its ringed crystal tip to upper right, her face kind but resolute and visible. A controlled turquoise resonance pulse flows from staff to a single allied human soldier kneeling in the far right background, soft medical drone near staff and translucent emergency shield around ally. She heals HUMAN/ANDROID allies, not the planet core or turret. Ruined orbital dock in thin rain, cool medical light and pearlescent cloth, cinematic 50mm portrait. No offensive fireball, no rifle, no healing giant building.\nText (verbatim), big line: 'IRIS-3'. Class line: 'RESONANCE HEALER'. Third small line: 'RESONANCE ORACLE / RESCUE SERAPH'. These are two existing advanced career paths within this hero's own kit, not new abilities transferred across heroes.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-362216ec-049e-4efd-8263-df2725754660.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-08-iris-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "passed",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "09",
+      "key": "khael",
+      "name": "KHAEL",
+      "class": "MYRAX COMMANDER",
+      "roleTh": "คอมมานเดอร์ RTS / ฝูงชีวภาพ",
+      "careers": [],
+      "race": "MYRAX",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/alien-commanders-roster-cg-v1.png",
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/shot-04-khael-myrax-command.png"
+      ],
+      "scene": "Image 1 is FOUR-commander roster, ONLY its FIRST figure KHAEL is identity; image 2 is KHAEL's cinematic base continuity. Handsome adult male humanoid alien, slate-lilac skin, magenta irises, pointed ears, slick dark short hair, ivory organic brow crest, ivory curved chitin royal armor, living magenta seams, burgundy flowing cape. Powerful calm command gesture on a rocky organic balcony, close enough to see charismatic face, Brood Heart and neat marching rows of small ivory MYRAX ground troops in the right background. He directs RTS forces, not fighting as a hero, no gun. Cinematic 50mm adult CG realism, magenta rim light and cool fog. Left title area dark and clean.",
+      "motion": "Slow lateral dolly around KHAEL's calm command gesture. Burgundy cape moves slightly, magenta synapse light pulses and distant ground troops march slowly. Preserve alien facial identity and chitin armor. He does not attack. Keep the name and class typography static.",
+      "file": "intro-09-khael-class-reveal.png",
+      "duration": 4,
+      "category": "alien-commander",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Image 1 is FOUR-commander roster, ONLY its FIRST figure KHAEL is identity; image 2 is KHAEL's cinematic base continuity. Handsome adult male humanoid alien, slate-lilac skin, magenta irises, pointed ears, slick dark short hair, ivory organic brow crest, ivory curved chitin royal armor, living magenta seams, burgundy flowing cape. Powerful calm command gesture on a rocky organic balcony, close enough to see charismatic face, Brood Heart and neat marching rows of small ivory MYRAX ground troops in the right background. He directs RTS forces, not fighting as a hero, no gun. Cinematic 50mm adult CG realism, magenta rim light and cool fog. Left title area dark and clean.\nText (verbatim), big line: 'KHAEL'. Class line: 'MYRAX COMMANDER'. Use ONLY these two lines; no third career line.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-9b598c59-998a-421f-a0db-9ba19cf35aac.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-09-khael-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "not_applicable",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "10",
+      "key": "saeryn",
+      "name": "SAERYN",
+      "class": "MYRAX COMMANDER",
+      "roleTh": "คอมมานเดอร์ RTS / ฝูงชีวภาพ",
+      "careers": [],
+      "race": "MYRAX",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/alien-commanders-roster-cg-v1.png"
+      ],
+      "scene": "Reference is FOUR-commander roster, ONLY its SECOND figure SAERYN is identity/costume. Beautiful adult female humanoid alien, pale lavender-gray skin, magenta eyes, pointed ears, long silver-violet partially braided hair, ivory thorn crown, ivory/black living chitin armor with magenta gems and layered opaque burgundy mantle. Regal commanding three-quarter pose, one hand near existing pulsing organic synapse structure; right background suggests a Brood Chamber nursery and orderly MYRAX squads in mist. Strong calculating queen, face prominent, not human cosplay and not insect monster head. Cinematic 50mm adult CG realism, ivory texture, magenta side light. No magic staff or hero combat, no other commander.",
+      "motion": "Gentle camera push toward SAERYN's beautiful alien face and command hand. The fixed organic synapse node glows softly, mantle and braided hair move slightly, background brood structures pulse. Keep body and anatomy grounded; no attack or teleport. Left title text stays crisp and stationary.",
+      "file": "intro-10-saeryn-class-reveal.png",
+      "duration": 4,
+      "category": "alien-commander",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Reference is FOUR-commander roster, ONLY its SECOND figure SAERYN is identity/costume. Beautiful adult female humanoid alien, pale lavender-gray skin, magenta eyes, pointed ears, long silver-violet partially braided hair, ivory thorn crown, ivory/black living chitin armor with magenta gems and layered opaque burgundy mantle. Regal commanding three-quarter pose, one hand near existing pulsing organic synapse structure; right background suggests a Brood Chamber nursery and orderly MYRAX squads in mist. Strong calculating queen, face prominent, not human cosplay and not insect monster head. Cinematic 50mm adult CG realism, ivory texture, magenta side light. No magic staff or hero combat, no other commander.\nText (verbatim), big line: 'SAERYN'. Class line: 'MYRAX COMMANDER'. Use ONLY these two lines; no third career line.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-28e45bf9-bcd1-45e6-b53c-83356be80fb0.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-10-saeryn-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "not_applicable",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "11",
+      "key": "vael",
+      "name": "VAEL",
+      "class": "AETHERION COMMANDER",
+      "roleTh": "คอมมานเดอร์ RTS / กองทัพผลึก",
+      "careers": [],
+      "race": "AETHERION",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/alien-commanders-roster-cg-v1.png"
+      ],
+      "scene": "Reference is FOUR-commander roster, ONLY its THIRD figure VAEL is identity/costume. Handsome adult male humanoid alien, pale blue-violet skin, long silver-white hair, cyan eyes and fine cyan crystalline facial marks, small crystal growths at temples, obsidian/pearl-violet faceted regal armor with cyan heart core and long dark violet cape. Firm imperial stance with a measured one-handed command gesture toward anchored geometric crystal pylons, disciplined Sentinel ranks at right distance, cyan power filaments in mineral canyon fog. Human-like charismatic face fully visible, clearly alien not ordinary human/robot. 50mm eye-level cinematic CG portrait, ray-traced facets and cool rim light. No handheld gun or sword; commander is not a combat hero.",
+      "motion": "Slow cinematic orbit around VAEL's measured command gesture. Cyan core and existing pylons pulse in sequence, a few distant ground Sentinels shift into formation, silver hair and cape move gently. Preserve facial crystal markings and armor facets. Keep left name and class static; no combat attack.",
+      "file": "intro-11-vael-class-reveal.png",
+      "duration": 4,
+      "category": "alien-commander",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Reference is FOUR-commander roster, ONLY its THIRD figure VAEL is identity/costume. Handsome adult male humanoid alien, pale blue-violet skin, long silver-white hair, cyan eyes and fine cyan crystalline facial marks, small crystal growths at temples, obsidian/pearl-violet faceted regal armor with cyan heart core and long dark violet cape. Firm imperial stance with a measured one-handed command gesture toward anchored geometric crystal pylons, disciplined Sentinel ranks at right distance, cyan power filaments in mineral canyon fog. Human-like charismatic face fully visible, clearly alien not ordinary human/robot. 50mm eye-level cinematic CG portrait, ray-traced facets and cool rim light. No handheld gun or sword; commander is not a combat hero.\nText (verbatim), big line: 'VAEL'. Class line: 'AETHERION COMMANDER'. Use ONLY these two lines; no third career line.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-0ca4b03e-73aa-4bd2-b177-bd27d4e595ea.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-11-vael-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "not_applicable",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    {
+      "id": "12",
+      "key": "nyxara",
+      "name": "NYXARA",
+      "class": "AETHERION COMMANDER",
+      "roleTh": "คอมมานเดอร์ RTS / กองทัพผลึก",
+      "careers": [],
+      "race": "AETHERION",
+      "refs": [
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/alien-commanders-roster-cg-v1.png",
+        "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/cinematic-v2/shot-05-nyxara-aetherion-command.png"
+      ],
+      "scene": "Image 1 is FOUR-commander roster, ONLY its FOURTH figure NYXARA is identity; image 2 her completed cinematic continuity. Beautiful adult female humanoid alien, pearl-violet skin, cyan geometric irises, silver/icy-blue long hair, crystalline ear tips and delicate crown, pearl/obsidian/violet faceted regal armor, cyan heart core, flowing translucent OUTER violet cape above opaque inner clothing. Confident royal three-quarter stance on fixed crystal command platform, one hand channels a restrained command pulse into adjacent anchored pylon; few imposing ground Sentinels with cyan shields in right-side distant valley. Adult movie-quality CG face sharply visible, not floating, calm intimidating poise. 50mm eye-level portrait and icy cyan backlight. No gun or hero attack.",
+      "motion": "Gentle cinematic dolly toward NYXARA's serene command pose. A small cyan command pulse runs along the existing crystal pylon, hair and translucent outer cape drift and the background Sentinel shields brighten subtly. Preserve crown and face; no new creatures spawn. Keep left title typography stationary.",
+      "file": "intro-12-nyxara-class-reveal.png",
+      "duration": 4,
+      "category": "alien-commander",
+      "prompt": "Use case: ads-marketing. Asset type: ONE standalone named character-class reveal keyframe for HIVE // BREACH: COREWAR launch MV. High-end photorealistic cinematic CG 3D, physically based armor and fabric, realistic adult face with fine skin texture, strand hair, polished blockbuster lighting and atmospheric depth. Full-bleed landscape 16:9, ideally 1920x1080, no letterbox, not a painting, not a character sheet, not a collage or multiple panels. Main hero/action in the RIGHT 60% of frame; keep LEFT 35% a clean dark atmospheric gradient for legible title typography. Face and signature equipment fully legible, dynamic powerful cinematic stance rather than glamour pose. Keep all clothing opaque except the designed OUTER fabric; adult subjects. No HUD, no UI controls, no stats, no watermark, no extra title/logo. Typography is part of the image: exact large clean uppercase character NAME in the left area, beneath it an exact smaller bold CLASS line, and beneath that one restrained smaller CAREER PATH line listing the two existing advanced paths. Names/classes must be spelled exactly, not integrated into armor. Three-line title block is comfortably inside 8% safe margins and does not overlap subject or weapon. Add only the requested three lines of text, no extra captions. \nScene: Image 1 is FOUR-commander roster, ONLY its FOURTH figure NYXARA is identity; image 2 her completed cinematic continuity. Beautiful adult female humanoid alien, pearl-violet skin, cyan geometric irises, silver/icy-blue long hair, crystalline ear tips and delicate crown, pearl/obsidian/violet faceted regal armor, cyan heart core, flowing translucent OUTER violet cape above opaque inner clothing. Confident royal three-quarter stance on fixed crystal command platform, one hand channels a restrained command pulse into adjacent anchored pylon; few imposing ground Sentinels with cyan shields in right-side distant valley. Adult movie-quality CG face sharply visible, not floating, calm intimidating poise. 50mm eye-level portrait and icy cyan backlight. No gun or hero attack.\nText (verbatim), big line: 'NYXARA'. Class line: 'AETHERION COMMANDER'. Use ONLY these two lines; no third career line.",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-a84e1e00-17ac-468b-abbe-b182ae671f62.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-12-nyxara-class-reveal.png",
+      "inspection": {
+        "nameText": "passed",
+        "classText": "passed",
+        "careerText": "not_applicable",
+        "signatureEquipment": "passed"
+      },
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      }
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "version": "V7-concept-1",
+  "implementationStatus": "design_and_image_mockups_only",
+  "commanders": [
+    {
+      "id": "myrax_khael",
+      "name": "KHAEL",
+      "raceId": "MYRAX",
+      "appearance": "male",
+      "defaultSkinFamily": "myrax_brood_regalia"
+    },
+    {
+      "id": "myrax_saeryn",
+      "name": "SAERYN",
+      "raceId": "MYRAX",
+      "appearance": "female",
+      "defaultSkinFamily": "myrax_brood_regalia"
+    },
+    {
+      "id": "aetherion_vael",
+      "name": "VAEL",
+      "raceId": "AETHERION",
+      "appearance": "male",
+      "defaultSkinFamily": "aetherion_prism_crown"
+    },
+    {
+      "id": "aetherion_nyxara",
+      "name": "NYXARA",
+      "raceId": "AETHERION",
+      "appearance": "female",
+      "defaultSkinFamily": "aetherion_prism_crown"
+    }
+  ],
+  "skinFamilies": [
+    {
+      "id": "lyra_lumen_standard",
+      "name": "Lumen Standard",
+      "slot": "GuardianOutfit",
+      "targetId": "LYRA",
+      "source": "base",
+      "rarity": "Common",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "concept_reference"
+    },
+    {
+      "id": "lyra_aurora_cadence",
+      "name": "Aurora Cadence",
+      "slot": "GuardianOutfit",
+      "targetId": "LYRA",
+      "source": "season",
+      "rarity": "Epic",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "proposed"
+    },
+    {
+      "id": "velvet_rose_requiem",
+      "name": "Rose Requiem",
+      "slot": "GuardianOutfit",
+      "targetId": "VELVET",
+      "source": "base",
+      "rarity": "Common",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "concept_reference"
+    },
+    {
+      "id": "velvet_crimson_eclipse",
+      "name": "Crimson Eclipse",
+      "slot": "GuardianOutfit",
+      "targetId": "VELVET",
+      "source": "mastery_mission",
+      "rarity": "Epic",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "proposed"
+    },
+    {
+      "id": "myrax_brood_regalia",
+      "name": "Brood Regalia",
+      "slot": "CommanderOutfit",
+      "targetId": "MYRAX",
+      "source": "base",
+      "rarity": "Common",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "concept_reference"
+    },
+    {
+      "id": "myrax_ash_regent",
+      "name": "Ash Regent",
+      "slot": "CommanderOutfit",
+      "targetId": "MYRAX",
+      "source": "season",
+      "rarity": "Epic",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "proposed"
+    },
+    {
+      "id": "myrax_void_regent",
+      "name": "Void Regent",
+      "slot": "CommanderOutfit",
+      "targetId": "MYRAX",
+      "source": "store",
+      "rarity": "Legendary",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "proposed",
+      "femaleVariantName": "Void Empress"
+    },
+    {
+      "id": "aetherion_prism_crown",
+      "name": "Prism Crown",
+      "slot": "CommanderOutfit",
+      "targetId": "AETHERION",
+      "source": "base",
+      "rarity": "Common",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "concept_reference"
+    },
+    {
+      "id": "aetherion_eclipse_sovereign",
+      "name": "Eclipse Sovereign",
+      "slot": "CommanderOutfit",
+      "targetId": "AETHERION",
+      "source": "mastery_mission",
+      "rarity": "Epic",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "proposed"
+    },
+    {
+      "id": "aetherion_celestial_regent",
+      "name": "Celestial Regent",
+      "slot": "CommanderOutfit",
+      "targetId": "AETHERION",
+      "source": "store",
+      "rarity": "Legendary",
+      "grants": [
+        "male",
+        "female"
+      ],
+      "stats": null,
+      "assetStatus": "proposed"
+    }
+  ],
+  "slots": [
+    "GuardianOutfit",
+    "CommanderOutfit",
+    "WeaponSkin",
+    "UnitSkin",
+    "BuildingSkin",
+    "CoreSkin",
+    "PetSkin",
+    "Banner",
+    "CosmeticVFX",
+    "Voice"
+  ],
+  "rules": {
+    "cosmeticStatsAllowed": false,
+    "genderVariantsIncludedInFamily": true,
+    "rankUnlockFromPurchase": false,
+    "changesFactionKit": false,
+    "commanderWorldCombatEntity": false,
+    "ownershipScope": "account",
+    "equipValidation": [
+      "owned",
+      "target_compatibility",
+      "appearance_variant",
+      "ruleset_visual_readability"
+    ],
+    "fogVisibility": "only_filtered_entities_and_events",
+    "loadoutLock": "match_start",
+    "fallback": "base_skin",
+    "competitiveClarity": "default_enemy_visuals_optional"
+  },
+  "checkout": {
+    "enabled": false,
+    "prices": null,
+    "entitlementService": "not_implemented"
+  },
+  "exampleLoadout": {
+    "side": "Alien",
+    "raceId": "MYRAX",
+    "appearanceId": "myrax_saeryn",
+    "commanderSkinFamilyId": "myrax_ash_regent",
+    "unitSkins": {},
+    "buildingSkins": {},
+    "bannerId": "default"
+  },
+  "progressionReference": "V5",
+  "mapReference": "V6"
+}

@@ -1,0 +1,107 @@
+{
+  "version": "COREWAR-ALIEN-COMMANDER-CINEMATICS-V1",
+  "status": "selected_image_keyframes",
+  "durationSeconds": 20,
+  "shots": [
+    {
+      "key": "commander-01",
+      "name": "KHAEL",
+      "race": "MYRAX",
+      "class": "MYRAX COMMANDER",
+      "title": "KHAEL — สั่งฝูงบุก",
+      "file": "commander-01-khael-swarm-order.png",
+      "ref": "intro-09-khael-class-reveal.png",
+      "duration": 5,
+      "scene": "An imposing low-angle 32mm medium-wide shot on a rain-soaked organic military terrace. KHAEL, handsome adult male humanoid alien, slate-lilac skin, luminous magenta eyes, pointed ears, short swept-back black hair, small ivory organic brow crest and subtle magenta facial veins. Exact royal ivory segmented chitin armor over dark biosuit with magenta synapse lines, deep burgundy cape. Stand in LEFT foreground, face turned three-quarter toward camera, commanding expression. One hand extended forward with fingers in a simple firm command gesture, other naturally at side. A visible soft magenta synaptic pulse ripples along anchored organic conduits from the command terrace toward massed troops. Far below on RIGHT, dozens of clearly ground-based small insectoid Skitters stream in coherent columns between wet chitin Spine Nest towers and a few massive four-limbed Carapace Brutes, converging toward a distant ridge. Bright warm embers contrast with cold rain and magenta bioluminescence. Wind lifts burgundy cape behind him. Show the terrifying scale of the organized swarm, but keep KHAEL's face larger than background units and sharply lit. No personal sword, no gun, no hero combat, no floating creatures, no human troops.",
+      "motion": "Slow low-angle dolly toward KHAEL. He extends his command hand once; a restrained magenta synapse pulse travels down existing conduits. Ground swarm columns advance slowly below, rain and cape move naturally. Preserve face, armor, five-finger hand and grounded troops. No morphing, new units spawning, flying enemies or camera cuts.",
+      "prompt": "Create ONE new full-bleed widescreen 16:9 cinematic movie still for HIVE // BREACH: COREWAR, suitable for an image-to-video launch MV. Spectacular photorealistic high-end CG3D, physically based materials, naturalistic adult humanlike alien faces with fine skin texture, realistic strand hair, sophisticated blockbuster cinematography, volumetric atmosphere, detailed grounded alien military environment. This is a NEW action of military command with a different composition from the reference introduction portrait. Reference is ONLY identity, face and costume continuity. Do NOT reproduce any reference letters or portrait card layout. No text, no logos, no UI, no HUD, no watermark, no borders or panels. Subject's attractive humanoid face remains clearly readable, two arms only and anatomical hands, all clothing opaque except an outer cape if specified. No protagonist attacking personally: commander gives orders to their RTS ground army. Projected command signals are abstract or local formation signals, never an omniscient map or hidden enemy coordinates. Keep essential subjects inside 6% safe margins. Scene: An imposing low-angle 32mm medium-wide shot on a rain-soaked organic military terrace. KHAEL, handsome adult male humanoid alien, slate-lilac skin, luminous magenta eyes, pointed ears, short swept-back black hair, small ivory organic brow crest and subtle magenta facial veins. Exact royal ivory segmented chitin armor over dark biosuit with magenta synapse lines, deep burgundy cape. Stand in LEFT foreground, face turned three-quarter toward camera, commanding expression. One hand extended forward with fingers in a simple firm command gesture, other naturally at side. A visible soft magenta synaptic pulse ripples along anchored organic conduits from the command terrace toward massed troops. Far below on RIGHT, dozens of clearly ground-based small insectoid Skitters stream in coherent columns between wet chitin Spine Nest towers and a few massive four-limbed Carapace Brutes, converging toward a distant ridge. Bright warm embers contrast with cold rain and magenta bioluminescence. Wind lifts burgundy cape behind him. Show the terrifying scale of the organized swarm, but keep KHAEL's face larger than background units and sharply lit. No personal sword, no gun, no hero combat, no floating creatures, no human troops.",
+      "referencePath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-09-khael-class-reveal.png",
+      "cinematicTitle": "SWARM COMMANDER",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-da650f0d-8ee1-4de6-aa50-3e6e8c12803f.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/alien-commander-cinematics-v1/commander-01-khael-swarm-order.png",
+      "tool": "builtin image_gen",
+      "inspection": "Manually inspected native tool image: recognizable face, costume and command scene; no baked lettering.",
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "startSeconds": 0,
+      "endSeconds": 5
+    },
+    {
+      "key": "commander-02",
+      "name": "SAERYN",
+      "race": "MYRAX",
+      "class": "MYRAX COMMANDER",
+      "title": "SAERYN — ปลุกหัวใจรัง",
+      "file": "commander-02-saeryn-brood-heart.png",
+      "ref": "intro-10-saeryn-class-reveal.png",
+      "duration": 5,
+      "scene": "Intimate but grand 40mm cinematic three-quarter view inside a cavernous organic Brood Heart headquarters chamber. SAERYN, beautiful adult humanoid alien queen, pale lavender-gray skin, magenta eyes, pointed ears, long silver-violet partly braided hair, delicate ivory thorn crown, exact elegant ivory-black chitin armor with magenta gems, layered opaque burgundy mantle. Place her in RIGHT foreground waist-up, face clearly visible in three-quarter angle, calm confident half-smile. One gloved hand rests naturally on a grounded ribbed command pedestal, magenta neural fibers thread outward from its surface. In the LEFT midground a huge armored Carapace Brute waits firmly on the floor beneath ribbed organic arches, small Skitters gather around softly glowing brood chambers, all grounded and contained inside the architecture. The central Brood Heart organ is visibly rooted into floor and walls rather than floating. A cinematic magenta light pulse illuminates the queen's face and rows of ivory incubation chambers; faint green secondary reflections, deep black biological textures, drifting mist and rich backlight. Awe, intelligence and imperial authority. No weapon, no seductive posing, no giant monster queen face, no tentacle arms, no strategic map.",
+      "motion": "Gentle cinematic arc around SAERYN's upper body as she touches the command pedestal. Magenta light propagates along existing neural fibers and the distant grounded brute raises its head slightly. Subtle breath, silver-violet hair and mantle motion. Keep face, crown, hand contact and architecture stable. No creatures popping into existence or eggs transforming.",
+      "prompt": "Create ONE new full-bleed widescreen 16:9 cinematic movie still for HIVE // BREACH: COREWAR, suitable for an image-to-video launch MV. Spectacular photorealistic high-end CG3D, physically based materials, naturalistic adult humanlike alien faces with fine skin texture, realistic strand hair, sophisticated blockbuster cinematography, volumetric atmosphere, detailed grounded alien military environment. This is a NEW action of military command with a different composition from the reference introduction portrait. Reference is ONLY identity, face and costume continuity. Do NOT reproduce any reference letters or portrait card layout. No text, no logos, no UI, no HUD, no watermark, no borders or panels. Subject's attractive humanoid face remains clearly readable, two arms only and anatomical hands, all clothing opaque except an outer cape if specified. No protagonist attacking personally: commander gives orders to their RTS ground army. Projected command signals are abstract or local formation signals, never an omniscient map or hidden enemy coordinates. Keep essential subjects inside 6% safe margins. Scene: Intimate but grand 40mm cinematic three-quarter view inside a cavernous organic Brood Heart headquarters chamber. SAERYN, beautiful adult humanoid alien queen, pale lavender-gray skin, magenta eyes, pointed ears, long silver-violet partly braided hair, delicate ivory thorn crown, exact elegant ivory-black chitin armor with magenta gems, layered opaque burgundy mantle. Place her in RIGHT foreground waist-up, face clearly visible in three-quarter angle, calm confident half-smile. One gloved hand rests naturally on a grounded ribbed command pedestal, magenta neural fibers thread outward from its surface. In the LEFT midground a huge armored Carapace Brute waits firmly on the floor beneath ribbed organic arches, small Skitters gather around softly glowing brood chambers, all grounded and contained inside the architecture. The central Brood Heart organ is visibly rooted into floor and walls rather than floating. A cinematic magenta light pulse illuminates the queen's face and rows of ivory incubation chambers; faint green secondary reflections, deep black biological textures, drifting mist and rich backlight. Awe, intelligence and imperial authority. No weapon, no seductive posing, no giant monster queen face, no tentacle arms, no strategic map.",
+      "referencePath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-10-saeryn-class-reveal.png",
+      "cinematicTitle": "BROOD SOVEREIGN",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-2cedc716-4360-4cb0-9308-255e0bccca00.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/alien-commander-cinematics-v1/commander-02-saeryn-brood-heart.png",
+      "tool": "builtin image_gen",
+      "inspection": "Manually inspected native tool image: recognizable face, costume and command scene; no baked lettering.",
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "startSeconds": 5,
+      "endSeconds": 10
+    },
+    {
+      "key": "commander-03",
+      "name": "VAEL",
+      "race": "AETHERION",
+      "class": "AETHERION COMMANDER",
+      "title": "VAEL — จัดแนวรบผลึก",
+      "file": "commander-03-vael-crystal-formation.png",
+      "ref": "intro-11-vael-class-reveal.png",
+      "duration": 5,
+      "scene": "Majestic 35mm medium-wide cinematic view on an angular obsidian-crystal command bridge at blue twilight. VAEL, handsome adult humanoid alien male, pale cool blue-violet skin, cyan geometric irises, long silver-white hair, crystal growths at temples and faint cyan facial fissures, exact faceted obsidian-pearl-violet armor with luminous cyan chest heart and dark violet cape. Place him LEFT foreground, recognizably attractive face turned three-quarter toward camera, composed strategic gaze. One hand above a waist-high physical crystal command console, a few small floating abstract cyan triangles above the console depicting ONLY the local ground formation, no map. In RIGHT middle and far background, precisely spaced rows of angular humanoid crystal Sentinel ground soldiers with cyan shield barriers progress along a broad anchored crystal causeway between large faceted pylons. All boots on ground, sharp triangular formation contrasted with MYRAX chaotic organic shapes. Light cascades sequentially across local pylons, pristine geometric discipline, realistic atmospheric perspective, cyan/violet rim light, distant warm battlefield glow beyond the known visible ridge. No sword or gun in commander hands, no magic casting as a fighter, no omniscient world map, no airborne soldiers.",
+      "motion": "Slow lateral dolly across VAEL and the physical crystal console. His hovering hand lowers slightly to confirm a local formation signal; abstract triangles brighten once. In the visible background, existing Sentinels take one coordinated step and shield light pulses along the anchored causeway. Preserve face, hands, unit count and geometry. No new map reveals, teleportation or floating soldiers.",
+      "prompt": "Create ONE new full-bleed widescreen 16:9 cinematic movie still for HIVE // BREACH: COREWAR, suitable for an image-to-video launch MV. Spectacular photorealistic high-end CG3D, physically based materials, naturalistic adult humanlike alien faces with fine skin texture, realistic strand hair, sophisticated blockbuster cinematography, volumetric atmosphere, detailed grounded alien military environment. This is a NEW action of military command with a different composition from the reference introduction portrait. Reference is ONLY identity, face and costume continuity. Do NOT reproduce any reference letters or portrait card layout. No text, no logos, no UI, no HUD, no watermark, no borders or panels. Subject's attractive humanoid face remains clearly readable, two arms only and anatomical hands, all clothing opaque except an outer cape if specified. No protagonist attacking personally: commander gives orders to their RTS ground army. Projected command signals are abstract or local formation signals, never an omniscient map or hidden enemy coordinates. Keep essential subjects inside 6% safe margins. Scene: Majestic 35mm medium-wide cinematic view on an angular obsidian-crystal command bridge at blue twilight. VAEL, handsome adult humanoid alien male, pale cool blue-violet skin, cyan geometric irises, long silver-white hair, crystal growths at temples and faint cyan facial fissures, exact faceted obsidian-pearl-violet armor with luminous cyan chest heart and dark violet cape. Place him LEFT foreground, recognizably attractive face turned three-quarter toward camera, composed strategic gaze. One hand above a waist-high physical crystal command console, a few small floating abstract cyan triangles above the console depicting ONLY the local ground formation, no map. In RIGHT middle and far background, precisely spaced rows of angular humanoid crystal Sentinel ground soldiers with cyan shield barriers progress along a broad anchored crystal causeway between large faceted pylons. All boots on ground, sharp triangular formation contrasted with MYRAX chaotic organic shapes. Light cascades sequentially across local pylons, pristine geometric discipline, realistic atmospheric perspective, cyan/violet rim light, distant warm battlefield glow beyond the known visible ridge. No sword or gun in commander hands, no magic casting as a fighter, no omniscient world map, no airborne soldiers.",
+      "referencePath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-11-vael-class-reveal.png",
+      "cinematicTitle": "CRYSTAL STRATEGIST",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-6332e585-078b-471c-b7cf-ec195e060380.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/alien-commander-cinematics-v1/commander-03-vael-crystal-formation.png",
+      "tool": "builtin image_gen",
+      "inspection": "Manually inspected native tool image: recognizable face, costume and command scene; no baked lettering.",
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "startSeconds": 10,
+      "endSeconds": 15
+    },
+    {
+      "key": "commander-04",
+      "name": "NYXARA",
+      "race": "AETHERION",
+      "class": "AETHERION COMMANDER",
+      "title": "NYXARA — เปิดม่านพลังแห่ง Nexus",
+      "file": "commander-04-nyxara-nexus-order.png",
+      "ref": "intro-12-nyxara-class-reveal.png",
+      "duration": 5,
+      "scene": "Epic 28mm low-angle command reveal from a crystal citadel balcony during an ash-filled dusk. NYXARA, beautiful adult humanoid alien female with pearl-violet skin, striking cyan eyes, silver ice-blue hair, crystalline ears, delicate angular crystal crown, exact pearl-obsidian-violet faceted armor with cyan chest heart. A flowing translucent violet OUTER cape over opaque royal combat clothes. She stands CENTER-RIGHT foreground on the anchored balcony, attractive determined face clearly readable and slightly turned toward camera. Raise one open hand to shoulder height with a controlled authoritative gesture. Behind and to LEFT, enormous grounded crystal Nexus pylons frame her silhouette, their cyan energy pathways light in ordered stages along physical anchored structures; disciplined Sentinel armies remain on terraces far below. A broad cyan defensive energy curtain is visible BETWEEN two anchored pylons in the middle distance, not around her as a personal spell. Dust, cape and strand hair catch radiant cyan light and a subtle warm sunset edge. Powerful queen issuing a strategic order, grand beauty, impeccable geometric alien architecture, immersive depth and military scale. No firing a weapon, no sword, no personal attack spell, no giant floating crystals, no world-map hologram.",
+      "motion": "Measured low-angle camera push toward NYXARA. She lifts one open command hand slightly; existing grounded pylons illuminate in sequence and the defensive curtain brightens gently between them. Hair, outer cape and suspended ash drift in the wind. Preserve face, crown, hand anatomy, architecture and grounded army. No new buildings forming, explosive attacks or teleportation.",
+      "prompt": "Create ONE new full-bleed widescreen 16:9 cinematic movie still for HIVE // BREACH: COREWAR, suitable for an image-to-video launch MV. Spectacular photorealistic high-end CG3D, physically based materials, naturalistic adult humanlike alien faces with fine skin texture, realistic strand hair, sophisticated blockbuster cinematography, volumetric atmosphere, detailed grounded alien military environment. This is a NEW action of military command with a different composition from the reference introduction portrait. Reference is ONLY identity, face and costume continuity. Do NOT reproduce any reference letters or portrait card layout. No text, no logos, no UI, no HUD, no watermark, no borders or panels. Subject's attractive humanoid face remains clearly readable, two arms only and anatomical hands, all clothing opaque except an outer cape if specified. No protagonist attacking personally: commander gives orders to their RTS ground army. Projected command signals are abstract or local formation signals, never an omniscient map or hidden enemy coordinates. Keep essential subjects inside 6% safe margins. Scene: Epic 28mm low-angle command reveal from a crystal citadel balcony during an ash-filled dusk. NYXARA, beautiful adult humanoid alien female with pearl-violet skin, striking cyan eyes, silver ice-blue hair, crystalline ears, delicate angular crystal crown, exact pearl-obsidian-violet faceted armor with cyan chest heart. A flowing translucent violet OUTER cape over opaque royal combat clothes. She stands CENTER-RIGHT foreground on the anchored balcony, attractive determined face clearly readable and slightly turned toward camera. Raise one open hand to shoulder height with a controlled authoritative gesture. Behind and to LEFT, enormous grounded crystal Nexus pylons frame her silhouette, their cyan energy pathways light in ordered stages along physical anchored structures; disciplined Sentinel armies remain on terraces far below. A broad cyan defensive energy curtain is visible BETWEEN two anchored pylons in the middle distance, not around her as a personal spell. Dust, cape and strand hair catch radiant cyan light and a subtle warm sunset edge. Powerful queen issuing a strategic order, grand beauty, impeccable geometric alien architecture, immersive depth and military scale. No firing a weapon, no sword, no personal attack spell, no giant floating crystals, no world-map hologram.",
+      "referencePath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/hero-intros-v1/intro-12-nyxara-class-reveal.png",
+      "cinematicTitle": "NEXUS SOVEREIGN",
+      "generatedSource": "C:\\Users\\xman\\.codex\\generated_images\\01a10ca3-d696-7162-87d4-db6ff547d156\\exec-80947131-c9e4-4a08-8c6d-24735884cc24.png",
+      "outputPath": "C:/Users/xman/Documents/Codex/2026-10-05/2-5d-cluade-code-ui-gameplay-7/outputs/alien-commander-cinematics-v1/commander-04-nyxara-nexus-order.png",
+      "tool": "builtin image_gen",
+      "inspection": "Manually inspected native tool image: recognizable face, costume and command scene; no baked lettering.",
+      "actualSourceSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "startSeconds": 15,
+      "endSeconds": 20
+    }
+  ]
+}
